@@ -34,22 +34,31 @@ if (limit) {
 <section class="py-16 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <div
-            class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-obt-muted/10 pb-6"
+            class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-l-4 border-[var(--color-event)] pl-4"
         >
-            <div class="space-y-2">
+            <div class="space-y-1">
                 <span
-                    class="text-obt-primary font-bold text-xs tracking-wider uppercase"
-                    >À ne pas manquer</span
+                    class="inline-block text-[var(--color-event-text)] font-extrabold text-xs tracking-wider uppercase"
                 >
-                <h2 class="text-3xl font-extrabold text-obt-dark">{title}</h2>
-                {subtitle && <p class="text-obt-muted text-sm">{subtitle}</p>}
+                    À ne pas manquer
+                </span>
+                <h2
+                    class="text-2xl sm:text-3xl font-extrabold text-obt-dark font-serif"
+                >
+                    {title}
+                </h2>
+                {
+                    subtitle && (
+                        <p class="text-obt-muted text-sm mt-1">{subtitle}</p>
+                    )
+                }
             </div>
             {
                 showViewAll && (
-                    <div>
+                    <div class="shrink-0 pt-2 sm:pt-0">
                         <a
-                            href="/events"
-                            class="inline-flex items-center text-sm font-semibold text-obt-primary hover:text-obt-primary/80 transition-colors"
+                            href="/evenements"
+                            class="inline-flex items-center text-sm font-bold text-[var(--color-event-text)] hover:opacity-80 transition-opacity"
                         >
                             Voir tout l'agenda →
                         </a>
@@ -60,9 +69,14 @@ if (limit) {
 
         {
             upcomingEvents.length === 0 ? (
-                <p class="text-obt-muted italic text-center py-8">
-                    Aucun événement à venir pour le moment.
-                </p>
+                <div class="bg-[var(--color-event-light)] rounded-2xl p-8 text-center border border-[var(--color-event)]/20 space-y-2">
+                    <p class="text-[var(--color-event-text)] font-semibold">
+                        Aucun événement à venir pour le moment.
+                    </p>
+                    <p class="text-sm text-obt-muted">
+                        Revenez très bientôt ou consultez nos réseaux sociaux !
+                    </p>
+                </div>
             ) : (
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {upcomingEvents.map((event) => (

@@ -7,8 +7,8 @@
   --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
 
   /* Base Soft & Neutral */
-  --color-obt-dark: #2B312E;         
-  --color-obt-light: #FAF8F5;        
+  --color-obt-dark: #3D2A1D;
+    --color-obt-light: #FAF8F5;        
   --color-obt-card: #FFFFFF;         
   --color-obt-muted: #4A4641;        
   --color-obt-border: rgba(43, 49, 46, 0.07);
@@ -26,10 +26,10 @@
   --color-asso-text: #26584E;  /* Vert sauge sombre (Titres & textes sur fond asso-light) - Ratio: 7.28:1 */
   --color-asso-light: #EEF6F4; /* Vert sauge pastel très clair (Fond de bloc / Badges) */
 
-  /* 📅 3. ÉVÉNEMENTS -> Jaune Ocre pastel */
-  --color-event: #E2AD5A;
-  --color-event-text: #8C6221;
-  --color-event-light: #FDF6EB;
+/* 📅 3. ÉVÉNEMENTS -> Jaune Pastel / Moutarde & Brun Chaleureux */
+--color-event: #F3C148;         /* Jaune moutarde / pastel lumineux */
+--color-event-text: #543810;    /* Brun terre / chocolat profond */
+--color-event-light: #FDF8ED;   /* Fond crème / beurre doux */
 
   /* 📝 4. BLOG & ACTUALITÉS -> Bleu Hortensia pastel */
   --color-blog: #6B8CB2;

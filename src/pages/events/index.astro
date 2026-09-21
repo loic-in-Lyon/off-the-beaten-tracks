@@ -1,9 +1,11 @@
 ---
 import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
 import Layout from "../../layouts/Layout.astro";
-import Header from "../../components/Header.astro";
-import Footer from "../../components/Footer.astro";
 import EventCard from "../../components/EventCard.astro";
+
+// Import du visuel depuis assets/images/
+import talkshowImg from "../../assets/images/talkshow.webp";
 
 const allEvents = await getCollection("events");
 const now = new Date();
@@ -29,63 +31,99 @@ const pastEvents = allEvents
     title="Agenda & Événements - OBT Café Lyon"
     description="Découvrez la programmation culturelle, les concerts, cours de danse et ateliers de l'OBT Café (Lyon 3e)."
 >
-    <Header slot="header" />
-
     <!-- Fil d'Ariane -->
     <nav
         aria-label="Fil d'ariane"
-        class="bg-obt-secondary/5 py-3 border-b border-obt-secondary/10"
+        class="bg-obt-light/80 py-3 border-b border-obt-muted/10"
     >
         <div
             class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-sm text-obt-muted"
         >
             <ol class="flex items-center space-x-2">
                 <li>
-                    <a href="/" class="hover:text-obt-primary transition-colors"
-                        >Accueil</a>
+                    <a
+                        href="/"
+                        class="hover:text-[var(--color-event-text)] font-medium transition-colors"
+                        >Accueil</a
+                    >
                 </li>
                 <li>
-                    <span class="text-obt-muted/40 px-2">/</span><span
-                        class="text-obt-dark font-medium"
-                        aria-current="page">Événements</span>
+                    <span class="text-obt-muted/40 px-2">/</span>
+                    <span
+                        class="text-obt-dark font-semibold"
+                        aria-current="page">Événements</span
+                    >
                 </li>
             </ol>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="py-16 bg-obt-light text-center">
-        <div class="max-w-4xl mx-auto px-4 space-y-4">
-            <span
-                class="inline-block px-3.5 py-1.5 rounded-full bg-obt-primary/10 text-obt-primary font-semibold text-xs tracking-wide uppercase"
-            >
-                La vie du tiers-lieu
-            </span>
-            <h1 class="text-4xl sm:text-5xl font-extrabold text-obt-dark">
-                Notre Agenda
-            </h1>
-            <p class="text-lg text-obt-muted max-w-2xl mx-auto">
-                Concerts, ateliers récurrents, cours de danse et rencontres
-                interculturelles : rejoignez-nous au 236 Cours Lafayette.
-            </p>
+    <!-- Hero Section avec la couleur du thème Événements -->
+    <section class="py-12 md:py-16 bg-[var(--color-event-light)]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div class="lg:col-span-7 space-y-4 text-center lg:text-left">
+                    <!-- Badge dans la déclinaison Ocre / Texte contrasté -->
+                    <span
+                        class="inline-block px-3.5 py-1.5 rounded-full bg-[var(--color-event)]/25 text-[var(--color-event-text)] font-bold text-xs tracking-wider uppercase border border-[var(--color-event)]/30"
+                    >
+                        La vie du tiers-lieu
+                    </span>
+                    <h1
+                        class="text-3xl sm:text-5xl font-extrabold text-obt-dark font-serif"
+                    >
+                        Notre Agenda
+                    </h1>
+                    <p
+                        class="text-base sm:text-lg text-obt-muted max-w-2xl mx-auto lg:mx-0"
+                    >
+                        Concerts, ateliers récurrents, cours de danse et
+                        rencontres interculturelles : rejoignez-nous au 236
+                        Cours Lafayette.
+                    </p>
+                </div>
+
+                <div class="lg:col-span-5 hidden sm:flex justify-center">
+                    <div
+                        class="relative rounded-3xl overflow-hidden border border-[var(--color-event)]/30 shadow-sm max-h-56 w-full"
+                    >
+                        <Image
+                            src={talkshowImg}
+                            alt="Événements et rencontres au café"
+                            class="w-full h-full object-cover"
+                        />
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Prochains Événements -->
     <section class="py-16 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-            <h2
-                class="text-2xl sm:text-3xl font-bold text-obt-dark border-l-4 border-obt-primary pl-4"
-            >
-                Événements & ateliers à venir
-            </h2>
+            <!-- Bordure d'accentuation en Ocre -->
+            <div class="border-l-4 border-[var(--color-event)] pl-4">
+                <h2
+                    class="text-2xl sm:text-3xl font-bold text-obt-dark font-serif"
+                >
+                    Événements & ateliers à venir
+                </h2>
+                <p class="text-sm text-obt-muted mt-1">
+                    Consultez les prochaines dates et réservez vos places.
+                </p>
+            </div>
 
             {
                 upcomingEvents.length === 0 ? (
-                    <p class="text-obt-muted italic py-8">
-                        Aucun événement n'est actuellement programmé. Revenez
-                        très vite !
-                    </p>
+                    <div class="bg-[var(--color-event-light)] rounded-2xl p-8 text-center border border-[var(--color-event)]/20 space-y-2">
+                        <p class="text-[var(--color-event-text)] font-semibold">
+                            Aucun événement n'est actuellement programmé.
+                        </p>
+                        <p class="text-sm text-obt-muted">
+                            Suivez-nous sur les réseaux sociaux pour ne rien
+                            manquer des prochaines annonces !
+                        </p>
+                    </div>
                 ) : (
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {upcomingEvents.map((event) => (
@@ -100,9 +138,9 @@ const pastEvents = allEvents
     <!-- Événements Passés -->
     {
         pastEvents.length > 0 && (
-            <section class="py-16 bg-obt-light/50 border-t border-obt-muted/10">
+            <section class="py-16 bg-obt-light/40 border-t border-obt-muted/10">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-                    <h2 class="text-2xl sm:text-3xl font-bold text-obt-dark border-l-4 border-obt-muted pl-4">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-obt-dark border-l-4 border-obt-muted pl-4 font-serif">
                         Événements passés
                     </h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -115,5 +153,24 @@ const pastEvents = allEvents
         )
     }
 
-    <Footer slot="footer" />
+    <!-- Call To Action avec bouton Ocre / Texte foncé -->
+    <section class="py-14 bg-white border-t border-obt-muted/10 text-center">
+        <div class="max-w-3xl mx-auto px-4 space-y-4">
+            <h3 class="text-xl sm:text-2xl font-bold text-obt-dark font-serif">
+                Vous souhaitez animer un atelier ou proposer un concert ?
+            </h3>
+            <p class="text-sm text-obt-muted max-w-xl mx-auto leading-relaxed">
+                L'OBT Café est un espace participatif ouvert aux initiatives
+                citoyennes, culturelles et artistiques.
+            </p>
+            <div class="pt-2">
+                <a
+                    href="/contact"
+                    class="inline-block px-6 py-3 rounded-full bg-[var(--color-event)] text-[var(--color-event-text)] font-extrabold text-xs hover:brightness-95 transition-all shadow-sm uppercase tracking-wider"
+                >
+                    Proposer un événement / Nous contacter
+                </a>
+            </div>
+        </div>
+    </section>
 </Layout>
