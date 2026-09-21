@@ -31,10 +31,10 @@
 --color-event-text: #543810;    /* Brun terre / chocolat profond */
 --color-event-light: #FDF8ED;   /* Fond crème / beurre doux */
 
-  /* 📝 4. BLOG & ACTUALITÉS -> Bleu Hortensia pastel */
-  --color-blog: #6B8CB2;
-  --color-blog-text: #415C7C;
-  --color-blog-light: #EEF3F8;
+ /* 📝 4. BLOG -> Violet / Prune Pastel & Texte Lisible */
+--color-blog: #D8B4FE;         /* Violet/Lavande pastel lumineux (Purple-300) */
+--color-blog-text: #4C1D95;    /* Violet très sombre / Prune profond (Purple-900) */
+--color-blog-light: #F8F5FF;   /* Fond crème/lavande ultra doux */
 
   /* Couleur par défaut */
   --color-obt-primary: var(--color-asso);
