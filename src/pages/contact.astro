@@ -7,22 +7,34 @@ import ContactForm from "../components/ContactForm.astro";
     title="Contact & Accès - OBT Café Lyon"
     description="Contactez l'équipe d'Off The Beaten Tracks à Lyon 3e : demandes d'information, privatisation de salle, propositions artistiques ou bénévolat."
 >
+    <!-- Fil d'Ariane -->
+    <nav
+        aria-label="Fil d'ariane"
+        class="bg-obt-light/80 py-3 border-b border-obt-muted/10"
+    >
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-sm text-obt-muted"
+        >
+            <ol class="flex items-center space-x-2">
+                <li>
+                    <a href="/" class="hover:text-action-text transition-colors"
+                        >Accueil</a
+                    >
+                </li>
+                <li class="flex items-center space-x-2">
+                    <span class="text-obt-muted/40">/</span>
+                    <span class="text-action-text font-bold" aria-current="page"
+                        >Contact</span
+                    >
+                </li>
+            </ol>
+        </div>
+    </nav>
     <!-- En-tête avec rappel de couleur Bleu Canard (similaire au blog) -->
     <section
         class="bg-[var(--color-action-light)]/40 border-b border-obt-muted/10 py-12"
     >
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-            <!-- Fil d'ariane -->
-            <nav
-                class="text-xs font-medium text-obt-muted flex items-center gap-2"
-            >
-                <a href="/" class="hover:text-obt-dark transition-colors"
-                    >Accueil</a
-                >
-                <span>/</span>
-                <span class="text-obt-dark font-bold">Contact</span>
-            </nav>
-
             <!-- Titre & Hero -->
             <div class="text-center max-w-2xl mx-auto space-y-3">
                 <span
