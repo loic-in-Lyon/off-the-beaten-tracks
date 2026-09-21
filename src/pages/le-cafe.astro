@@ -4,12 +4,9 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { Image } from "astro:assets";
 
-// Importation des assets visuels
 import salleObt from "../assets/images/salle-obt.webp";
-import talkshow from "../assets/images/talkshow.webp";
 import conference from "../assets/images/conference.webp";
 
-// Données structurées JSON-LD pour le Geo-SEO (LocalBusiness / CafeOrCoffeeShop)
 const localBusinessJsonLd = {
     "@context": "https://schema.org",
     "@type": "CafeOrCoffeeShop",
@@ -78,7 +75,6 @@ const breadcrumbJsonLd = {
     title="L'OBT Café - Tiers-lieu & Espace Solidaire à Lyon 3e"
     description="Découvrez l'OBT Café au 236 cours Lafayette à Lyon : un espace café-bar-bibliothèque interculturel, lieu de rencontre, d'échanges et de location de salle."
 >
-    <!-- Balises Schema.org pour le SEO Local et l'IA -->
     <script
         type="application/ld+json"
         set:html={JSON.stringify(localBusinessJsonLd)}
@@ -95,20 +91,20 @@ const breadcrumbJsonLd = {
     <!-- Fil d'Ariane -->
     <nav
         aria-label="Fil d'ariane"
-        class="bg-obt-secondary/5 py-3 border-b border-obt-secondary/10"
+        class="bg-cafe-light/60 py-3 border-b border-cafe/10"
     >
         <div
             class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-sm text-obt-muted"
         >
             <ol class="flex items-center space-x-2">
                 <li>
-                    <a href="/" class="hover:text-obt-primary transition-colors"
+                    <a href="/" class="hover:text-cafe-text transition-colors"
                         >Accueil</a
                     >
                 </li>
                 <li class="flex items-center space-x-2">
                     <span class="text-obt-muted/40">/</span>
-                    <span class="text-obt-dark font-medium" aria-current="page"
+                    <span class="text-cafe-text font-bold" aria-current="page"
                         >Le Café</span
                     >
                 </li>
@@ -116,22 +112,22 @@ const breadcrumbJsonLd = {
         </div>
     </nav>
 
-    <!-- Hero Section Le Café -->
+    <!-- Hero Section -->
     <section class="py-16 md:py-24 bg-obt-light">
         <div
             class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
         >
             <div class="space-y-6">
                 <span
-                    class="inline-block px-3.5 py-1.5 rounded-full bg-obt-primary/10 text-obt-primary font-semibold text-xs tracking-wide uppercase"
+                    class="inline-block px-4 py-1.5 rounded-full bg-cafe-light text-cafe-text font-bold text-xs tracking-wide uppercase border border-cafe/25"
                 >
-                    Maison de l'Hospitalité • Lyon 3e
+                    ☕ Maison de l'Hospitalité • Lyon 3e
                 </span>
                 <h1
-                    class="text-4xl sm:text-5xl font-extrabold tracking-tight text-obt-dark leading-tight"
+                    class="text-4xl sm:text-5xl font-extrabold tracking-tight text-obt-dark leading-tight font-serif"
                 >
-                    Un espace de vie, de café et de <span
-                        class="text-obt-primary">partage</span
+                    Un espace de vie, de café et de <span class="text-cafe-text"
+                        >partage</span
                     >
                 </h1>
                 <p class="text-lg text-obt-muted leading-relaxed">
@@ -142,20 +138,20 @@ const breadcrumbJsonLd = {
                 <div class="flex flex-wrap gap-4 pt-2">
                     <a
                         href="#infos-pratiques"
-                        class="px-6 py-3 rounded-full bg-obt-primary text-white font-medium hover:bg-obt-primary/90 transition-all shadow-md"
+                        class="px-6 py-3 rounded-full bg-cafe-text text-white font-semibold text-xs hover:opacity-95 transition-all shadow-[0_4px_14px_rgba(130,50,24,0.2)]"
                     >
                         Horaires & Accès
                     </a>
                     <a
                         href="#location-salle"
-                        class="px-6 py-3 rounded-full border-2 border-obt-secondary text-obt-secondary font-medium hover:bg-obt-secondary hover:text-white transition-all"
+                        class="px-6 py-3 rounded-full border-2 border-cafe/40 text-cafe-text font-semibold text-xs hover:bg-cafe-light transition-all"
                     >
                         Location de salle
                     </a>
                 </div>
             </div>
             <div
-                class="rounded-3xl overflow-hidden shadow-xl border border-obt-muted/20"
+                class="rounded-3xl overflow-hidden shadow-[0_12px_32px_rgba(0,0,0,0.06)] border border-obt-border"
             >
                 <Image
                     src={salleObt}
@@ -169,15 +165,16 @@ const breadcrumbJsonLd = {
         </div>
     </section>
 
-    <!-- Section Description du Projet & Concept -->
-    <section class="py-20 bg-white">
+    <!-- Section Description -->
+    <section class="py-20 bg-white border-y border-obt-border">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
             <div class="space-y-6 text-center">
-                <h2 class="text-3xl font-bold text-obt-dark">
+                <h2 class="text-3xl font-bold text-obt-dark font-serif">
                     Un tiers-lieu au cœur de la cohésion sociale
                 </h2>
                 <p class="text-obt-muted leading-relaxed text-base sm:text-lg">
                     Articulé autour d’un <strong
+                        class="text-cafe-text font-bold"
                         >espace café-bar-bibliothèque</strong
                     >, le lieu favorise les échanges, le travail collaboratif et
                     l’accès à l’information, notamment sur les droits et les
@@ -187,14 +184,14 @@ const breadcrumbJsonLd = {
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6">
                 <div
-                    class="bg-obt-light p-8 rounded-3xl border border-obt-muted/10 space-y-4"
+                    class="bg-cafe-light/40 p-8 rounded-3xl border border-cafe/20 space-y-4 shadow-[0_4px_20px_rgba(0,0,0,0.02)]"
                 >
                     <div
-                        class="w-12 h-12 rounded-xl bg-obt-primary/10 flex items-center justify-center text-2xl"
+                        class="w-12 h-12 rounded-2xl bg-cafe/20 flex items-center justify-center text-2xl"
                     >
                         ☕
                     </div>
-                    <h3 class="text-xl font-bold text-obt-dark">
+                    <h3 class="text-xl font-bold text-obt-dark font-serif">
                         Café & Bibliothèque
                     </h3>
                     <p class="text-obt-muted text-sm leading-relaxed">
@@ -205,34 +202,42 @@ const breadcrumbJsonLd = {
                 </div>
 
                 <div
-                    class="bg-obt-light p-8 rounded-3xl border border-obt-muted/10 space-y-4"
+                    class="bg-cafe-light/40 p-8 rounded-3xl border border-cafe/20 space-y-4 shadow-[0_4px_20px_rgba(0,0,0,0.02)]"
                 >
                     <div
-                        class="w-12 h-12 rounded-xl bg-obt-secondary/10 flex items-center justify-center text-2xl"
+                        class="w-12 h-12 rounded-2xl bg-cafe/20 flex items-center justify-center text-2xl"
                     >
                         🤝
                     </div>
-                    <h3 class="text-xl font-bold text-obt-dark">
+                    <h3 class="text-xl font-bold text-obt-dark font-serif">
                         Dynamique partenariale
                     </h3>
                     <p class="text-obt-muted text-sm leading-relaxed">
-                        Nous mobilisons un réseau de partenaires locaux
-                        (associations, centres sociaux, médiathèques) pour
-                        co-construire et animer des activités inclusives.
+                        Nous mobilisons un réseau de partenaires locaux pour
+                        co-construire des activités inclusives. Découvrez notre <a
+                            href="/association"
+                            class="text-cafe-text underline font-semibold"
+                            >projet associatif</a
+                        >.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Section Infos Pratiques & Horaires -->
-    <section id="infos-pratiques" class="py-20 bg-obt-dark text-white">
+    <!-- Section Infos Pratiques (Remplacée par un style Pastel Lumineux Harmonieux) -->
+    <section
+        id="infos-pratiques"
+        class="py-20 bg-cafe-light/30 border-b border-obt-border"
+    >
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16">
             <span
-                class="text-obt-accent font-bold text-sm tracking-wider uppercase"
-                >INFORMATIONS PRATIQUES</span
+                class="text-cafe-text font-bold text-xs tracking-widest uppercase bg-cafe-light px-4 py-1.5 rounded-full border border-cafe/20"
+                >Informations pratiques & Géolocalisation</span
             >
-            <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mt-2">
+            <h2
+                class="text-3xl sm:text-4xl font-extrabold tracking-tight mt-3 font-serif text-obt-dark"
+            >
                 📍 Venir à l'OBT Café
             </h2>
         </div>
@@ -242,27 +247,31 @@ const breadcrumbJsonLd = {
         >
             <!-- Bloc Adresse & Contact -->
             <div
-                class="bg-white/5 p-8 rounded-3xl border border-white/10 backdrop-blur space-y-6"
+                class="bg-white p-8 rounded-3xl border border-cafe/25 shadow-[0_10px_30px_rgba(0,0,0,0.03)] space-y-6"
             >
                 <div>
-                    <h3 class="text-xl font-bold text-obt-accent mb-2">
+                    <h3
+                        class="text-xl font-bold text-cafe-text mb-2 font-serif"
+                    >
                         Adresse exacte
                     </h3>
-                    <p class="text-obt-muted leading-relaxed">
+                    <p class="text-obt-muted leading-relaxed text-sm">
                         <strong>OBT Café</strong><br />
                         Maison de l’Hospitalité<br />
                         236 cours Lafayette<br />
-                        69003 Lyon
+                        69003 Lyon (Part-Dieu / Dauphiné)
                     </p>
                 </div>
-                <div class="pt-4 border-t border-white/10">
-                    <h3 class="text-xl font-bold text-obt-accent mb-2">
+                <div class="pt-4 border-t border-obt-border">
+                    <h3
+                        class="text-xl font-bold text-cafe-text mb-2 font-serif"
+                    >
                         Contact direct
                     </h3>
                     <p class="text-obt-muted text-sm">
-                        Mail : <a
+                        Écrivez-nous à : <a
                             href="mailto:contact.obtlyon@gmail.com"
-                            class="text-white underline hover:text-obt-accent"
+                            class="text-cafe-text underline hover:opacity-80 font-semibold"
                             >contact.obtlyon@gmail.com</a
                         >
                     </p>
@@ -271,40 +280,45 @@ const breadcrumbJsonLd = {
 
             <!-- Bloc Horaires -->
             <div
-                class="bg-white/5 p-8 rounded-3xl border border-white/10 backdrop-blur space-y-6"
+                class="bg-white p-8 rounded-3xl border border-cafe/25 shadow-[0_10px_30px_rgba(0,0,0,0.03)] space-y-6"
             >
                 <div>
-                    <h3 class="text-xl font-bold text-obt-accent mb-2">
+                    <h3
+                        class="text-xl font-bold text-cafe-text mb-2 font-serif"
+                    >
                         Horaires d'ouverture
                     </h3>
-                    <ul class="text-obt-muted space-y-2 text-sm sm:text-base">
+                    <ul class="text-obt-muted space-y-2 text-sm">
                         <li
-                            class="flex justify-between border-b border-white/5 pb-2"
+                            class="flex justify-between border-b border-obt-border pb-2"
                         >
                             <span>Mardi & Mercredi :</span>
-                            <span class="font-semibold text-white"
+                            <span class="font-semibold text-obt-dark"
                                 >13h00 – 18h00</span
                             >
                         </li>
                         <li
-                            class="flex justify-between border-b border-white/5 pb-2"
+                            class="flex justify-between border-b border-obt-border pb-2"
                         >
                             <span>Jeudi & Vendredi :</span>
-                            <span class="font-semibold text-white"
+                            <span class="font-semibold text-obt-dark"
                                 >13h00 – 20h00</span
                             >
                         </li>
                         <li class="flex justify-between pb-2">
                             <span>Samedi :</span>
-                            <span class="font-semibold text-white"
+                            <span class="font-semibold text-obt-dark"
                                 >14h00 – 20h00</span
                             >
                         </li>
                     </ul>
                 </div>
-                <p class="text-xs text-obt-accent/90 italic">
-                    * Attention : les horaires peuvent être modifiés ou élargis
-                    lors d'événements programmés en soirée !
+                <p class="text-xs text-cafe-text/80 italic">
+                    * Exceptionnellement ouvert en soirée lors de nos <a
+                        href="/events"
+                        class="underline font-medium text-cafe-text"
+                        >événements culturels</a
+                    >.
                 </p>
             </div>
         </div>
@@ -317,11 +331,12 @@ const breadcrumbJsonLd = {
         >
             <div class="space-y-6">
                 <span
-                    class="text-obt-primary font-bold text-sm tracking-wider uppercase"
-                    >PRIVATISATION & SERVICES</span
+                    class="inline-block px-4 py-1.5 rounded-full bg-cafe-light text-cafe-text font-bold text-xs tracking-wide uppercase border border-cafe/25"
                 >
+                    Privatisation & Services
+                </span>
                 <h2
-                    class="text-3xl sm:text-4xl font-extrabold text-obt-dark tracking-tight"
+                    class="text-3xl sm:text-4xl font-extrabold text-obt-dark tracking-tight font-serif"
                 >
                     Vous souhaitez louer la salle ?
                 </h2>
@@ -331,21 +346,17 @@ const breadcrumbJsonLd = {
                     Café au sein de la Maison de l’Hospitalité ? Notre espace
                     modulable s'adapte à vos besoins.
                 </p>
-                <p class="text-obt-muted leading-relaxed text-sm">
-                    Pour en savoir plus sur nos conditions, nos disponibilités
-                    et nos tarifs, écrivez-nous directement par e-mail.
-                </p>
                 <div>
                     <a
-                        href="/contact"
-                        class="inline-block px-8 py-3 rounded-full bg-obt-secondary text-white font-medium hover:bg-obt-secondary/90 transition-all shadow"
+                        href="/location-salle"
+                        class="inline-block px-8 py-3 rounded-full bg-cafe-text text-white font-semibold text-xs hover:opacity-95 transition-all shadow-[0_4px_14px_rgba(130,50,24,0.2)]"
                     >
-                        Nous contacter pour une location →
+                        Louer le café →
                     </a>
                 </div>
             </div>
             <div
-                class="rounded-3xl overflow-hidden shadow-lg border border-obt-muted/10"
+                class="rounded-3xl overflow-hidden shadow-[0_12px_32px_rgba(0,0,0,0.06)] border border-obt-border"
             >
                 <Image
                     src={conference}

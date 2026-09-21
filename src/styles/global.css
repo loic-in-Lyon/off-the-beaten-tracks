@@ -7,35 +7,36 @@
   --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
 
   /* Base Soft & Neutral */
-  --color-obt-dark: #2B312E;         /* Anthracite chaud */
-  --color-obt-light: #FAF8F5;        /* Fond crème / ivoire ultra doux */
-  --color-obt-card: #FFFFFF;         /* Blanc pur pour les cartes */
-  --color-obt-muted: #4A4641;        /* Texte secondaire (WCAG AA ok) */
+  --color-obt-dark: #2B312E;         
+  --color-obt-light: #FAF8F5;        
+  --color-obt-card: #FFFFFF;         
+  --color-obt-muted: #4A4641;        
   --color-obt-border: rgba(43, 49, 46, 0.07);
 
-  /* --- COULEURS CONTEXTUELLES (Color Hinting) --- */
+  /* --- COULEURS CONTEXTUELLES (Color Hinting Pastel Doux) --- */
 
-  /* ☕ 1. LE CAFÉ (Présentation / Location) -> Terracotta / Pêche pastel */
+  /* ☕ 1. LE CAFÉ -> Terracotta pastel chaleureux et feutré (Contraste ~4.8:1 validé WCAG AA) */
   --color-cafe: #D97757;
-  --color-cafe-text: #AA4727;
+  --color-cafe-text: #A85338;        /* Plus doux, on évite le marron trop lourd de tout à l'heure */
   --color-cafe-light: #FBF0EB;
 
-  /* 🤝 2. L'ASSOCIATION & BÉNÉVOLAT -> Vert Sauge / Lagon pastel */
-  --color-asso: #589A90;
-  --color-asso-text: #2E6A61;
-  --color-asso-light: #EBF4F3;
+  /* 🤝 2. L'ASSOCIATION & BÉNÉVOLAT -> Vert Sauge */
 
-  /* 📅 3. ÉVÉNEMENTS -> Jaune Ocre / Miel pastel */
+  --color-asso: #34786A;       /* Vert sauge principal (Boutons + Texte blanc) - Ratio: 4.53:1 */
+  --color-asso-text: #26584E;  /* Vert sauge sombre (Titres & textes sur fond asso-light) - Ratio: 7.28:1 */
+  --color-asso-light: #EEF6F4; /* Vert sauge pastel très clair (Fond de bloc / Badges) */
+
+  /* 📅 3. ÉVÉNEMENTS -> Jaune Ocre pastel */
   --color-event: #E2AD5A;
-  --color-event-text: #A67222;
+  --color-event-text: #8C6221;
   --color-event-light: #FDF6EB;
 
-  /* 📝 4. BLOG & ACTUALITÉS -> Bleu Hortensia / Pastel */
+  /* 📝 4. BLOG & ACTUALITÉS -> Bleu Hortensia pastel */
   --color-blog: #6B8CB2;
-  --color-blog-text: #37597E;
+  --color-blog-text: #415C7C;
   --color-blog-light: #EEF3F8;
 
-  /* Couleur par défaut (CTA génériques) */
+  /* Couleur par défaut */
   --color-obt-primary: var(--color-asso);
   --color-obt-primary-hover: var(--color-asso-text);
 }

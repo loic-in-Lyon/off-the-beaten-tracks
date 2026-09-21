@@ -39,27 +39,26 @@ const isBlog = currentPath.startsWith("/blog");
                 />
             </div>
             <span
-                class="text-xl font-bold tracking-tight text-obt-dark group-hover:text-asso transition-colors font-serif"
+                class="text-xl font-bold tracking-tight text-obt-dark group-hover:text-asso-text transition-colors font-serif"
             >
                 OBT Café
             </span>
         </a>
 
-        <!-- Navigation Desktop avec Color Hinting -->
+        <!-- Navigation Desktop avec Color Hinting Pastel -->
         <nav
             class="hidden md:flex items-center gap-8 font-medium text-sm text-obt-dark/75"
         >
-            <!-- ☕ 1. Le Café (Terracotta) -->
+            <!-- ☕ 1. Le Café -->
             <div class="relative group py-2">
                 <button
                     type="button"
-                    class={`flex items-center gap-1.5 hover:text-cafe transition-colors focus:outline-none ${
+                    class={`flex items-center gap-1.5 hover:text-cafe-text transition-colors focus:outline-none ${
                         isCafe ? "text-cafe-text font-bold" : ""
                     }`}
                 >
                     <span>Le Café</span>
-                    <span
-                        class="w-1.5 h-1.5 rounded-full bg-cafe/40 inline-block"
+                    <span class="w-1.5 h-1.5 rounded-full bg-cafe inline-block"
                     ></span>
                     <svg
                         class="w-3.5 h-3.5 opacity-50 transition-transform group-hover:rotate-180"
@@ -93,17 +92,16 @@ const isBlog = currentPath.startsWith("/blog");
                 </div>
             </div>
 
-            <!-- 🤝 2. L'Association (Sauge) -->
+            <!-- 🤝 2. L'Association -->
             <div class="relative group py-2">
                 <button
                     type="button"
-                    class={`flex items-center gap-1.5 hover:text-asso transition-colors focus:outline-none ${
+                    class={`flex items-center gap-1.5 hover:text-asso-text transition-colors focus:outline-none ${
                         isAsso ? "text-asso-text font-bold" : ""
                     }`}
                 >
                     <span>L'Association</span>
-                    <span
-                        class="w-1.5 h-1.5 rounded-full bg-asso/40 inline-block"
+                    <span class="w-1.5 h-1.5 rounded-full bg-asso inline-block"
                     ></span>
                     <svg
                         class="w-3.5 h-3.5 opacity-50 transition-transform group-hover:rotate-180"
@@ -137,38 +135,32 @@ const isBlog = currentPath.startsWith("/blog");
                 </div>
             </div>
 
-            <!-- 📅 3. Événements (Miel) -->
+            <!-- 📅 3. Événements -->
             <a
                 href="/events"
-                class={`flex items-center gap-1.5 hover:text-event transition-colors ${isEvents ? "text-event-text font-bold" : ""}`}
+                class={`flex items-center gap-1.5 hover:text-event-text transition-colors ${isEvents ? "text-event-text font-bold" : ""}`}
             >
                 <span>Événements</span>
-                <span class="w-1.5 h-1.5 rounded-full bg-event/40 inline-block"
+                <span class="w-1.5 h-1.5 rounded-full bg-event inline-block"
                 ></span>
             </a>
 
-            <!-- 📝 4. Blog (Bleu Hortensia) -->
+            <!-- 📝 4. Blog -->
             <a
                 href="/blog"
-                class={`flex items-center gap-1.5 hover:text-blog transition-colors ${isBlog ? "text-blog-text font-bold" : ""}`}
+                class={`flex items-center gap-1.5 hover:text-blog-text transition-colors ${isBlog ? "text-blog-text font-bold" : ""}`}
             >
                 <span>Blog</span>
-                <span class="w-1.5 h-1.5 rounded-full bg-blog/40 inline-block"
+                <span class="w-1.5 h-1.5 rounded-full bg-blog inline-block"
                 ></span>
             </a>
         </nav>
 
-        <!-- CTAs -->
+        <!-- CTA unique (Contact) -->
         <div class="hidden md:flex items-center gap-3">
             <a
-                href="/rejoindre"
-                class="px-5 py-2.5 rounded-full bg-asso-light text-asso-text font-semibold text-xs hover:bg-asso/20 transition-all border border-asso/20"
-            >
-                Devenir Bénévoles
-            </a>
-            <a
                 href="/contact"
-                class="px-6 py-2.5 rounded-full bg-cafe text-white font-semibold text-xs hover:bg-cafe-text shadow-[0_4px_14px_rgba(217,119,87,0.25)] transition-all hover:-translate-y-0.5"
+                class="px-6 py-2.5 rounded-full bg-cafe-text text-white font-semibold text-xs hover:opacity-95 shadow-[0_4px_14px_rgba(168,83,56,0.2)] transition-all"
             >
                 Contact
             </a>
@@ -215,7 +207,7 @@ const isBlog = currentPath.startsWith("/blog");
         <nav class="space-y-5">
             <div class="space-y-2">
                 <span
-                    class="text-[10px] font-bold uppercase tracking-widest text-cafe-text bg-cafe-light px-2 py-0.5 rounded-full"
+                    class="text-[10px] font-bold uppercase tracking-widest text-cafe-text bg-cafe-light px-2.5 py-0.5 rounded-full"
                     >Le Café</span
                 >
                 <div class="pl-3 space-y-2 border-l-2 border-cafe/40">
@@ -234,7 +226,7 @@ const isBlog = currentPath.startsWith("/blog");
 
             <div class="space-y-2">
                 <span
-                    class="text-[10px] font-bold uppercase tracking-widest text-asso-text bg-asso-light px-2 py-0.5 rounded-full"
+                    class="text-[10px] font-bold uppercase tracking-widest text-asso-text bg-asso-light px-2.5 py-0.5 rounded-full"
                     >L'Association</span
                 >
                 <div class="pl-3 space-y-2 border-l-2 border-asso/40">
@@ -251,7 +243,7 @@ const isBlog = currentPath.startsWith("/blog");
                 </div>
             </div>
 
-            <div class="pt-2 space-y-3">
+            <div class="pt-2 space-y-3 border-t border-obt-border">
                 <a
                     href="/events"
                     class="block text-sm font-bold text-obt-dark hover:text-event-text"
@@ -262,6 +254,13 @@ const isBlog = currentPath.startsWith("/blog");
                     class="block text-sm font-bold text-obt-dark hover:text-blog-text"
                     >Blog</a
                 >
+                <div class="pt-2">
+                    <a
+                        href="/contact"
+                        class="block text-center w-full py-2.5 rounded-full bg-cafe-text text-white font-semibold text-xs"
+                        >Contact</a
+                    >
+                </div>
             </div>
         </nav>
     </div>

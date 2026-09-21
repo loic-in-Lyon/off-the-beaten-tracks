@@ -4,11 +4,12 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { Image } from "astro:assets";
 
-// Importation d'une image d'illustration ou de la salle
+// Importation des images
 import salleObt from "../assets/images/salle-obt.webp";
-import illustrationEnsemble from "../assets/images/illustration-ensemble.png";
+import groupeIllustration from "../assets/images/illustration-ensemble.png";
+import kevinMicro from "../assets/images/kevin-micro.jpg";
 
-// Données structurées JSON-LD (SEO & IA Crawling)
+// Données structurées JSON-LD (SEO)
 const jsonLd = {
     "@context": "https://schema.org",
     "@type": "NGO",
@@ -55,7 +56,6 @@ const breadcrumbJsonLd = {
     title="L'Association & Notre Histoire - Off The Beaten Tracks (Lyon)"
     description="Découvrez l'association Off The Beaten Tracks fondée en 2022 à Lyon, sa mission interculturelle, son équipe et son engagement à la Maison de l'Hospitalité (OBT Café)."
 >
-    <!-- Injection des schémas JSON-LD pour le SEO -->
     <script
         type="application/ld+json"
         set:html={JSON.stringify(jsonLd)}
@@ -66,8 +66,6 @@ const breadcrumbJsonLd = {
         set:html={JSON.stringify(breadcrumbJsonLd)}
         slot="head"
     />
-
-    <Header slot="header" />
 
     <!-- Fil d'Ariane SEO -->
     <nav
@@ -93,7 +91,7 @@ const breadcrumbJsonLd = {
         </div>
     </nav>
 
-    <!-- Hero de la page Association -->
+    <!-- Hero : Illustration directe sans card -->
     <section class="py-16 md:py-24 bg-obt-light">
         <div
             class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
@@ -105,7 +103,7 @@ const breadcrumbJsonLd = {
                     Notre Mission & Nos Racines
                 </span>
                 <h1
-                    class="text-4xl sm:text-5xl font-extrabold tracking-tight text-obt-dark leading-tight"
+                    class="text-4xl sm:text-5xl font-extrabold tracking-tight text-obt-dark leading-tight font-serif"
                 >
                     Un autre regard sur l'<span class="text-obt-primary"
                         >Humani'Terre</span
@@ -117,252 +115,376 @@ const breadcrumbJsonLd = {
                     > propose un voyage aux confins du monde pour découvrir les trésors
                     culturels, sociétaux et environnementaux de pays méconnus.
                 </p>
-            </div>
-            <div class="flex justify-center">
-                <div
-                    class="w-full max-w-md p-6 bg-white rounded-3xl shadow-sm border border-obt-muted/10"
-                >
-                    <Image
-                        src={illustrationEnsemble}
-                        alt="Illustration de la communauté Off The Beaten Tracks"
-                        width={500}
-                        height={400}
-                        class="w-full h-auto object-contain"
-                        loading="eager"
-                    />
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section Histoire & Projet -->
-    <section class="py-20 bg-white">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-            <div class="space-y-6">
-                <h2 class="text-3xl font-bold text-obt-dark">
-                    Briser les stéréotypes, créer du lien
-                </h2>
-                <p class="text-obt-muted leading-relaxed text-base sm:text-lg">
-                    Notre mission est de casser les images négatives que l’on
-                    porte sur les publics exclus et marginalisés, et les
-                    stéréotypes sujets parfois à discrimination (en particulier
-                    envers les personnes migrantes). Nous y parvenons en
-                    favorisant les rencontres directes, la compréhension des
-                    facteurs d’isolement et la valorisation des exemples de
-                    résilience portés par ces populations.
-                </p>
-            </div>
-
-            <div
-                class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-obt-light p-8 rounded-3xl border border-obt-muted/10"
-            >
-                <div class="space-y-4">
-                    <span
-                        class="text-obt-secondary font-bold text-xs uppercase tracking-wider"
-                        >Le Tournant 2023 - 2025</span
-                    >
-                    <h3 class="text-2xl font-bold text-obt-dark">
-                        L'aventure de la Maison de l’Hospitalité
-                    </h3>
-                    <p class="text-obt-muted text-sm leading-relaxed">
-                        En 2022, la Métropole de Lyon a annoncé la création de
-                        la Maison de l’Hospitalité, destinée à accueillir des
-                        associations œuvrant pour l’inclusion. OBT s’y est
-                        associée en 2023 pour contribuer à l’animation du lieu.
-                    </p>
-                    <p class="text-obt-muted text-sm leading-relaxed">
-                        Le café culturel a officiellement ouvert ses portes en <strong
-                            >avril 2025</strong
-                        > au <strong>236 cours Lafayette (Lyon 3e)</strong>,
-                        offrant un espace accessible, chaleureux et convivial
-                        favorisant le dialogue entre habitants et la cohésion
-                        sociale.
-                    </p>
-                </div>
-                <div class="rounded-2xl overflow-hidden shadow-md">
-                    <Image
-                        src={salleObt}
-                        alt="Intérieur de l'OBT Café"
-                        width={600}
-                        height={400}
-                        class="w-full h-full object-cover"
-                    />
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section L'Équipe -->
-    <section class="py-20 bg-obt-light border-t border-obt-muted/10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16">
-            <span
-                class="text-obt-primary font-bold text-sm tracking-wider uppercase"
-                >LES VISAGES D'OBT</span
-            >
-            <h2
-                class="text-3xl sm:text-4xl font-extrabold text-obt-dark tracking-tight mt-2"
-            >
-                Rencontrez l'équipe du café
-            </h2>
-            <p class="text-obt-muted max-w-2xl mx-auto mt-4">
-                Depuis l'ouverture de l'OBT Café, l'équipe s'agrandit petit à
-                petit pour faire vivre ce lieu unique au quotidien.
-            </p>
-        </div>
-
-        <div
-            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8"
-        >
-            <!-- Kévin -->
-            <div
-                class="bg-white p-8 rounded-3xl shadow-sm border border-obt-muted/10 space-y-4 flex flex-col justify-between"
-            >
-                <div>
-                    <div
-                        class="w-14 h-14 rounded-2xl bg-obt-primary/10 text-obt-primary flex items-center justify-center font-bold text-xl mb-4"
-                    >
-                        K
-                    </div>
-                    <h3 class="text-xl font-bold text-obt-dark">Kévin</h3>
-                    <p
-                        class="text-xs font-semibold text-obt-primary uppercase tracking-wider mb-3"
-                    >
-                        Animateur de la Maison de l'Hospitalité
-                    </p>
-                    <p class="text-obt-muted text-sm leading-relaxed">
-                        Il fait vivre le lieu et accueille, informe et oriente
-                        le public au quotidien. Kévin est la personne que vous
-                        verrez 99% du temps quand vous passez le pas de la porte
-                        ! Il met en œuvre la programmation et reçoit vos
-                        propositions de collaboration en direct.
-                    </p>
-                </div>
-                <p
-                    class="text-xs italic text-obt-muted/80 pt-4 border-t border-obt-muted/10"
-                >
-                    Besoin d’un renseignement, d’un conseil ou simplement de
-                    bavarder ? C’est Kévin qu’il faudra trouver !
-                </p>
-            </div>
-
-            <!-- Emilia -->
-            <div
-                class="bg-white p-8 rounded-3xl shadow-sm border border-obt-muted/10 space-y-4 flex flex-col justify-between"
-            >
-                <div>
-                    <div
-                        class="w-14 h-14 rounded-2xl bg-obt-secondary/10 text-obt-secondary flex items-center justify-center font-bold text-xl mb-4"
-                    >
-                        E
-                    </div>
-                    <h3 class="text-xl font-bold text-obt-dark">Emilia</h3>
-                    <p
-                        class="text-xs font-semibold text-obt-secondary uppercase tracking-wider mb-3"
-                    >
-                        Cheffe de projet OBT
-                    </p>
-                    <p class="text-obt-muted text-sm leading-relaxed">
-                        Elle pilote les projets, conçoit et structure la
-                        programmation OBT, réalise le suivi du budget et des
-                        indicateurs, et développe les partenariats stratégiques
-                        de l'association.
-                    </p>
-                </div>
-                <p
-                    class="text-xs italic text-obt-muted/80 pt-4 border-t border-obt-muted/10"
-                >
-                    Emilia est souvent prête à sortir de sa tanière (son
-                    bureau), il suffit de lui proposer une soirée karaoké et
-                    c’est parti !
-                </p>
-            </div>
-
-            <!-- Noah -->
-            <div
-                class="bg-white p-8 rounded-3xl shadow-sm border border-obt-muted/10 space-y-4 flex flex-col justify-between"
-            >
-                <div>
-                    <div
-                        class="w-14 h-14 rounded-2xl bg-obt-accent/20 text-obt-dark flex items-center justify-center font-bold text-xl mb-4"
-                    >
-                        N
-                    </div>
-                    <h3 class="text-xl font-bold text-obt-dark">Noah</h3>
-                    <p
-                        class="text-xs font-semibold text-obt-accent uppercase tracking-wider mb-3"
-                    >
-                        Volontaire en Service Civique
-                    </p>
-                    <p class="text-obt-muted text-sm leading-relaxed">
-                        Pour compléter l'équipe au café, un·e volontaire assure
-                        l'accueil chaleureux des visiteurs et l'animation active
-                        des différents ateliers et temps forts.
-                    </p>
-                </div>
-                <p
-                    class="text-xs italic text-obt-muted/80 pt-4 border-t border-obt-muted/10"
-                >
-                    Un pilier dynamique de l'accueil et du partage au jour le
-                    jour.
-                </p>
-            </div>
-        </div>
-
-        <!-- Encadré Bénévoles -->
-        <div class="max-w-4xl mx-auto px-4 mt-12">
-            <div
-                class="bg-white p-8 rounded-3xl shadow-sm border border-obt-muted/10 text-center space-y-4"
-            >
-                <h3 class="text-2xl font-bold text-obt-dark">
-                    👥 Et l'équipe bénévole !
-                </h3>
-                <p
-                    class="text-obt-muted text-sm sm:text-base leading-relaxed max-w-2xl mx-auto"
-                >
-                    Une trentaine de bénévoles soutiennent l’action de l’OBT par
-                    leur présence lors des événements et ateliers : accueil,
-                    installation, médiation auprès des publics, ils participent
-                    à la dynamique conviviale du lieu. C’est eux qui te
-                    permettent de boire un verre pendant les soirées !
-                </p>
-                <div class="pt-2">
+                <div class="flex flex-wrap gap-4 pt-2">
                     <a
-                        href="/rejoindre"
-                        class="inline-block px-6 py-2.5 rounded-full bg-obt-primary text-white font-medium text-sm hover:bg-obt-primary/90 transition-all shadow-sm"
+                        href="#engagement"
+                        class="px-6 py-3 rounded-full bg-obt-primary text-white font-semibold text-xs hover:bg-obt-primary/90 transition-all shadow-sm"
                     >
-                        Rejoindre les bénévoles →
+                        Notre engagement
+                    </a>
+                    <a
+                        href="#equipe"
+                        class="px-6 py-3 rounded-full bg-white text-obt-dark font-semibold text-xs hover:bg-obt-light transition-all border border-obt-muted/20"
+                    >
+                        L'équipe du café
                     </a>
                 </div>
             </div>
+            <!-- Image posée directement sans card -->
+            <div class="flex justify-center items-center">
+                <Image
+                    src={groupeIllustration}
+                    alt="Illustration de la communauté Off The Beaten Tracks"
+                    width={560}
+                    height={420}
+                    class="w-full max-w-lg h-auto object-contain drop-shadow-sm"
+                    loading="eager"
+                />
+            </div>
         </div>
     </section>
 
-    <!-- Maillage Interne / Call To Action Final -->
+    <!-- Section 2 : Engagements & Histoire (Layout Pro à 2 colonnes) -->
+    <section
+        id="engagement"
+        class="py-20 bg-white border-y border-obt-muted/10"
+    >
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+            <div class="text-center max-w-3xl mx-auto space-y-4">
+                <span
+                    class="text-obt-secondary font-bold text-xs uppercase tracking-wider bg-obt-secondary/10 px-4 py-1.5 rounded-full"
+                >
+                    Notre raison d'être
+                </span>
+                <h2
+                    class="text-3xl sm:text-4xl font-extrabold text-obt-dark font-serif"
+                >
+                    Briser les stéréotypes, créer du lien
+                </h2>
+            </div>
+
+            <!-- Grid 2 colonnes équilibrée -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+                <!-- Bloc Mission -->
+                <div
+                    class="bg-obt-light/60 p-8 sm:p-10 rounded-3xl border border-obt-muted/15 flex flex-col justify-between space-y-6"
+                >
+                    <div class="space-y-4">
+                        <div
+                            class="w-12 h-12 rounded-2xl bg-obt-primary/10 text-obt-primary flex items-center justify-center font-bold text-xl"
+                        >
+                            🌱
+                        </div>
+                        <h3 class="text-2xl font-bold text-obt-dark font-serif">
+                            L'inclusion au cœur de l'action
+                        </h3>
+                        <p class="text-obt-muted text-base leading-relaxed">
+                            Notre mission est de déconstruire les
+                            représentations négatives portées sur les publics
+                            exclus ou marginalisés, et les stéréotypes
+                            générateurs de discrimination (notamment envers les
+                            personnes migrantes).
+                        </p>
+                    </div>
+
+                    <ul
+                        class="space-y-3 pt-4 border-t border-obt-muted/10 text-sm text-obt-dark font-medium"
+                    >
+                        <li class="flex items-center space-x-3">
+                            <span class="w-2 h-2 rounded-full bg-obt-primary"
+                            ></span>
+                            <span
+                                >Favoriser la rencontre directe et authentique</span
+                            >
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <span class="w-2 h-2 rounded-full bg-obt-primary"
+                            ></span>
+                            <span
+                                >Comprendre les facteurs d'isolement social</span
+                            >
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <span class="w-2 h-2 rounded-full bg-obt-primary"
+                            ></span>
+                            <span
+                                >Valoriser les histoires et parcours de
+                                résilience</span
+                            >
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Bloc Maison de l'Hospitalité -->
+                <div
+                    class="bg-white p-8 sm:p-10 rounded-3xl border border-obt-muted/15 shadow-sm flex flex-col justify-between space-y-6"
+                >
+                    <div class="space-y-4">
+                        <span
+                            class="text-obt-secondary font-bold text-xs uppercase tracking-wider"
+                        >
+                            Le Tournant 2023 - 2025
+                        </span>
+                        <h3 class="text-2xl font-bold text-obt-dark font-serif">
+                            La Maison de l’Hospitalité
+                        </h3>
+                        <p
+                            class="text-obt-muted text-sm sm:text-base leading-relaxed"
+                        >
+                            En 2022, la Métropole de Lyon crée la Maison de
+                            l’Hospitalité pour regrouper les acteurs de
+                            l'inclusion. OBT s’y associe dès 2023 pour impulser
+                            un lieu de vie interculturel.
+                        </p>
+                        <p
+                            class="text-obt-muted text-sm sm:text-base leading-relaxed"
+                        >
+                            Ouvert en <strong>avril 2025</strong> au <strong
+                                >236 cours Lafayette (Lyon 3e)</strong
+                            >, l'OBT Café est aujourd'hui un espace chaleureux
+                            et ouvert à toutes et tous.
+                        </p>
+                    </div>
+
+                    <div
+                        class="rounded-2xl overflow-hidden aspect-video border border-obt-muted/10"
+                    >
+                        <Image
+                            src={salleObt}
+                            alt="Intérieur de l'OBT Café"
+                            width={600}
+                            height={337}
+                            class="w-full h-full object-cover"
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Équipe avec Photo Bannière + 3 Cards uniformes & contrastées -->
+    <section
+        id="equipe"
+        class="py-20 bg-obt-light border-t border-obt-muted/10"
+    >
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+            <div class="text-center max-w-3xl mx-auto space-y-4">
+                <span
+                    class="text-obt-primary font-extrabold text-xs tracking-wider uppercase bg-obt-primary/15 px-4 py-1.5 rounded-full border border-obt-primary/20"
+                >
+                    LES VISAGES D'OBT
+                </span>
+                <h2
+                    class="text-3xl sm:text-4xl font-extrabold text-obt-dark tracking-tight font-serif"
+                >
+                    Rencontrez l'équipe du café
+                </h2>
+                <p class="text-obt-muted text-sm sm:text-base">
+                    Depuis l'ouverture de l'OBT Café, l'équipe s'agrandit petit
+                    à petit pour faire vivre ce lieu unique au quotidien.
+                </p>
+            </div>
+
+            <!-- Bannière photo événements au-dessus des cartes -->
+            <div
+                class="max-w-4xl mx-auto rounded-3xl overflow-hidden shadow-sm border border-obt-muted/15 relative group"
+            >
+                <Image
+                    src={kevinMicro}
+                    alt="Animation d'un événement à l'OBT Café"
+                    width={1000}
+                    height={400}
+                    class="w-full h-64 sm:h-80 object-cover"
+                />
+                <div
+                    class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent flex items-end p-6"
+                >
+                    <p
+                        class="text-white text-xs sm:text-sm font-semibold tracking-wide"
+                    >
+                        🎙️ Des événements, ateliers et rencontres animés chaque
+                        semaine à l'OBT Café.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Grille des 3 cartes 100% identiques et très lisibles -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pt-4">
+                <!-- Kévin -->
+                <div
+                    class="bg-white p-8 rounded-3xl shadow-sm border border-obt-muted/10 space-y-4 flex flex-col justify-between"
+                >
+                    <div class="space-y-4">
+                        <div
+                            class="w-14 h-14 rounded-2xl bg-obt-primary/10 text-obt-dark flex items-center justify-center font-bold text-xl font-serif border border-obt-primary/20"
+                        >
+                            K
+                        </div>
+                        <div>
+                            <span
+                                class="inline-block text-[11px] font-extrabold text-obt-dark/80 bg-obt-light px-3 py-1 rounded-md uppercase tracking-wider border border-obt-muted/15"
+                            >
+                                Animateur Maison Hospitalité
+                            </span>
+                            <h3
+                                class="text-xl font-bold text-obt-dark font-serif mt-2"
+                            >
+                                Kévin
+                            </h3>
+                        </div>
+                        <p
+                            class="text-obt-muted text-xs sm:text-sm leading-relaxed"
+                        >
+                            Il fait vivre le lieu et accueille, informe et
+                            oriente le public au quotidien. Kévin est la
+                            personne que vous verrez 90% du temps quand vous
+                            passez le pas de la porte ! Il met en œuvre la
+                            programmation et reçoit vos propositions en direct.
+                        </p>
+                    </div>
+                    <p
+                        class="text-xs italic text-obt-dark/70 font-medium pt-4 border-t border-obt-muted/10"
+                    >
+                        "Besoin d’un renseignement ou de bavarder ? C’est Kévin
+                        qu’il faut trouver !"
+                    </p>
+                </div>
+
+                <!-- Emilia -->
+                <div
+                    class="bg-white p-8 rounded-3xl shadow-sm border border-obt-muted/10 space-y-4 flex flex-col justify-between"
+                >
+                    <div class="space-y-4">
+                        <div
+                            class="w-14 h-14 rounded-2xl bg-obt-primary/10 text-obt-dark flex items-center justify-center font-bold text-xl font-serif border border-obt-primary/20"
+                        >
+                            E
+                        </div>
+                        <div>
+                            <span
+                                class="inline-block text-[11px] font-extrabold text-obt-dark/80 bg-obt-light px-3 py-1 rounded-md uppercase tracking-wider border border-obt-muted/15"
+                            >
+                                Cheffe de projet OBT
+                            </span>
+                            <h3
+                                class="text-xl font-bold text-obt-dark font-serif mt-2"
+                            >
+                                Emilia
+                            </h3>
+                        </div>
+                        <p
+                            class="text-obt-muted text-xs sm:text-sm leading-relaxed"
+                        >
+                            Elle pilote les projets, conçoit et structure la
+                            programmation OBT, réalise le suivi du budget et des
+                            indicateurs, et développe les partenariats
+                            stratégiques de l'association.
+                        </p>
+                    </div>
+                    <p
+                        class="text-xs italic text-obt-dark/70 font-medium pt-4 border-t border-obt-muted/10"
+                    >
+                        "Proposez-lui une soirée karaoké et c’est parti !"
+                    </p>
+                </div>
+
+                <!-- Noah -->
+                <div
+                    class="bg-white p-8 rounded-3xl shadow-sm border border-obt-muted/10 space-y-4 flex flex-col justify-between"
+                >
+                    <div class="space-y-4">
+                        <div
+                            class="w-14 h-14 rounded-2xl bg-obt-primary/10 text-obt-dark flex items-center justify-center font-bold text-xl font-serif border border-obt-primary/20"
+                        >
+                            N
+                        </div>
+                        <div>
+                            <span
+                                class="inline-block text-[11px] font-extrabold text-obt-dark/80 bg-obt-light px-3 py-1 rounded-md uppercase tracking-wider border border-obt-muted/15"
+                            >
+                                Service Civique
+                            </span>
+                            <h3
+                                class="text-xl font-bold text-obt-dark font-serif mt-2"
+                            >
+                                Noah
+                            </h3>
+                        </div>
+                        <p
+                            class="text-obt-muted text-xs sm:text-sm leading-relaxed"
+                        >
+                            Pour compléter l'équipe au café, un·e volontaire
+                            assure l'accueil chaleureux des visiteurs et
+                            l'animation active des différents ateliers et temps
+                            forts au fil des semaines.
+                        </p>
+                    </div>
+                    <p
+                        class="text-xs italic text-obt-dark/70 font-medium pt-4 border-t border-obt-muted/10"
+                    >
+                        "Un pilier dynamique de l'accueil et du partage au jour
+                        le jour."
+                    </p>
+                </div>
+            </div>
+
+            <!-- Bloc Bénévoles -->
+            <div class="max-w-4xl mx-auto pt-4">
+                <div
+                    class="bg-white p-8 rounded-3xl shadow-sm border border-obt-muted/10 text-center space-y-4"
+                >
+                    <h3 class="text-2xl font-bold text-obt-dark font-serif">
+                        🤝 Et l'équipe bénévole !
+                    </h3>
+                    <p
+                        class="text-obt-muted text-sm sm:text-base leading-relaxed max-w-2xl mx-auto"
+                    >
+                        Une trentaine de bénévoles soutiennent l’action de l’OBT
+                        par leur présence lors des événements et ateliers :
+                        accueil, installation, médiation auprès des publics, ils
+                        participent à la dynamique conviviale du lieu. C’est eux
+                        qui vous permettent de boire un verre pendant les
+                        soirées !
+                    </p>
+                    <div class="pt-2">
+                        <a
+                            href="/rejoindre"
+                            class="inline-block px-6 py-2.5 rounded-full bg-obt-primary text-white font-semibold text-xs hover:bg-obt-primary/90 transition-all shadow-sm"
+                        >
+                            Rejoindre les bénévoles →
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Maillage Interne / Call To Action Final (Boutons corrigés & bien visibles) -->
     <section class="py-16 bg-white border-t border-obt-muted/10 text-center">
         <div class="max-w-3xl mx-auto px-4 space-y-6">
-            <h2 class="text-2xl sm:text-3xl font-bold text-obt-dark">
+            <h2 class="text-2xl sm:text-3xl font-bold text-obt-dark font-serif">
                 Envie de découvrir le lieu en vrai ?
             </h2>
-            <p class="text-obt-muted">
+            <p class="text-obt-muted text-sm sm:text-base">
                 Passez nous voir au 236 cours Lafayette ou jetez un œil à notre
                 programmation et nos activités de la semaine.
             </p>
-            <div class="flex flex-wrap justify-center gap-4 pt-2">
+            <div class="flex flex-wrap justify-center items-center gap-4 pt-2">
+                <!-- Bouton Principal (Vert Sauge Plein + Texte Blanc) -->
                 <a
                     href="/le-cafe"
-                    class="px-6 py-3 rounded-full bg-obt-secondary text-white font-medium hover:bg-obt-secondary/90 transition-all"
+                    class="px-6 py-3 rounded-full bg-[var(--color-asso,#34786A)] text-white font-semibold text-xs hover:opacity-90 transition-all shadow-sm"
                 >
                     Découvrir l'OBT Café
                 </a>
+                <!-- Bouton Secondaire (Contour Sombre + Texte Sombre) -->
                 <a
-                    href="/evenements"
-                    class="px-6 py-3 rounded-full border-2 border-obt-secondary text-obt-secondary font-medium hover:bg-obt-secondary hover:text-white transition-all"
+                    href="/events"
+                    class="px-6 py-3 rounded-full border border-obt-dark/30 text-obt-dark font-semibold text-xs hover:bg-obt-dark hover:text-white transition-all"
                 >
                     Voir la programmation
                 </a>
             </div>
         </div>
     </section>
-
-    <Footer slot="footer" />
 </Layout>
