@@ -8,15 +8,15 @@ const currentPath =
         ? pathname.slice(0, -1)
         : pathname;
 
-const isCafe =
-    currentPath.startsWith("/le-cafe") || currentPath === "/location-salle";
-const isAsso = currentPath === "/association" || currentPath === "/rejoindre";
+const isAsso = currentPath.startsWith("/association");
+const isCafe = currentPath.startsWith("/le-cafe");
 const isEvents = currentPath.startsWith("/events");
 const isBlog = currentPath.startsWith("/blog");
+const isContact = currentPath.startsWith("/contact");
 ---
 
 <header
-    class="sticky top-0 z-50 bg-obt-light/80 backdrop-blur-xl border-b border-obt-border transition-all"
+    class="sticky top-0 z-50 bg-obt-light/80 backdrop-blur-xl border-b border-obt-muted/10 transition-all"
 >
     <div
         class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between"
@@ -39,17 +39,61 @@ const isBlog = currentPath.startsWith("/blog");
                 />
             </div>
             <span
-                class="text-xl font-bold tracking-tight text-obt-dark group-hover:text-asso-text transition-colors font-serif"
+                class="text-xl font-bold tracking-tight text-obt-dark group-hover:text-[var(--color-asso-text)] transition-colors font-serif"
             >
                 OBT Café
             </span>
         </a>
 
-        <!-- Navigation Desktop avec Color Hinting Pastel -->
+        <!-- Navigation Desktop -->
         <nav
             class="hidden md:flex items-center gap-8 font-medium text-sm text-obt-dark/75"
         >
-            <!-- ☕ 1. Le Café -->
+            <!-- 🤝 1. L'Association (Premier Pilier) -->
+            <div class="relative group py-2">
+                <button
+                    type="button"
+                    class={`flex items-center gap-1.5 hover:text-[var(--color-asso-text)] transition-colors focus:outline-none ${
+                        isAsso ? "text-[var(--color-asso-text)] font-bold" : ""
+                    }`}
+                >
+                    <span>L'Association</span>
+                    <span
+                        class="w-1.5 h-1.5 rounded-full bg-[var(--color-asso)] inline-block"
+                    ></span>
+                    <svg
+                        class="w-3.5 h-3.5 opacity-50 transition-transform group-hover:rotate-180"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+
+                <div
+                    class="absolute top-full left-0 w-56 bg-white rounded-2xl shadow-lg border border-obt-muted/15 p-2 hidden group-hover:block transition-all space-y-0.5"
+                >
+                    <a
+                        href="/association"
+                        class="block px-4 py-2.5 rounded-xl text-xs font-semibold text-obt-dark hover:bg-[var(--color-asso-light)] hover:text-[var(--color-asso-text)] transition-colors"
+                    >
+                        L'Association OBT
+                    </a>
+                    <a
+                        href="/association/rejoindre"
+                        class="block px-4 py-2.5 rounded-xl text-xs font-semibold text-obt-dark hover:bg-[var(--color-asso-light)] hover:text-[var(--color-asso-text)] transition-colors"
+                    >
+                        Nous rejoindre / Bénévolat
+                    </a>
+                </div>
+            </div>
+
+            <!-- ☕ 2. Le Café (Tiers-Lieu) -->
             <div class="relative group py-2">
                 <button
                     type="button"
@@ -75,7 +119,7 @@ const isBlog = currentPath.startsWith("/blog");
                 </button>
 
                 <div
-                    class="absolute top-full left-0 w-52 bg-white rounded-2xl shadow-[0_12px_32px_rgba(0,0,0,0.06)] border border-obt-border p-2 hidden group-hover:block transition-all space-y-0.5"
+                    class="absolute top-full left-0 w-52 bg-white rounded-2xl shadow-lg border border-obt-muted/15 p-2 hidden group-hover:block transition-all space-y-0.5"
                 >
                     <a
                         href="/le-cafe"
@@ -84,7 +128,7 @@ const isBlog = currentPath.startsWith("/blog");
                         Présentation du Café
                     </a>
                     <a
-                        href="/location-salle"
+                        href="/le-cafe/location-salle"
                         class="block px-4 py-2.5 rounded-xl text-xs font-semibold text-obt-dark hover:bg-cafe-light hover:text-cafe-text transition-colors"
                     >
                         Location de salle
@@ -92,75 +136,40 @@ const isBlog = currentPath.startsWith("/blog");
                 </div>
             </div>
 
-            <!-- 🤝 2. L'Association -->
-            <div class="relative group py-2">
-                <button
-                    type="button"
-                    class={`flex items-center gap-1.5 hover:text-asso-text transition-colors focus:outline-none ${
-                        isAsso ? "text-asso-text font-bold" : ""
-                    }`}
-                >
-                    <span>L'Association</span>
-                    <span class="w-1.5 h-1.5 rounded-full bg-asso inline-block"
-                    ></span>
-                    <svg
-                        class="w-3.5 h-3.5 opacity-50 transition-transform group-hover:rotate-180"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                    >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                </button>
-
-                <div
-                    class="absolute top-full left-0 w-56 bg-white rounded-2xl shadow-[0_12px_32px_rgba(0,0,0,0.06)] border border-obt-border p-2 hidden group-hover:block transition-all space-y-0.5"
-                >
-                    <a
-                        href="/association"
-                        class="block px-4 py-2.5 rounded-xl text-xs font-semibold text-obt-dark hover:bg-asso-light hover:text-asso-text transition-colors"
-                    >
-                        L'Association OBT
-                    </a>
-                    <a
-                        href="/rejoindre"
-                        class="block px-4 py-2.5 rounded-xl text-xs font-semibold text-obt-dark hover:bg-asso-light hover:text-asso-text transition-colors"
-                    >
-                        Nous rejoindre / Bénévolat
-                    </a>
-                </div>
-            </div>
-
             <!-- 📅 3. Événements -->
             <a
                 href="/events"
-                class={`flex items-center gap-1.5 hover:text-event-text transition-colors ${isEvents ? "text-event-text font-bold" : ""}`}
+                class={`flex items-center gap-1.5 hover:text-[var(--color-event-text)] transition-colors ${
+                    isEvents ? "text-[var(--color-event-text)] font-bold" : ""
+                }`}
             >
                 <span>Événements</span>
-                <span class="w-1.5 h-1.5 rounded-full bg-event inline-block"
+                <span
+                    class="w-1.5 h-1.5 rounded-full bg-[var(--color-event)] inline-block"
                 ></span>
             </a>
 
             <!-- 📝 4. Blog -->
             <a
                 href="/blog"
-                class={`flex items-center gap-1.5 hover:text-blog-text transition-colors ${isBlog ? "text-blog-text font-bold" : ""}`}
+                class={`flex items-center gap-1.5 hover:text-[var(--color-blog-text)] transition-colors ${
+                    isBlog ? "text-[var(--color-blog-text)] font-bold" : ""
+                }`}
             >
                 <span>Blog</span>
-                <span class="w-1.5 h-1.5 rounded-full bg-blog inline-block"
+                <span
+                    class="w-1.5 h-1.5 rounded-full bg-[var(--color-blog)] inline-block"
                 ></span>
             </a>
         </nav>
 
-        <!-- CTA unique (Contact) -->
+        <!-- CTA unique (Contact) aux couleurs du Bleu Canard (action) -->
         <div class="hidden md:flex items-center gap-3">
             <a
                 href="/contact"
-                class="px-6 py-2.5 rounded-full bg-cafe-text text-white font-semibold text-xs hover:opacity-95 shadow-[0_4px_14px_rgba(168,83,56,0.2)] transition-all"
+                class={`px-6 py-2.5 rounded-full bg-action text-white font-semibold text-xs hover:opacity-90 shadow-sm transition-all ${
+                    isContact ? "ring-2 ring-action/30 shadow-md" : ""
+                }`}
             >
                 Contact
             </a>
@@ -169,7 +178,7 @@ const isBlog = currentPath.startsWith("/blog");
         <!-- Burger Mobile -->
         <button
             id="menu-btn"
-            class="md:hidden p-2.5 text-obt-dark focus:outline-none rounded-2xl hover:bg-obt-border/50 transition-colors ml-auto"
+            class="md:hidden p-2.5 text-obt-dark focus:outline-none rounded-2xl hover:bg-obt-muted/10 transition-colors ml-auto"
             aria-label="Ouvrir le menu"
         >
             <svg
@@ -202,9 +211,32 @@ const isBlog = currentPath.startsWith("/blog");
     <!-- Tiroir Mobile -->
     <div
         id="mobile-menu"
-        class="hidden md:hidden bg-white/95 backdrop-blur-xl border-b border-obt-border px-6 py-6 space-y-6 shadow-2xl rounded-b-3xl"
+        class="hidden md:hidden bg-white/95 backdrop-blur-xl border-b border-obt-muted/15 px-6 py-6 space-y-6 shadow-2xl rounded-b-3xl"
     >
         <nav class="space-y-5">
+            <!-- 1. L'Association -->
+            <div class="space-y-2">
+                <span
+                    class="text-[10px] font-bold uppercase tracking-widest text-[var(--color-asso-text)] bg-[var(--color-asso-light)] px-2.5 py-0.5 rounded-full"
+                    >L'Association</span
+                >
+                <div
+                    class="pl-3 space-y-2 border-l-2 border-[var(--color-asso)]/40"
+                >
+                    <a
+                        href="/association"
+                        class="block text-sm font-semibold text-obt-dark hover:text-[var(--color-asso-text)]"
+                        >L'Association OBT</a
+                    >
+                    <a
+                        href="/association/rejoindre"
+                        class="block text-sm font-semibold text-obt-dark hover:text-[var(--color-asso-text)]"
+                        >Nous rejoindre / Bénévolat</a
+                    >
+                </div>
+            </div>
+
+            <!-- 2. Le Café -->
             <div class="space-y-2">
                 <span
                     class="text-[10px] font-bold uppercase tracking-widest text-cafe-text bg-cafe-light px-2.5 py-0.5 rounded-full"
@@ -217,47 +249,29 @@ const isBlog = currentPath.startsWith("/blog");
                         >Présentation du Café</a
                     >
                     <a
-                        href="/location-salle"
+                        href="/le-cafe/location-salle"
                         class="block text-sm font-semibold text-obt-dark hover:text-cafe-text"
                         >Location de salle</a
                     >
                 </div>
             </div>
 
-            <div class="space-y-2">
-                <span
-                    class="text-[10px] font-bold uppercase tracking-widest text-asso-text bg-asso-light px-2.5 py-0.5 rounded-full"
-                    >L'Association</span
-                >
-                <div class="pl-3 space-y-2 border-l-2 border-asso/40">
-                    <a
-                        href="/association"
-                        class="block text-sm font-semibold text-obt-dark hover:text-asso-text"
-                        >L'Association OBT</a
-                    >
-                    <a
-                        href="/rejoindre"
-                        class="block text-sm font-semibold text-obt-dark hover:text-asso-text"
-                        >Nous rejoindre / Bénévolat</a
-                    >
-                </div>
-            </div>
-
-            <div class="pt-2 space-y-3 border-t border-obt-border">
+            <!-- 3. Événements & Blog -->
+            <div class="pt-2 space-y-3 border-t border-obt-muted/10">
                 <a
                     href="/events"
-                    class="block text-sm font-bold text-obt-dark hover:text-event-text"
+                    class="block text-sm font-bold text-obt-dark hover:text-[var(--color-event-text)]"
                     >Événements</a
                 >
                 <a
                     href="/blog"
-                    class="block text-sm font-bold text-obt-dark hover:text-blog-text"
+                    class="block text-sm font-bold text-obt-dark hover:text-[var(--color-blog-text)]"
                     >Blog</a
                 >
                 <div class="pt-2">
                     <a
                         href="/contact"
-                        class="block text-center w-full py-2.5 rounded-full bg-cafe-text text-white font-semibold text-xs"
+                        class="block text-center w-full py-2.5 rounded-full bg-action text-white font-semibold text-xs shadow-sm"
                         >Contact</a
                     >
                 </div>

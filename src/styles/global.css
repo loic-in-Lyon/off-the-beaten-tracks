@@ -46,9 +46,17 @@
   --color-blog-light: #F8F5FF;
   /* Fond crème/lavande ultra doux */
 
+/* 💬 5. CONTACT & ACTIONS -> Bleu Canard */
+  --color-action: #2A6F75;          /* Bleu canard principal pour les boutons d'action */
+  --color-action-text: #173E42;     /* Bleu canard sombre et très contrasté pour les textes */
+  --color-action-light: #EEF4F4;    /* Fond pastel bleuté / canard ultra doux */
+
   /* Couleur par défaut */
   --color-obt-primary: var(--color-asso);
   --color-obt-primary-hover: var(--color-asso-text);
+
+
+
 }
 
 @layer base {

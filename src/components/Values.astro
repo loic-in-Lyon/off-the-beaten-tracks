@@ -1,61 +1,136 @@
-<section class="py-20 bg-obt-light">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16">
-        <span
-            class="text-obt-primary font-bold text-sm tracking-wider uppercase"
-            >NOS VALEURS</span
-        >
-        <h2
-            class="text-3xl sm:text-4xl font-extrabold text-obt-dark tracking-tight mt-2"
-        >
-            Ce qui nous rassemble
-        </h2>
-    </div>
-    <div
-        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8"
-    >
-        <div
-            class="bg-white p-8 rounded-2xl shadow-sm border border-obt-muted/10 space-y-4 hover:shadow-md transition-shadow"
-        >
-            <div
-                class="w-12 h-12 rounded-xl bg-obt-primary/10 flex items-center justify-center text-2xl"
+---
+import { Image } from "astro:assets";
+
+// Imports des illustrations depuis ton dossier assets
+import imgOuverture from "../assets/images/illustration-ensemble.png";
+import imgSolidarite from "../assets/images/illustration-high-five.png";
+import imgDecouverte from "../assets/images/illustration-cafe.png";
+---
+
+<section class="py-24 bg-obt-light/50 border-b border-obt-muted/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- En-tête de section -->
+        <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+            <span
+                class="inline-block px-3.5 py-1.5 rounded-full bg-[var(--color-asso-light)] text-[var(--color-asso-text)] font-extrabold text-xs tracking-wider uppercase border border-[var(--color-asso)]/20"
             >
-                🌍
-            </div>
-            <h3 class="text-xl font-bold text-obt-dark">Ouverture</h3>
-            <p class="text-obt-muted text-sm leading-relaxed">
-                Découvrir d'autres cultures et créer des liens entre personnes
-                d'horizons différents.
+                NOS VALEURS
+            </span>
+            <h2
+                class="text-3xl sm:text-4xl font-extrabold text-obt-dark tracking-tight font-serif"
+            >
+                Ce qui nous rassemble
+            </h2>
+            <p class="text-obt-muted text-base leading-relaxed">
+                Trois piliers fondamentaux qui guident l'ensemble de nos actions
+                culturelles et citoyennes au quotidien.
             </p>
         </div>
 
-        <div
-            class="bg-white p-8 rounded-2xl shadow-sm border border-obt-muted/10 space-y-4 hover:shadow-md transition-shadow"
-        >
+        <!-- Grille des cartes de valeurs -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Carte 1 : Ouverture (Vert Sauge) -->
             <div
-                class="w-12 h-12 rounded-xl bg-obt-secondary/10 flex items-center justify-center text-2xl"
+                class="group bg-white rounded-3xl p-8 border border-obt-muted/15 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between relative overflow-hidden"
             >
-                🤝
-            </div>
-            <h3 class="text-xl font-bold text-obt-dark">Solidarité</h3>
-            <p class="text-obt-muted text-sm leading-relaxed">
-                Favoriser l'entraide, le dialogue, l'inclusion et lutter contre
-                les stéréotypes.
-            </p>
-        </div>
+                <div class="space-y-6 relative z-10">
+                    <div
+                        class="w-full h-44 rounded-2xl bg-[var(--color-asso-light)] flex items-center justify-center p-4 group-hover:scale-105 transition-transform duration-500"
+                    >
+                        <Image
+                            src={imgOuverture}
+                            alt="Illustration de personnes rassemblées"
+                            class="h-full w-auto object-contain"
+                        />
+                    </div>
 
-        <div
-            class="bg-white p-8 rounded-2xl shadow-sm border border-obt-muted/10 space-y-4 hover:shadow-md transition-shadow"
-        >
-            <div
-                class="w-12 h-12 rounded-xl bg-obt-accent/20 flex items-center justify-center text-2xl"
-            >
-                🎨
+                    <div class="space-y-2">
+                        <div class="flex items-center gap-2">
+                            <span
+                                class="w-2 h-2 rounded-full bg-[var(--color-asso)]"
+                            ></span>
+                            <h3
+                                class="text-xl font-bold text-obt-dark font-serif"
+                            >
+                                Ouverture
+                            </h3>
+                        </div>
+                        <p class="text-obt-muted text-sm leading-relaxed">
+                            Découvrir d'autres cultures, décloisonner les
+                            parcours et créer de véritables ponts humains entre
+                            personnes de tous horizons.
+                        </p>
+                    </div>
+                </div>
             </div>
-            <h3 class="text-xl font-bold text-obt-dark">Découverte</h3>
-            <p class="text-obt-muted text-sm leading-relaxed">
-                Mettre en lumière les richesses artistiques, culinaires et
-                culturelles du monde.
-            </p>
+
+            <!-- Carte 2 : Solidarité (Terre Cuite) -->
+            <div
+                class="group bg-white rounded-3xl p-8 border border-obt-muted/15 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between relative overflow-hidden"
+            >
+                <div class="space-y-6 relative z-10">
+                    <div
+                        class="w-full h-44 rounded-2xl bg-cafe-light flex items-center justify-center p-4 group-hover:scale-105 transition-transform duration-500"
+                    >
+                        <Image
+                            src={imgSolidarite}
+                            alt="Illustration d'entraide et high-five"
+                            class="h-full w-auto object-contain"
+                        />
+                    </div>
+
+                    <div class="space-y-2">
+                        <div class="flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-cafe"></span>
+                            <h3
+                                class="text-xl font-bold text-obt-dark font-serif"
+                            >
+                                Solidarité
+                            </h3>
+                        </div>
+                        <p class="text-obt-muted text-sm leading-relaxed">
+                            Favoriser l'entraide, encourager l'expression
+                            citoyenne et lutter activement contre toutes les
+                            formes d'isolement et de préjugés.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carte 3 : Découverte (Jaune Moutarde / Événements) -->
+            <div
+                class="group bg-white rounded-3xl p-8 border border-obt-muted/15 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between relative overflow-hidden"
+            >
+                <div class="space-y-6 relative z-10">
+                    <div
+                        class="w-full h-44 rounded-2xl bg-[var(--color-event-light)] flex items-center justify-center p-4 group-hover:scale-105 transition-transform duration-500"
+                    >
+                        <Image
+                            src={imgDecouverte}
+                            alt="Illustration autour du café et de l'échange"
+                            class="h-full w-auto object-contain"
+                        />
+                    </div>
+
+                    <div class="space-y-2">
+                        <div class="flex items-center gap-2">
+                            <span
+                                class="w-2 h-2 rounded-full bg-[var(--color-event)]"
+                            ></span>
+                            <h3
+                                class="text-xl font-bold text-obt-dark font-serif"
+                            >
+                                Découverte
+                            </h3>
+                        </div>
+                        <p class="text-obt-muted text-sm leading-relaxed">
+                            Mettre en lumière la diversité des expressions
+                            artistiques, culinaires et culturelles à travers des
+                            rencontres concrètes.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>

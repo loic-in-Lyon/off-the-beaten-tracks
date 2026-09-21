@@ -4,6 +4,7 @@ publishDate: 2026-09-21
 author: "L'équipe OBT"
 description: "Bienvenue sur le tout nouveau site de l'association Off The Beaten Tracks. Découvrez nos événements, ateliers et actualités."
 category: "Actualité"
+image: "../../assets/images/fete.webp"
 draft: false
 ---
 

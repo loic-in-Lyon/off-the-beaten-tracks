@@ -2,41 +2,41 @@
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
 import About from "../components/About.astro";
-import UpcomingEvents from "../components/UpcomingEvents.astro";
-import LocationCta from "../components/LocationCta.astro";
 import Values from "../components/Values.astro";
-import Activities from "../components/Activities.astro";
+import CafeSection from "../components/CafeSection.astro";
+import UpcomingEvents from "../components/UpcomingEvents.astro";
 import LatestPosts from "../components/LatestPosts.astro";
-import PracticalInfo from "../components/PracticalInfo.astro";
+import LocationCta from "../components/LocationCta.astro";
+import GetInvolved from "../components/GetInvolved.astro";
 ---
 
 <Layout
-	title="OBT Café - Tiers-lieu culturel, convivial & solidaire | Lyon 3e"
-	description="Découvrez l'OBT Café par l'association Off The Beaten Tracks : bar café-culturel, programmation d'événements, ateliers interculturels et location de salle à Lyon."
+	title="Association Off The Beaten Tracks & OBT Café | Lyon 3e"
+	description="Association culturelle et interculturelle à Lyon. Découvrez nos projets citoyens, l'OBT Café, notre programmation d'événements et nos ateliers."
 >
 	<main id="main-content">
-		<!-- Section Hero principal -->
+		<!-- 1. Hero : Association & Le lieu d'accueil -->
 		<Hero />
 
-		<!-- Présentation de l'association et du tiers-lieu -->
+		<!-- 2. Présentation : L'histoire, l'humani'Terre & la Maison de l'Hospitalité -->
 		<About />
 
-		<!-- Partial : 3 prochains événements dynamiques (Collection Events) -->
-		<UpcomingEvents limit={3} showViewAll={true} />
-
-		<!-- Section d'appel à l'action pour la Location & Privatisation de salle -->
-		<LocationCta />
-
-		<!-- Valeurs de l'association -->
+		<!-- 3. Valeurs : Notre vision citoyenne & interculturelle -->
 		<Values />
 
-		<!-- Activités & services proposés -->
-		<Activities />
+		<!-- 4. Le Tiers-Lieu Café : Vivant, chaleureux & engagé -->
+		<CafeSection />
 
-		<!-- Partial : 3 derniers articles du blog (Collection Blog) -->
+		<!-- 5. Événements à venir : La programmation du tiers-lieu -->
+		<UpcomingEvents limit={3} showViewAll={true} />
+
+		<!-- 6. Derniers articles du Blog : Récits, retours d'expériences & vie associative -->
 		<LatestPosts limit={3} />
 
-		<!-- Infos pratiques, accès, horaires et carte -->
-		<PracticalInfo />
+		<!-- 7. Privatisation / Location de salle : Mise à disposition de l'espace -->
+		<LocationCta />
+
+		<!-- 8. Agir avec nous : Devenir bénévole ou faire un don -->
+		<GetInvolved />
 	</main>
 </Layout>

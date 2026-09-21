@@ -1,37 +1,110 @@
----
-
----
-
-<section class="py-16 bg-obt-secondary/10 border-y border-obt-secondary/15">
+<section
+    class="py-24 bg-obt-light border-t border-b border-obt-muted/10 relative overflow-hidden"
+>
+    <!-- Élément graphique de fond discret pour donner de la texture -->
     <div
-        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
+        class="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#111_1px,transparent_1px)] [background-size:20px_20px]"
     >
-        <div class="lg:col-span-8 space-y-4">
-            <span
-                class="inline-block px-3 py-1 rounded-full bg-obt-secondary/20 text-obt-dark font-bold text-xs uppercase tracking-wider"
-            >
-                Privatisation & Événements professionnels
-            </span>
-            <h2
-                class="text-2xl sm:text-4xl font-extrabold text-obt-dark tracking-tight"
-            >
-                Besoin d'une salle pour votre réunion, formation ou événement à
-                Lyon ?
-            </h2>
-            <p class="text-obt-muted text-base leading-relaxed">
-                Profitez d'un espace chaleureux de 80 m² équipé (scène, sono,
-                vidéoprojecteur, wifi, bar) pour accueillir jusqu'à 40 personnes
-                assises. Tarifs adaptés aux associations et entreprises.
-            </p>
-        </div>
+    </div>
 
-        <div class="lg:col-span-4 text-left lg:text-right">
-            <a
-                href="/location-salle"
-                class="inline-block px-8 py-4 rounded-full bg-obt-primary text-white font-bold hover:bg-obt-primary/90 transition-all shadow-md hover:shadow-lg text-sm"
-            >
-                Découvrir la salle & les tarifs ➔
-            </a>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div
+            class="bg-white rounded-3xl p-8 sm:p-12 border border-obt-muted/15 shadow-sm"
+        >
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Colonne Texte -->
+                <div class="lg:col-span-7 space-y-6">
+                    <span
+                        class="inline-block px-3.5 py-1.5 rounded-full bg-[var(--color-action-light)] text-action font-extrabold text-xs tracking-wider uppercase border border-action/20 shadow-sm"
+                    >
+                        LOCATION DE SALLE & PRIVATISATION
+                    </span>
+
+                    <h2
+                        class="text-3xl sm:text-4xl font-extrabold text-obt-dark font-serif tracking-tight leading-tight"
+                    >
+                        Besoin d'un lieu atypique pour vos événements
+                        professionnels ou privés ?
+                    </h2>
+
+                    <p class="text-obt-muted text-base leading-relaxed">
+                        Que ce soit pour un séminaire d'entreprise, une
+                        assemblée générale, un tournage ou une célébration
+                        associative, l'OBT Café vous ouvre ses portes dans un
+                        cadre chaleureux et modulable au cœur de Lyon 3e.
+                    </p>
+
+                    <div class="pt-2 flex flex-wrap gap-4">
+                        <a
+                            href="/le-cafe/location-salle"
+                            class="inline-flex items-center justify-center px-7 py-4 rounded-full bg-action text-white font-bold text-xs uppercase tracking-wider hover:bg-action-text transition-all shadow-md group cursor-pointer"
+                        >
+                            <span>Découvrir les formules & tarifs</span>
+                            <span
+                                class="ml-2 transition-transform group-hover:translate-x-1"
+                                >→</span
+                            >
+                        </a>
+                        <a
+                            href="/contact"
+                            class="inline-flex items-center justify-center px-6 py-4 rounded-full bg-obt-light text-obt-dark font-bold text-xs uppercase tracking-wider hover:bg-obt-muted/10 transition-all border border-obt-muted/20"
+                        >
+                            <span>Demander un devis</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Colonne Caractéristiques / Tarifs rapides -->
+                <div
+                    class="lg:col-span-5 bg-obt-light/60 rounded-2xl p-6 sm:p-8 border border-obt-muted/15 space-y-5"
+                >
+                    <h3
+                        class="font-serif font-bold text-obt-dark text-lg border-b border-obt-muted/10 pb-3 flex items-center justify-between"
+                    >
+                        <span>En un coup d'œil</span>
+                        <span
+                            class="text-xs font-sans font-normal text-obt-muted"
+                            >Capacité : 40 pers.</span
+                        >
+                    </h3>
+
+                    <ul class="space-y-4 text-sm text-obt-muted font-medium">
+                        <li class="flex items-start gap-3">
+                            <div
+                                class="w-5 h-5 rounded-full bg-action/10 text-action flex items-center justify-center shrink-0 mt-0.5"
+                            >
+                                ✓
+                            </div>
+                            <span
+                                ><strong>Équipement complet :</strong> Vidéoprojecteur,
+                                grand écran, micros et système audio pro.</span
+                            >
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div
+                                class="w-5 h-5 rounded-full bg-action/10 text-action flex items-center justify-center shrink-0 mt-0.5"
+                            >
+                                ✓
+                            </div>
+                            <span
+                                ><strong>Espace bar & catering :</strong> Possibilité
+                                de gérer des pauses café ou des buffets sur place.</span
+                            >
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div
+                                class="w-5 h-5 rounded-full bg-action/10 text-action flex items-center justify-center shrink-0 mt-0.5"
+                            >
+                                ✓
+                            </div>
+                            <span
+                                ><strong>Flexibilité :</strong> Formules à la demi-journée,
+                                journée complète ou soirée.</span
+                            >
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </section>

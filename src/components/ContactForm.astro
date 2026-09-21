@@ -2,7 +2,9 @@
 const web3formsKey = "3c63b09b-10a9-4d99-90be-ae2a1526a863";
 ---
 
-<div class="bg-white p-8 rounded-3xl border border-obt-muted/15 shadow-sm">
+<div
+    class="bg-white p-8 sm:p-10 rounded-3xl border border-obt-muted/15 shadow-sm relative"
+>
     <!-- Formulaire -->
     <form id="contact-form" class="space-y-6">
         <!-- Clé & Paramètres cachés Web3Forms -->
@@ -16,12 +18,14 @@ const web3formsKey = "3c63b09b-10a9-4d99-90be-ae2a1526a863";
         <input
             type="hidden"
             name="subject"
-            value="Nouveau message depuis le site OBT Café"
+            value="Nouveau message depuis le site de l'Association OBT"
         />
 
         <!-- Nom -->
-        <div>
-            <label for="name" class="block text-sm font-bold text-obt-dark mb-2"
+        <div class="space-y-2">
+            <label
+                for="name"
+                class="block text-xs font-bold uppercase tracking-wider text-obt-dark"
                 >Nom complet</label
             >
             <input
@@ -30,15 +34,15 @@ const web3formsKey = "3c63b09b-10a9-4d99-90be-ae2a1526a863";
                 name="name"
                 required
                 placeholder="Votre nom et prénom"
-                class="w-full px-4 py-3 rounded-xl bg-obt-light border border-obt-muted/20 focus:outline-none focus:border-obt-primary text-sm"
+                class="w-full px-4 py-3.5 rounded-2xl bg-obt-light border border-obt-muted/15 focus:outline-none focus:border-action focus:ring-2 focus:ring-action/10 text-sm text-obt-dark transition-all"
             />
         </div>
 
         <!-- Email -->
-        <div>
+        <div class="space-y-2">
             <label
                 for="email"
-                class="block text-sm font-bold text-obt-dark mb-2"
+                class="block text-xs font-bold uppercase tracking-wider text-obt-dark"
                 >Adresse e-mail</label
             >
             <input
@@ -47,27 +51,27 @@ const web3formsKey = "3c63b09b-10a9-4d99-90be-ae2a1526a863";
                 name="email"
                 required
                 placeholder="votre@email.com"
-                class="w-full px-4 py-3 rounded-xl bg-obt-light border border-obt-muted/20 focus:outline-none focus:border-obt-primary text-sm"
+                class="w-full px-4 py-3.5 rounded-2xl bg-obt-light border border-obt-muted/15 focus:outline-none focus:border-action focus:ring-2 focus:ring-action/10 text-sm text-obt-dark transition-all"
             />
         </div>
 
         <!-- Objet -->
-        <div>
+        <div class="space-y-2">
             <label
                 for="category"
-                class="block text-sm font-bold text-obt-dark mb-2"
+                class="block text-xs font-bold uppercase tracking-wider text-obt-dark"
                 >Objet de votre demande</label
             >
             <select
                 id="category"
                 name="category"
-                class="w-full px-4 py-3 rounded-xl bg-obt-light border border-obt-muted/20 focus:outline-none focus:border-obt-primary text-sm text-obt-dark"
+                class="w-full px-4 py-3.5 rounded-2xl bg-obt-light border border-obt-muted/15 focus:outline-none focus:border-action focus:ring-2 focus:ring-action/10 text-sm text-obt-dark transition-all cursor-pointer"
             >
                 <option value="Renseignement général"
                     >Renseignement général</option
                 >
                 <option value="Privatisation de salle"
-                    >Privatisation & Location de salle</option
+                    >Privatisation & Espace associatif</option
                 >
                 <option value="Proposition de projet / Concert / Atelier"
                     >Proposer un projet, atelier ou concert</option
@@ -77,10 +81,10 @@ const web3formsKey = "3c63b09b-10a9-4d99-90be-ae2a1526a863";
         </div>
 
         <!-- Message -->
-        <div>
+        <div class="space-y-2">
             <label
                 for="message"
-                class="block text-sm font-bold text-obt-dark mb-2"
+                class="block text-xs font-bold uppercase tracking-wider text-obt-dark"
                 >Votre message</label
             >
             <textarea
@@ -88,26 +92,26 @@ const web3formsKey = "3c63b09b-10a9-4d99-90be-ae2a1526a863";
                 name="message"
                 rows="5"
                 required
-                placeholder="Expliquez-nous votre demande..."
-                class="w-full px-4 py-3 rounded-xl bg-obt-light border border-obt-muted/20 focus:outline-none focus:border-obt-primary text-sm"
+                placeholder="Expliquez-nous votre demande, votre projet ou vos disponibilités..."
+                class="w-full px-4 py-3.5 rounded-2xl bg-obt-light border border-obt-muted/15 focus:outline-none focus:border-action focus:ring-2 focus:ring-action/10 text-sm text-obt-dark transition-all resize-y"
             ></textarea>
         </div>
 
         <!-- Case à cocher Politique de confidentialité -->
-        <div class="flex items-start gap-3 pt-2">
+        <div class="flex items-start gap-3 pt-1">
             <input
                 type="checkbox"
                 id="privacy"
                 name="privacy"
                 required
-                class="mt-1 h-4 w-4 rounded border-obt-muted/30 text-obt-primary focus:ring-obt-primary cursor-pointer"
+                class="mt-1 h-4 w-4 rounded border-obt-muted/30 text-action focus:ring-action cursor-pointer accent-[var(--color-action)]"
             />
             <label for="privacy" class="text-xs text-obt-muted leading-relaxed">
                 J'accepte que mes données soient traitées conformément à la
                 <a
                     href="/politique-de-confidentialite"
                     target="_blank"
-                    class="text-obt-primary underline font-medium hover:text-obt-primary/80"
+                    class="text-action underline font-medium hover:opacity-80"
                 >
                     politique de confidentialité
                 </a>.
@@ -125,35 +129,50 @@ const web3formsKey = "3c63b09b-10a9-4d99-90be-ae2a1526a863";
         <button
             type="submit"
             id="submit-btn"
-            class="w-full py-4 rounded-full bg-obt-primary text-white font-bold hover:bg-obt-primary/90 transition-all text-sm shadow-md disabled:opacity-50 cursor-pointer"
+            class="w-full py-4 rounded-full bg-action text-white font-bold hover:bg-action-text transition-all text-xs uppercase tracking-wider shadow-md disabled:opacity-50 cursor-pointer flex items-center justify-center gap-2 group"
         >
-            Envoyer le message ➔
+            <span>Envoyer le message</span>
+            <span class="transition-transform group-hover:translate-x-1">→</span
+            >
         </button>
     </form>
 
     <!-- État de confirmation (Masqué par défaut) -->
     <div id="success-feedback" class="hidden text-center py-12 px-4 space-y-6">
         <div
-            class="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto text-4xl shadow-inner"
+            class="w-16 h-16 bg-[var(--color-action-light)] text-action rounded-full flex items-center justify-center mx-auto shadow-sm border border-action/20"
         >
-            ✓
+            <svg
+                class="w-8 h-8"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+            >
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2.5"
+                    d="M5 13l4 4L19 7"></path>
+            </svg>
         </div>
         <div class="space-y-2">
-            <h3 class="text-2xl sm:text-3xl font-extrabold text-obt-dark">
+            <h3 class="text-2xl font-serif font-bold text-obt-dark">
                 Message bien envoyé !
             </h3>
             <p class="text-obt-muted text-sm max-w-md mx-auto leading-relaxed">
-                Merci de nous avoir contactés. L'équipe de l'OBT Café vous
-                répondra par email dans les plus brefs délais.
+                Merci de nous avoir contactés. L'équipe de l'association vous
+                répondra par e-mail dans les plus brefs délais.
             </p>
         </div>
-        <button
-            type="button"
-            id="reset-form-btn"
-            class="inline-block px-6 py-2.5 rounded-full border border-obt-muted/30 text-obt-dark text-xs font-bold hover:bg-obt-light transition-all cursor-pointer"
-        >
-            Envoyer un autre message
-        </button>
+        <div>
+            <button
+                type="button"
+                id="reset-form-btn"
+                class="inline-flex items-center justify-center px-6 py-3 rounded-full border border-obt-muted/20 text-obt-dark text-xs font-bold uppercase tracking-wider hover:bg-obt-light transition-all cursor-pointer"
+            >
+                Envoyer un autre message
+            </button>
+        </div>
     </div>
 </div>
 
@@ -173,7 +192,8 @@ const web3formsKey = "3c63b09b-10a9-4d99-90be-ae2a1526a863";
             // Réinitialise le message d'erreur et désactive le bouton
             errorMessage.classList.add("hidden");
             submitBtn.disabled = true;
-            submitBtn.innerText = "Envoi en cours...";
+            const spanText = submitBtn.querySelector("span");
+            if (spanText) spanText.innerText = "Envoi en cours...";
 
             const formData = new FormData(form);
             const json = JSON.stringify(Object.fromEntries(formData));
@@ -200,7 +220,7 @@ const web3formsKey = "3c63b09b-10a9-4d99-90be-ae2a1526a863";
                     form.reset();
                 } else {
                     errorMessage.innerText =
-                        "Un problème est survenu lors de l'envoi. Veuillez réessayer ou envoyer un email directement.";
+                        "Un problème est survenu lors de l'envoi. Veuillez réessayer ou nous contacter directement par e-mail.";
                     errorMessage.classList.remove("hidden");
                 }
             } catch (error) {
@@ -209,7 +229,7 @@ const web3formsKey = "3c63b09b-10a9-4d99-90be-ae2a1526a863";
                 errorMessage.classList.remove("hidden");
             } finally {
                 submitBtn.disabled = false;
-                submitBtn.innerText = "Envoyer le message ➔";
+                if (spanText) spanText.innerText = "Envoyer le message";
             }
         });
 

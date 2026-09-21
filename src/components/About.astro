@@ -1,50 +1,87 @@
 ---
 import { Image } from "astro:assets";
-import salleObt from "../assets/images/salle-obt.webp";
+import conferenceImg from "../assets/images/conference.webp";
 ---
 
-<section class="py-20 bg-white border-y border-obt-muted/10">
+<section class="py-20 bg-white border-b border-obt-muted/10">
     <div
-        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center"
     >
-        <div
-            class="rounded-3xl overflow-hidden shadow-xl border border-obt-muted/20"
-        >
-            <Image
-                src={salleObt}
-                alt="Intérieur chaleureux de l'OBT Café au 236 Cours Lafayette à Lyon"
-                width={800}
-                height={533}
-                class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500"
-            />
+        <!-- Visuel / Photo de conférence avec effet polaroïd / cadrage soigné -->
+        <div class="relative group">
+            <!-- Fond décoratif pastel vert sauge -->
+            <div
+                class="absolute -inset-2 rounded-3xl bg-[var(--color-asso-light)] -rotate-1 group-hover:rotate-0 transition-transform duration-300 -z-10"
+            >
+            </div>
+
+            <div
+                class="relative rounded-2xl overflow-hidden border border-obt-muted/15 shadow-md bg-white"
+            >
+                <Image
+                    src={conferenceImg}
+                    alt="Conférence et temps d'échange chaleureux au sein de l'OBT Café"
+                    width={800}
+                    height={533}
+                    class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                />
+            </div>
+
+            <!-- Tag d'ancrage sur la photo -->
+            <div
+                class="absolute bottom-4 right-4 bg-white/90 backdrop-blur-md px-4 py-2 rounded-xl border border-obt-muted/15 shadow-sm hidden sm:flex items-center gap-2"
+            >
+                <span class="text-sm">📍</span>
+                <span class="text-xs font-extrabold text-obt-dark"
+                    >Maison de l'Hospitalité</span
+                >
+            </div>
         </div>
-        <div class="space-y-6">
+
+        <!-- Contenu textuel -->
+        <div class="space-y-6 text-left">
             <span
-                class="text-obt-primary font-bold text-sm tracking-wider uppercase"
-                >À PROPOS</span
+                class="inline-block px-3.5 py-1.5 rounded-full bg-[var(--color-asso-light)] text-[var(--color-asso-text)] font-extrabold text-xs tracking-wider uppercase border border-[var(--color-asso)]/20"
             >
+                À propos d'OfftheBeatenTracks
+            </span>
+
             <h2
-                class="text-3xl sm:text-4xl font-extrabold text-obt-dark tracking-tight"
+                class="text-3xl sm:text-4xl font-extrabold text-obt-dark tracking-tight leading-tight font-serif"
             >
-                Un autre regard sur l'Humani'Terre
+                Un autre regard sur l'<span
+                    class="bg-[var(--color-asso-light)] text-[var(--color-asso-text)] px-2 py-0.5 rounded-lg"
+                    >Humani'Terre</span
+                >
             </h2>
-            <p class="text-obt-muted leading-relaxed">
-                Fondée en 2022 à Lyon, l'association Off The Beaten Tracks
-                propose un voyage aux confins de la culture pour casser les
-                stéréotypes et valoriser la résilience des publics marginalisés.
-            </p>
-            <p class="text-obt-muted leading-relaxed">
-                Installé depuis avril 2025 au sein de la Maison de l'Hospitalité
-                (236 cours Lafayette), l'<strong>OBT Café</strong> est un espace culturel,
-                interculturel et citoyen ouvert à toutes et tous pour favoriser le
-                vivre-ensemble et la cohésion sociale.
-            </p>
-            <div>
+
+            <div
+                class="space-y-4 text-obt-muted leading-relaxed text-base sm:text-lg"
+            >
+                <p>
+                    Fondée en 2022 à Lyon, l'association <strong
+                        >Off The Beaten Tracks</strong
+                    >
+                    propose un voyage aux confins de la culture pour casser les stéréotypes
+                    et valoriser la résilience des publics marginalisés.
+                </p>
+                <p class="text-base text-obt-muted/90">
+                    Installé au sein de la Maison de l'Hospitalité (236 cours
+                    Lafayette), l'<strong>OBT Café</strong> est notre espace culturel,
+                    interculturel et citoyen ouvert à toutes et tous pour favoriser
+                    le vivre-ensemble et la cohésion sociale.
+                </p>
+            </div>
+
+            <div class="pt-2">
                 <a
                     href="/association"
-                    class="inline-flex items-center gap-2 font-semibold text-obt-primary hover:text-obt-primary/80 transition-colors"
+                    class="inline-flex items-center gap-2 font-bold text-xs uppercase tracking-wider text-[var(--color-asso-text)] hover:text-[var(--color-asso)] transition-colors group"
                 >
-                    Notre histoire et l'équipe <span aria-hidden="true">→</span>
+                    <span>Notre histoire et l'équipe</span>
+                    <span class="transition-transform group-hover:translate-x-1"
+                        >→</span
+                    >
                 </a>
             </div>
         </div>

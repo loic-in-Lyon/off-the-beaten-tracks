@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
 
 interface Props {
     limit?: number;
@@ -20,56 +21,99 @@ const recentPosts = allPosts
 
 {
     recentPosts.length > 0 && (
-        <section class="py-16 bg-obt-light">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-                <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-obt-muted/10 pb-6">
-                    <div>
-                        <span class="text-obt-secondary font-bold text-xs tracking-wider uppercase">
-                            Actualités
+        <section class="py-24 bg-white border-b border-obt-muted/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+                <!-- En-tête de section unifié -->
+                <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6">
+                    <div class="space-y-3">
+                        <span class="inline-block px-3.5 py-1.5 rounded-full bg-[var(--color-blog-light)] text-[var(--color-blog-text)] font-extrabold text-xs tracking-wider uppercase border border-[var(--color-blog)]/20">
+                            RÉCITS & ACTUALITÉS
                         </span>
-                        <h2 class="text-3xl font-extrabold text-obt-dark mt-1">
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-obt-dark font-serif tracking-tight">
                             Derniers articles
                         </h2>
+                        <p class="text-obt-muted text-base leading-relaxed max-w-xl">
+                            Découvrez la vie de l'association, les coulisses du tiers-lieu et nos réflexions engagées.
+                        </p>
                     </div>
-                    <a
-                        href="/blog"
-                        class="text-sm font-semibold text-obt-secondary hover:underline"
-                    >
-                        Voir tous les articles →
-                    </a>
+                    <div class="shrink-0">
+                        <a
+                            href="/blog"
+                            class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-obt-light/80 text-[var(--color-blog-text)] border border-[var(--color-blog)]/20 text-xs font-bold uppercase tracking-wider hover:bg-[var(--color-blog-light)] transition-all shadow-sm group"
+                        >
+                            <span>Voir tous les articles</span>
+                            <span class="transition-transform group-hover:translate-x-1">→</span>
+                        </a>
+                    </div>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {recentPosts.map((post) => (
-                        <article class="bg-white rounded-3xl p-6 border border-obt-muted/10 flex flex-col justify-between shadow-sm hover:shadow-md transition-all">
-                            <div class="space-y-3">
-                                <span class="text-xs font-bold text-obt-primary uppercase tracking-wide">
-                                    {post.data.category}
-                                </span>
-                                <h3 class="text-xl font-bold text-obt-dark">
-                                    <a
-                                        href={`/blog/${post.id}`}
-                                        class="hover:text-obt-primary transition-colors"
-                                    >
-                                        {post.data.title}
-                                    </a>
-                                </h3>
-                                <p class="text-obt-muted text-sm line-clamp-3">
-                                    {post.data.description}
-                                </p>
-                            </div>
-                            <div class="pt-6 mt-4 border-t border-obt-muted/10 text-xs text-obt-muted">
-                                Publié le{" "}
-                                {new Date(
-                                    post.data.publishDate,
-                                ).toLocaleDateString("fr-FR", {
-                                    day: "numeric",
-                                    month: "long",
-                                    year: "numeric",
-                                })}
-                            </div>
-                        </article>
-                    ))}
+                <!-- Grille d'articles style Magazine -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {recentPosts.map((post) => {
+                        const formattedDate = new Date(
+                            post.data.publishDate,
+                        ).toLocaleDateString("fr-FR", {
+                            day: "numeric",
+                            month: "short",
+                            year: "numeric",
+                        });
+
+                        return (
+                            <article class="group bg-white rounded-3xl border border-obt-muted/15 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between relative">
+                                <div class="space-y-5">
+                                    <!-- Container Image / Illustration -->
+                                    <div class="relative h-48 w-full overflow-hidden bg-[var(--color-blog-light)] flex items-center justify-center">
+                                        {post.data.image ? (
+                                            <Image
+                                                src={post.data.image}
+                                                alt={post.data.title}
+                                                width={600}
+                                                height={400}
+                                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                                            />
+                                        ) : (
+                                            <div class="p-8 text-center space-y-2">
+                                                <span class="text-3xl">📝</span>
+                                                <p class="text-xs font-bold text-[var(--color-blog-text)] uppercase tracking-widest font-serif opacity-70">
+                                                    Blog OBT
+                                                </p>
+                                            </div>
+                                        )}
+                                        
+                                        <!-- Categorie Badge sur l'image -->
+                                        {post.data.category && (
+                                            <span class="absolute top-4 left-4 px-3 py-1 bg-white/90 backdrop-blur-md rounded-full text-[10px] font-extrabold uppercase tracking-wider text-[var(--color-blog-text)] border border-obt-muted/10 shadow-sm">
+                                                {post.data.category}
+                                            </span>
+                                        )}
+                                    </div>
+
+                                    <!-- Contenu -->
+                                    <div class="px-6 space-y-3">
+                                        <h3 class="text-xl font-bold text-obt-dark font-serif group-hover:text-[var(--color-blog-text)] transition-colors leading-snug">
+                                            <a
+                                                href={`/blog/${post.id}`}
+                                                class="after:absolute after:inset-0"
+                                            >
+                                                {post.data.title}
+                                            </a>
+                                        </h3>
+                                        <p class="text-obt-muted text-sm line-clamp-2 leading-relaxed">
+                                            {post.data.description}
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <!-- Pied de carte -->
+                                <div class="p-6 pt-4 mt-6 border-t border-obt-muted/10 flex items-center justify-between text-xs text-obt-muted">
+                                    <span class="font-medium">{formattedDate}</span>
+                                    <span class="font-bold text-[var(--color-blog-text)] group-hover:translate-x-1 transition-transform flex items-center gap-1">
+                                        Lire <span aria-hidden="true">→</span>
+                                    </span>
+                                </div>
+                            </article>
+                        );
+                    })}
                 </div>
             </div>
         </section>

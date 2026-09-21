@@ -5,15 +5,23 @@ import logoImage from "../assets/images/logo.svg";
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="bg-obt-dark text-white pt-16 pb-8 border-t border-obt-muted/20">
+<footer
+    class="bg-obt-light text-obt-dark pt-16 pb-8 border-t border-obt-muted/15 relative overflow-hidden"
+>
+    <!-- Élément graphique subtil de fond -->
     <div
-        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12"
+        class="absolute inset-0 opacity-[0.02] pointer-events-none bg-[radial-gradient(#111_1px,transparent_1px)] [background-size:16px_16px]"
+    >
+    </div>
+
+    <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12 relative z-10"
     >
         <!-- Colonne 1 : Logo & À propos -->
         <div class="space-y-4">
             <a href="/" class="flex items-center gap-3 group inline-block">
                 <div
-                    class="w-12 h-12 overflow-hidden flex items-center justify-center p-0.5 bg-white/10 rounded-2xl border border-white/10 group-hover:bg-white/20 transition-all"
+                    class="w-12 h-12 overflow-hidden flex items-center justify-center p-0.5 bg-white rounded-2xl border border-obt-muted/15 shadow-sm group-hover:scale-105 transition-all"
                 >
                     <Image
                         src={logoImage}
@@ -25,18 +33,18 @@ const currentYear = new Date().getFullYear();
                 </div>
                 <div>
                     <span
-                        class="font-extrabold text-xl text-white block leading-tight group-hover:text-obt-secondary transition-colors"
+                        class="font-extrabold text-xl text-obt-dark block leading-tight group-hover:text-action transition-colors font-serif"
                     >
                         OBT Café
                     </span>
                     <span
-                        class="text-[10px] uppercase font-bold text-zinc-400 tracking-wider"
+                        class="text-[10px] uppercase font-bold text-obt-muted tracking-wider"
                     >
                         Off The Beaten Tracks
                     </span>
                 </div>
             </a>
-            <p class="text-sm text-zinc-300 leading-relaxed">
+            <p class="text-sm text-obt-muted leading-relaxed">
                 Un café associatif, culturel et interculturel au cœur de Lyon,
                 ouvert à toutes et tous.
             </p>
@@ -45,17 +53,19 @@ const currentYear = new Date().getFullYear();
         <!-- Colonne 2 : Adresse & Accès -->
         <div>
             <h3
-                class="text-sm font-bold uppercase tracking-wider mb-4 text-white flex items-center gap-2"
+                class="text-sm font-bold uppercase tracking-wider mb-4 text-obt-dark flex items-center gap-2"
             >
-                <span>📍</span> Adresse
+                <span class="text-action">📍</span> Adresse
             </h3>
             <address
-                class="not-italic text-sm text-zinc-300 leading-relaxed space-y-1"
+                class="not-italic text-sm text-obt-muted leading-relaxed space-y-1"
             >
-                <p class="font-semibold text-white">Maison de l'Hospitalité</p>
+                <p class="font-semibold text-obt-dark">
+                    Maison de l'Hospitalité
+                </p>
                 <p>236 Cours Lafayette</p>
                 <p>69003 Lyon</p>
-                <p class="text-xs text-zinc-400 pt-1">
+                <p class="text-xs text-obt-muted/80 pt-1">
                     Bus C3 / C13 — Arrêt Part-Dieu Jules Favre
                 </p>
             </address>
@@ -64,24 +74,24 @@ const currentYear = new Date().getFullYear();
         <!-- Colonne 3 : Horaires -->
         <div>
             <h3
-                class="text-sm font-bold uppercase tracking-wider mb-4 text-white flex items-center gap-2"
+                class="text-sm font-bold uppercase tracking-wider mb-4 text-obt-dark flex items-center gap-2"
             >
-                <span>🕒</span> Horaires
+                <span class="text-action">🕒</span> Horaires
             </h3>
-            <ul class="text-sm text-zinc-300 leading-relaxed space-y-1">
+            <ul class="text-sm text-obt-muted leading-relaxed space-y-1.5">
                 <li>
-                    <strong class="text-white font-medium"
+                    <strong class="text-obt-dark font-medium"
                         >Mardi & Mercredi :</strong
                     > 13h – 18h
                 </li>
                 <li>
-                    <strong class="text-white font-medium"
+                    <strong class="text-obt-dark font-medium"
                         >Jeudi & Vendredi :</strong
                     > 13h – 20h
                 </li>
                 <li>
-                    <strong class="text-white font-medium">Samedi :</strong> 14h –
-                    20h
+                    <strong class="text-obt-dark font-medium">Samedi :</strong> 14h
+                    – 20h
                 </li>
             </ul>
         </div>
@@ -90,16 +100,16 @@ const currentYear = new Date().getFullYear();
         <div class="space-y-4">
             <div>
                 <h3
-                    class="text-sm font-bold uppercase tracking-wider mb-3 text-white"
+                    class="text-sm font-bold uppercase tracking-wider mb-3 text-obt-dark flex items-center gap-2"
                 >
-                    📱 Suivez-nous
+                    <span class="text-action">📱</span> Suivez-nous
                 </h3>
                 <div class="flex gap-4 text-sm font-medium">
                     <a
                         href="https://www.instagram.com/offthebeatentracks69"
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="text-zinc-300 hover:text-white underline underline-offset-4 focus:outline-none focus:ring-2 focus:ring-white rounded transition-colors"
+                        class="text-obt-muted hover:text-action underline underline-offset-4 focus:outline-none focus:ring-2 focus:ring-action rounded transition-colors"
                         aria-label="Consulter notre page Instagram (s'ouvre dans une nouvelle fenêtre)"
                     >
                         Instagram ↗
@@ -108,7 +118,7 @@ const currentYear = new Date().getFullYear();
                         href="https://www.facebook.com/share/1AvtdFzeJW/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="text-zinc-300 hover:text-white underline underline-offset-4 focus:outline-none focus:ring-2 focus:ring-white rounded transition-colors"
+                        class="text-obt-muted hover:text-action underline underline-offset-4 focus:outline-none focus:ring-2 focus:ring-action rounded transition-colors"
                         aria-label="Consulter notre page Facebook (s'ouvre dans une nouvelle fenêtre)"
                     >
                         Facebook ↗
@@ -116,36 +126,57 @@ const currentYear = new Date().getFullYear();
                 </div>
             </div>
 
-            <div class="pt-3 border-t border-white/10">
+            <!-- Navigation rapide corrigée et alignée sur les vraies routes -->
+            <div class="pt-3 border-t border-obt-muted/15">
                 <ul
-                    class="flex flex-wrap gap-x-3 gap-y-1 text-xs text-zinc-300"
+                    class="flex flex-wrap gap-x-3 gap-y-1.5 text-xs text-obt-muted font-medium"
                 >
                     <li>
                         <a
-                            href="/events"
-                            class="hover:text-white underline focus:outline-none focus:ring-1 focus:ring-white rounded"
-                            >Agenda</a>
+                            href="/association"
+                            class="hover:text-action underline focus:outline-none focus:ring-1 focus:ring-action rounded"
+                            >L'Association</a
+                        >
                     </li>
                     <li aria-hidden="true">•</li>
                     <li>
                         <a
-                            href="/location-salle"
-                            class="hover:text-white underline focus:outline-none focus:ring-1 focus:ring-white rounded"
-                            >Location</a>
+                            href="/le-cafe"
+                            class="hover:text-action underline focus:outline-none focus:ring-1 focus:ring-action rounded"
+                            >Le Café</a
+                        >
+                    </li>
+                    <li aria-hidden="true">•</li>
+                    <li>
+                        <a
+                            href="/le-cafe/location-salle"
+                            class="hover:text-action underline focus:outline-none focus:ring-1 focus:ring-action rounded"
+                            >Location</a
+                        >
+                    </li>
+                    <li aria-hidden="true">•</li>
+                    <li>
+                        <a
+                            href="/events"
+                            class="hover:text-action underline focus:outline-none focus:ring-1 focus:ring-action rounded"
+                            >Agenda</a
+                        >
                     </li>
                     <li aria-hidden="true">•</li>
                     <li>
                         <a
                             href="/blog"
-                            class="hover:text-white underline focus:outline-none focus:ring-1 focus:ring-white rounded"
-                            >Blog</a>
+                            class="hover:text-action underline focus:outline-none focus:ring-1 focus:ring-action rounded"
+                            >Blog</a
+                        >
                     </li>
                     <li aria-hidden="true">•</li>
                     <li>
                         <a
                             href="/contact"
-                            class="hover:text-white underline focus:outline-none focus:ring-1 focus:ring-white rounded"
-                            >Contact</a>
+                            class="hover:text-action underline focus:outline-none focus:ring-1 focus:ring-action rounded"
+                            >Contact</a
+                        >
                     </li>
                 </ul>
             </div>
@@ -154,7 +185,7 @@ const currentYear = new Date().getFullYear();
 
     <!-- Bas de page : Copyright, Mentions Légales & Crédits -->
     <div
-        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between text-xs text-zinc-300 gap-4 text-center md:text-left"
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 border-t border-obt-muted/15 flex flex-col md:flex-row items-center justify-between text-xs text-obt-muted gap-4 text-center md:text-left relative z-10"
     >
         <div
             class="flex flex-wrap items-center justify-center md:justify-start gap-x-3 gap-y-1"
@@ -165,27 +196,27 @@ const currentYear = new Date().getFullYear();
             <span aria-hidden="true">•</span>
             <a
                 href="/mentions-legales"
-                class="hover:text-white underline focus:outline-none focus:ring-1 focus:ring-white rounded"
+                class="hover:text-action underline focus:outline-none focus:ring-1 focus:ring-action rounded"
             >
                 Mentions Légales
             </a>
             <span aria-hidden="true">•</span>
             <a
                 href="/politique-de-confidentialite"
-                class="hover:text-white underline focus:outline-none focus:ring-1 focus:ring-white rounded"
+                class="hover:text-action underline focus:outline-none focus:ring-1 focus:ring-action rounded"
             >
                 Politique de Confidentialité
             </a>
         </div>
 
         <p class="flex items-center justify-center gap-1">
-            Fait avec <span class="text-red-400" aria-label="amour">❤️</span> par
+            Fait avec <span class="text-red-500" aria-label="amour">❤️</span> par
             Khaoula et
             <a
                 href="https://www.loicpoosing.fr/"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="text-white font-semibold hover:underline underline-offset-2 focus:outline-none focus:ring-1 focus:ring-white rounded"
+                class="text-obt-dark font-semibold hover:text-action underline underline-offset-2 focus:outline-none focus:ring-1 focus:ring-action rounded"
             >
                 Loïc Poo-Sing
             </a>
