@@ -9,8 +9,10 @@ interface Props {
 const { limit = 3 } = Astro.props;
 
 const allPosts = await getCollection("blog");
-const recentPosts = allPosts
-    .filter((p) => !p.data.draft)
+
+// Filtration sécurisée : vérifie que p et p.data existent bien
+const recentPosts = (allPosts || [])
+    .filter((p) => p && p.data && !p.data.draft)
     .sort(
         (a, b) =>
             new Date(b.data.publishDate).getTime() -
@@ -23,7 +25,7 @@ const recentPosts = allPosts
     recentPosts.length > 0 && (
         <section class="py-24 bg-white border-b border-obt-muted/10">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-                <!-- En-tête de section unifié -->
+                <!-- En-tête de section -->
                 <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6">
                     <div class="space-y-3">
                         <span class="inline-block px-3.5 py-1.5 rounded-full bg-[var(--color-blog-light)] text-[var(--color-blog-text)] font-extrabold text-xs tracking-wider uppercase border border-[var(--color-blog)]/20">
@@ -47,7 +49,7 @@ const recentPosts = allPosts
                     </div>
                 </div>
 
-                <!-- Grille d'articles style Magazine -->
+                <!-- Grille d'articles -->
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {recentPosts.map((post) => {
                         const formattedDate = new Date(
@@ -58,19 +60,29 @@ const recentPosts = allPosts
                             year: "numeric",
                         });
 
+                        const isAstroImage = typeof post.data.image !== "string";
+
                         return (
                             <article class="group bg-white rounded-3xl border border-obt-muted/15 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between relative">
                                 <div class="space-y-5">
-                                    <!-- Container Image / Illustration -->
+                                    <!-- Image / Illustration -->
                                     <div class="relative h-48 w-full overflow-hidden bg-[var(--color-blog-light)] flex items-center justify-center">
                                         {post.data.image ? (
-                                            <Image
-                                                src={post.data.image}
-                                                alt={post.data.title}
-                                                width={600}
-                                                height={400}
-                                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
-                                            />
+                                            isAstroImage ? (
+                                                <Image
+                                                    src={post.data.image}
+                                                    alt={post.data.title}
+                                                    width={600}
+                                                    height={400}
+                                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                                                />
+                                            ) : (
+                                                <img
+                                                    src={post.data.image}
+                                                    alt={post.data.title}
+                                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                                                />
+                                            )
                                         ) : (
                                             <div class="p-8 text-center space-y-2">
                                                 <span class="text-3xl">📝</span>
@@ -80,7 +92,6 @@ const recentPosts = allPosts
                                             </div>
                                         )}
                                         
-                                        <!-- Categorie Badge sur l'image -->
                                         {post.data.category && (
                                             <span class="absolute top-4 left-4 px-3 py-1 bg-white/90 backdrop-blur-md rounded-full text-[10px] font-extrabold uppercase tracking-wider text-[var(--color-blog-text)] border border-obt-muted/10 shadow-sm">
                                                 {post.data.category}

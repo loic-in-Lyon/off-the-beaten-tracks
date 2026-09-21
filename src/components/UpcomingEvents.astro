@@ -17,10 +17,19 @@ const {
 } = Astro.props;
 
 const allEvents = await getCollection("events");
-const now = new Date();
+
+// Début de la journée actuelle (00:00:00) pour ne pas masquer les événements du jour même
+const today = new Date();
+today.setHours(0, 0, 0, 0);
 
 let upcomingEvents = allEvents
-    .filter((e) => new Date(e.data.date) >= now)
+    .filter((e) => {
+        // On affiche l'événement si :
+        // 1. C'est un atelier/événement récurrent (isRecurring)
+        // 2. OU sa date est supérieure ou égale à aujourd'hui
+        const eventDate = new Date(e.data.date);
+        return e.data.isRecurring || eventDate >= today;
+    })
     .sort(
         (a, b) =>
             new Date(a.data.date).getTime() - new Date(b.data.date).getTime(),
