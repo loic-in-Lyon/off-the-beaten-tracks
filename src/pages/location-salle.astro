@@ -37,8 +37,6 @@ const serviceJsonLd = {
         slot="head"
     />
 
-    <Header slot="header" />
-
     <!-- Fil d'Ariane -->
     <nav
         aria-label="Fil d'ariane"
@@ -70,15 +68,14 @@ const serviceJsonLd = {
             </ol>
         </div>
     </nav>
-
-    <!-- Hero Section -->
-    <section class="py-16 md:py-24 bg-obt-light">
+    <!-- Hero Section Location de Salle -->
+    <section class="py-12 md:py-20 bg-cafe-light border-b border-cafe/20">
         <div
             class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
         >
             <div class="space-y-6">
                 <span
-                    class="inline-block px-4 py-1.5 rounded-full bg-cafe-light text-cafe-text font-bold text-xs tracking-wide uppercase border border-cafe/25"
+                    class="inline-block px-4 py-1.5 rounded-full bg-cafe-text text-white font-extrabold text-xs tracking-wider uppercase shadow-sm"
                 >
                     ☕ Privatisation de l'OBT Café
                 </span>
@@ -95,17 +92,17 @@ const serviceJsonLd = {
                     tiers-lieu modulable de 80m² au cœur de Lyon s'adapte à tous
                     vos projets.
                 </p>
-                <div>
+                <div class="pt-2">
                     <a
                         href="#tarifs"
-                        class="px-6 py-3 rounded-full bg-cafe-text text-white font-semibold text-xs hover:opacity-95 transition-all shadow-[0_4px_14px_rgba(168,83,56,0.2)]"
+                        class="inline-block px-6 py-3 rounded-full bg-cafe-text text-white font-bold text-xs hover:opacity-90 transition-all shadow-sm"
                     >
                         Découvrir nos formules et tarifs
                     </a>
                 </div>
             </div>
             <div
-                class="rounded-3xl overflow-hidden shadow-[0_12px_32px_rgba(0,0,0,0.06)] border border-obt-border"
+                class="rounded-3xl overflow-hidden shadow-sm border border-cafe/20"
             >
                 <Image
                     src={salleObt}
@@ -464,6 +461,4 @@ const serviceJsonLd = {
             </div>
         </div>
     </section>
-
-    <Footer slot="footer" />
 </Layout>

@@ -86,8 +86,6 @@ const breadcrumbJsonLd = {
         slot="head"
     />
 
-    <Header slot="header" />
-
     <!-- Fil d'Ariane -->
     <nav
         aria-label="Fil d'ariane"
@@ -112,14 +110,14 @@ const breadcrumbJsonLd = {
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="py-16 md:py-24 bg-obt-light">
+    <!-- Hero Section Le Café -->
+    <section class="py-12 md:py-20 bg-cafe-light border-b border-cafe/20">
         <div
             class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
         >
             <div class="space-y-6">
                 <span
-                    class="inline-block px-4 py-1.5 rounded-full bg-cafe-light text-cafe-text font-bold text-xs tracking-wide uppercase border border-cafe/25"
+                    class="inline-block px-4 py-1.5 rounded-full bg-cafe-text text-white font-extrabold text-xs tracking-wider uppercase shadow-sm"
                 >
                     ☕ Maison de l'Hospitalité • Lyon 3e
                 </span>
@@ -138,20 +136,20 @@ const breadcrumbJsonLd = {
                 <div class="flex flex-wrap gap-4 pt-2">
                     <a
                         href="#infos-pratiques"
-                        class="px-6 py-3 rounded-full bg-cafe-text text-white font-semibold text-xs hover:opacity-95 transition-all shadow-[0_4px_14px_rgba(130,50,24,0.2)]"
+                        class="px-6 py-3 rounded-full bg-cafe-text text-white font-bold text-xs hover:opacity-90 transition-all shadow-sm"
                     >
                         Horaires & Accès
                     </a>
                     <a
                         href="#location-salle"
-                        class="px-6 py-3 rounded-full border-2 border-cafe/40 text-cafe-text font-semibold text-xs hover:bg-cafe-light transition-all"
+                        class="px-6 py-3 rounded-full bg-white text-cafe-text font-bold text-xs hover:bg-white/80 transition-all border border-cafe/30"
                     >
                         Location de salle
                     </a>
                 </div>
             </div>
             <div
-                class="rounded-3xl overflow-hidden shadow-[0_12px_32px_rgba(0,0,0,0.06)] border border-obt-border"
+                class="rounded-3xl overflow-hidden shadow-sm border border-cafe/20"
             >
                 <Image
                     src={salleObt}
@@ -368,6 +366,4 @@ const breadcrumbJsonLd = {
             </div>
         </div>
     </section>
-
-    <Footer slot="footer" />
 </Layout>
