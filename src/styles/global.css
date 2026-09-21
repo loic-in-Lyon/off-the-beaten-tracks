@@ -8,33 +8,43 @@
 
   /* Base Soft & Neutral */
   --color-obt-dark: #3D2A1D;
-    --color-obt-light: #FAF8F5;        
-  --color-obt-card: #FFFFFF;         
-  --color-obt-muted: #4A4641;        
+  --color-obt-light: #FAF8F5;
+  --color-obt-card: #FFFFFF;
+  --color-obt-muted: #4A4641;
   --color-obt-border: rgba(43, 49, 46, 0.07);
 
   /* --- COULEURS CONTEXTUELLES (Color Hinting Pastel Doux) --- */
 
   /* ☕ 1. LE CAFÉ -> Terracotta pastel chaleureux et feutré (Contraste ~4.8:1 validé WCAG AA) */
   --color-cafe: #D97757;
-  --color-cafe-text: #A85338;        /* Plus doux, on évite le marron trop lourd de tout à l'heure */
+  --color-cafe-text: #A85338;
+  /* Plus doux, on évite le marron trop lourd de tout à l'heure */
   --color-cafe-light: #FBF0EB;
 
   /* 🤝 2. L'ASSOCIATION & BÉNÉVOLAT -> Vert Sauge */
 
-  --color-asso: #34786A;       /* Vert sauge principal (Boutons + Texte blanc) - Ratio: 4.53:1 */
-  --color-asso-text: #26584E;  /* Vert sauge sombre (Titres & textes sur fond asso-light) - Ratio: 7.28:1 */
-  --color-asso-light: #EEF6F4; /* Vert sauge pastel très clair (Fond de bloc / Badges) */
+  --color-asso: #34786A;
+  /* Vert sauge principal (Boutons + Texte blanc) - Ratio: 4.53:1 */
+  --color-asso-text: #26584E;
+  /* Vert sauge sombre (Titres & textes sur fond asso-light) - Ratio: 7.28:1 */
+  --color-asso-light: #EEF6F4;
+  /* Vert sauge pastel très clair (Fond de bloc / Badges) */
 
-/* 📅 3. ÉVÉNEMENTS -> Jaune Pastel / Moutarde & Brun Chaleureux */
---color-event: #F3C148;         /* Jaune moutarde / pastel lumineux */
---color-event-text: #543810;    /* Brun terre / chocolat profond */
---color-event-light: #FDF8ED;   /* Fond crème / beurre doux */
+  /* 📅 3. ÉVÉNEMENTS -> Jaune Pastel / Moutarde & Brun Chaleureux */
+  --color-event: #F3C148;
+  /* Jaune moutarde / pastel lumineux */
+  --color-event-text: #543810;
+  /* Brun terre / chocolat profond */
+  --color-event-light: #FDF8ED;
+  /* Fond crème / beurre doux */
 
- /* 📝 4. BLOG -> Violet / Prune Pastel & Texte Lisible */
---color-blog: #D8B4FE;         /* Violet/Lavande pastel lumineux (Purple-300) */
---color-blog-text: #4C1D95;    /* Violet très sombre / Prune profond (Purple-900) */
---color-blog-light: #F8F5FF;   /* Fond crème/lavande ultra doux */
+  /* 📝 4. BLOG -> Violet / Prune Pastel & Texte Lisible */
+  --color-blog: #D8B4FE;
+  /* Violet/Lavande pastel lumineux (Purple-300) */
+  --color-blog-text: #4C1D95;
+  /* Violet très sombre / Prune profond (Purple-900) */
+  --color-blog-light: #F8F5FF;
+  /* Fond crème/lavande ultra doux */
 
   /* Couleur par défaut */
   --color-obt-primary: var(--color-asso);
@@ -49,7 +59,9 @@
     color: var(--color-obt-dark);
   }
 
-  h1, h2, .font-serif {
+  h1,
+  h2,
+  .font-serif {
     font-family: var(--font-serif);
   }
 }
