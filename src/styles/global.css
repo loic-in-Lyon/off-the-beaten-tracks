@@ -1,21 +1,54 @@
 @import "tailwindcss";
-
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 
 @theme {
-  --color-obt-dark: #1A1A1A;
-  --color-obt-light: #FDFBF7;
-  --color-obt-primary: #C85A32;
-  --color-obt-secondary: #3B5249;
-  --color-obt-accent: #E9B44C;
-  --color-obt-muted: #8C857B;
+  /* Typographies */
+  --font-serif: 'Lora', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+
+  /* Base Soft & Neutral */
+  --color-obt-dark: #2B312E;         /* Anthracite chaud */
+  --color-obt-light: #FAF8F5;        /* Fond crème / ivoire ultra doux */
+  --color-obt-card: #FFFFFF;         /* Blanc pur pour les cartes */
+  --color-obt-muted: #4A4641;        /* Texte secondaire (WCAG AA ok) */
+  --color-obt-border: rgba(43, 49, 46, 0.07);
+
+  /* --- COULEURS CONTEXTUELLES (Color Hinting) --- */
+
+  /* ☕ 1. LE CAFÉ (Présentation / Location) -> Terracotta / Pêche pastel */
+  --color-cafe: #D97757;
+  --color-cafe-text: #AA4727;
+  --color-cafe-light: #FBF0EB;
+
+  /* 🤝 2. L'ASSOCIATION & BÉNÉVOLAT -> Vert Sauge / Lagon pastel */
+  --color-asso: #589A90;
+  --color-asso-text: #2E6A61;
+  --color-asso-light: #EBF4F3;
+
+  /* 📅 3. ÉVÉNEMENTS -> Jaune Ocre / Miel pastel */
+  --color-event: #E2AD5A;
+  --color-event-text: #A67222;
+  --color-event-light: #FDF6EB;
+
+  /* 📝 4. BLOG & ACTUALITÉS -> Bleu Hortensia / Pastel */
+  --color-blog: #6B8CB2;
+  --color-blog-text: #37597E;
+  --color-blog-light: #EEF3F8;
+
+  /* Couleur par défaut (CTA génériques) */
+  --color-obt-primary: var(--color-asso);
+  --color-obt-primary-hover: var(--color-asso-text);
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: var(--font-sans);
     background-color: var(--color-obt-light);
     color: var(--color-obt-dark);
   }
-}
 
+  h1, h2, .font-serif {
+    font-family: var(--font-serif);
+  }
+}
