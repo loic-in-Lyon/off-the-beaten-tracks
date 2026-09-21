@@ -56,435 +56,452 @@ const faq = [
 ---
 
 <Layout title="Nous rejoindre & Devenir bénévole - OBT Café Lyon">
-    <main class="bg-obt-light min-h-screen py-12 md:py-16">
-        <!-- Hero Section avec Illustration High Five + Touche Logo -->
-        <section
-            class="py-12 md:py-20 bg-[var(--color-asso-light)] border-b border-[var(--color-asso)]/20 mb-16"
+    <!-- Fil d'Ariane SEO -->
+    <nav
+        aria-label="Fil d'ariane"
+        class="bg-obt-secondary/5 py-3 border-obt-primary/20"
+    >
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-sm text-obt-muted"
         >
-            <div
-                class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
-            >
-                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-                    <div
-                        class="flex items-center justify-center lg:justify-start gap-3"
+            <ol class="flex items-center space-x-2">
+                <li>
+                    <a href="/" class="hover:text-obt-primary transition-colors"
+                        >Accueil</a
                     >
-                        <Image
-                            src={logoSvg}
-                            alt="OBT Logo"
-                            class="w-8 h-8 opacity-80"
-                        />
-                        <span
-                            class="inline-block px-4 py-1.5 rounded-full bg-[var(--color-asso)] text-white font-extrabold text-xs uppercase tracking-widest shadow-sm"
-                        >
-                            Vie associative & Bénévolat
-                        </span>
-                    </div>
-
-                    <h1
-                        class="text-3xl md:text-5xl font-extrabold text-obt-dark leading-tight font-serif"
+                </li>
+                <li class="flex items-center space-x-2">
+                    <span class="text-obt-muted/40">/</span>
+                    <a
+                        href="/association"
+                        class="hover:text-obt-primary transition-colors"
+                        >L'Association</a
                     >
-                        Rejoignez l'aventure <span
-                            class="text-[var(--color-asso-text)]">OBT Café</span
-                        >
-                    </h1>
-                    <p
-                        class="text-base md:text-lg text-obt-muted leading-relaxed max-w-2xl mx-auto lg:mx-0"
+                </li>
+                <li class="flex items-center space-x-2">
+                    <span class="text-obt-muted/40">/</span>
+                    <span class="text-obt-dark font-medium" aria-current="page"
+                        >Nous Rejoindre</span
                     >
-                        Que vous ayez 2 heures par mois ou un projet culturel à
-                        partager, votre énergie est la bienvenue ! Participez à
-                        faire vivre un tiers-lieu solidaire et interculturel à
-                        Lyon 3.
-                    </p>
-                </div>
-
-                <div class="lg:col-span-5 flex justify-center">
+                </li>
+            </ol>
+        </div>
+    </nav>
+    <!-- Hero Section avec Illustration High Five + Touche Logo -->
+    <section
+        class="py-12 md:py-20 bg-[var(--color-asso-light)] border-b border-[var(--color-asso)]/20 mb-16"
+    >
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
+        >
+            <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                <div
+                    class="flex items-center justify-center lg:justify-start gap-3"
+                >
                     <Image
-                        src={highFiveIllustration}
-                        alt="Équipe bénévole qui se réjouit"
-                        class="w-full max-w-md h-auto object-contain hover:scale-105 transition-transform duration-300"
+                        src={logoSvg}
+                        alt="OBT Logo"
+                        class="w-8 h-8 opacity-80"
                     />
+                    <span
+                        class="inline-block px-4 py-1.5 rounded-full bg-[var(--color-asso)] text-white font-extrabold text-xs uppercase tracking-widest shadow-sm"
+                    >
+                        Vie associative & Bénévolat
+                    </span>
                 </div>
-            </div>
-        </section>
 
-        <!-- Section : Missions / Domaines d'engagement -->
-        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
+                <h1
+                    class="text-3xl md:text-5xl font-extrabold text-obt-dark leading-tight font-serif"
+                >
+                    Rejoignez l'aventure <span
+                        class="text-[var(--color-asso-text)]">OBT Café</span
+                    >
+                </h1>
+                <p
+                    class="text-base md:text-lg text-obt-muted leading-relaxed max-w-2xl mx-auto lg:mx-0"
+                >
+                    Que vous ayez 2 heures par mois ou un projet culturel à
+                    partager, votre énergie est la bienvenue ! Participez à
+                    faire vivre un tiers-lieu solidaire et interculturel à Lyon
+                    3.
+                </p>
+            </div>
+
+            <div class="lg:col-span-5 flex justify-center">
+                <Image
+                    src={highFiveIllustration}
+                    alt="Équipe bénévole qui se réjouit"
+                    class="w-full max-w-md h-auto object-contain hover:scale-105 transition-transform duration-300"
+                />
+            </div>
+        </div>
+    </section>
+
+    <!-- Section : Missions / Domaines d'engagement -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
+        <div class="text-center mb-12">
+            <h2 class="text-2xl md:text-3xl font-bold text-obt-dark font-serif">
+                Comment pouvez-vous contribuer ?
+            </h2>
+            <p class="text-sm text-obt-muted mt-2">
+                Choisissez le domaine qui vous ressemble le plus
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {
+                missions.map((mission) => (
+                    <div class="bg-white p-6 rounded-3xl border border-obt-muted/15 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+                        <div class="space-y-4">
+                            <div class="text-4xl p-3 bg-obt-light w-fit rounded-2xl">
+                                {mission.icon}
+                            </div>
+                            <h3 class="text-lg font-bold text-obt-dark">
+                                {mission.title}
+                            </h3>
+                            <p class="text-xs text-obt-dark/70 leading-relaxed">
+                                {mission.description}
+                            </p>
+                        </div>
+                        <div class="pt-6 mt-4 border-t border-obt-muted/10">
+                            <span class="text-[11px] font-semibold text-obt-primary bg-obt-primary/5 px-3 py-1 rounded-full">
+                                {mission.tag}
+                            </span>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </section>
+
+    <!-- Section : Les 4 étapes -->
+    <section class="bg-white py-16 border-y border-obt-muted/15 mb-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <h2
                     class="text-2xl md:text-3xl font-bold text-obt-dark font-serif"
                 >
-                    Comment pouvez-vous contribuer ?
+                    Comment ça se passe ?
                 </h2>
                 <p class="text-sm text-obt-muted mt-2">
-                    Choisissez le domaine qui vous ressemble le plus
+                    Un parcours simple et convivial pour démarrer
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                {
-                    missions.map((mission) => (
-                        <div class="bg-white p-6 rounded-3xl border border-obt-muted/15 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
-                            <div class="space-y-4">
-                                <div class="text-4xl p-3 bg-obt-light w-fit rounded-2xl">
-                                    {mission.icon}
-                                </div>
-                                <h3 class="text-lg font-bold text-obt-dark">
-                                    {mission.title}
-                                </h3>
-                                <p class="text-xs text-obt-dark/70 leading-relaxed">
-                                    {mission.description}
-                                </p>
-                            </div>
-                            <div class="pt-6 mt-4 border-t border-obt-muted/10">
-                                <span class="text-[11px] font-semibold text-obt-primary bg-obt-primary/5 px-3 py-1 rounded-full">
-                                    {mission.tag}
-                                </span>
-                            </div>
-                        </div>
-                    ))
-                }
-            </div>
-        </section>
-
-        <!-- Section : Les 4 étapes -->
-        <section class="bg-white py-16 border-y border-obt-muted/15 mb-16">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12">
-                    <h2
-                        class="text-2xl md:text-3xl font-bold text-obt-dark font-serif"
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="space-y-3 relative">
+                    <span
+                        class="w-10 h-10 rounded-full bg-obt-primary text-white font-extrabold flex items-center justify-center text-base"
                     >
-                        Comment ça se passe ?
-                    </h2>
-                    <p class="text-sm text-obt-muted mt-2">
-                        Un parcours simple et convivial pour démarrer
+                        1
+                    </span>
+                    <h3 class="font-bold text-obt-dark">
+                        Remplissez le formulaire
+                    </h3>
+                    <p class="text-xs text-obt-muted leading-relaxed">
+                        Indiquez-nous vos envies, disponibilités et compétences
+                        ci-dessous.
                     </p>
                 </div>
-
-                <div
-                    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
-                >
-                    <div class="space-y-3 relative">
-                        <span
-                            class="w-10 h-10 rounded-full bg-obt-primary text-white font-extrabold flex items-center justify-center text-base"
-                        >
-                            1
-                        </span>
-                        <h3 class="font-bold text-obt-dark">
-                            Remplissez le formulaire
-                        </h3>
-                        <p class="text-xs text-obt-muted leading-relaxed">
-                            Indiquez-nous vos envies, disponibilités et
-                            compétences ci-dessous.
-                        </p>
-                    </div>
-                    <div class="space-y-3 relative">
-                        <span
-                            class="w-10 h-10 rounded-full bg-obt-primary text-white font-extrabold flex items-center justify-center text-base"
-                        >
-                            2
-                        </span>
-                        <h3 class="font-bold text-obt-dark">
-                            Rencontre au Café
-                        </h3>
-                        <p class="text-xs text-obt-muted leading-relaxed">
-                            On se rencontre autour d'une boisson chaude pour
-                            faire connaissance sans pression.
-                        </p>
-                    </div>
-                    <div class="space-y-3 relative">
-                        <span
-                            class="w-10 h-10 rounded-full bg-obt-primary text-white font-extrabold flex items-center justify-center text-base"
-                        >
-                            3
-                        </span>
-                        <h3 class="font-bold text-obt-dark">
-                            Premier créneau en binôme
-                        </h3>
-                        <p class="text-xs text-obt-muted leading-relaxed">
-                            Vous êtes accompagné.e par un.e bénévole habitué.e
-                            pour découvrir le lieu.
-                        </p>
-                    </div>
-                    <div class="space-y-3 relative">
-                        <span
-                            class="w-10 h-10 rounded-full bg-obt-primary text-white font-extrabold flex items-center justify-center text-base"
-                        >
-                            4
-                        </span>
-                        <h3 class="font-bold text-obt-dark">
-                            Bienvenue dans l'équipe !
-                        </h3>
-                        <p class="text-xs text-obt-muted leading-relaxed">
-                            Vous rejoignez le groupe bénévoles et vous vous
-                            inscrivez selon votre emploi du temps.
-                        </p>
-                    </div>
+                <div class="space-y-3 relative">
+                    <span
+                        class="w-10 h-10 rounded-full bg-obt-primary text-white font-extrabold flex items-center justify-center text-base"
+                    >
+                        2
+                    </span>
+                    <h3 class="font-bold text-obt-dark">Rencontre au Café</h3>
+                    <p class="text-xs text-obt-muted leading-relaxed">
+                        On se rencontre autour d'une boisson chaude pour faire
+                        connaissance sans pression.
+                    </p>
+                </div>
+                <div class="space-y-3 relative">
+                    <span
+                        class="w-10 h-10 rounded-full bg-obt-primary text-white font-extrabold flex items-center justify-center text-base"
+                    >
+                        3
+                    </span>
+                    <h3 class="font-bold text-obt-dark">
+                        Premier créneau en binôme
+                    </h3>
+                    <p class="text-xs text-obt-muted leading-relaxed">
+                        Vous êtes accompagné.e par un.e bénévole habitué.e pour
+                        découvrir le lieu.
+                    </p>
+                </div>
+                <div class="space-y-3 relative">
+                    <span
+                        class="w-10 h-10 rounded-full bg-obt-primary text-white font-extrabold flex items-center justify-center text-base"
+                    >
+                        4
+                    </span>
+                    <h3 class="font-bold text-obt-dark">
+                        Bienvenue dans l'équipe !
+                    </h3>
+                    <p class="text-xs text-obt-muted leading-relaxed">
+                        Vous rejoignez le groupe bénévoles et vous vous
+                        inscrivez selon votre emploi du temps.
+                    </p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Section : Galerie Ambiance Bénévole (Photos réelles) -->
-        <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div
-                    class="relative group rounded-3xl overflow-hidden shadow-sm border border-obt-muted/15 h-64 sm:h-72"
-                >
-                    <Image
-                        src={barPhoto}
-                        alt="Moment de convivialité au bar"
-                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div
-                        class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent flex items-end p-6"
-                    >
-                        <p class="text-white text-xs font-semibold">
-                            ☕ L'accueil et le service au comptoir
-                        </p>
-                    </div>
-                </div>
-
-                <div
-                    class="relative group rounded-3xl overflow-hidden shadow-sm border border-obt-muted/15 h-64 sm:h-72"
-                >
-                    <Image
-                        src={coursDansePhoto}
-                        alt="Atelier et animation de danse au café"
-                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div
-                        class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent flex items-end p-6"
-                    >
-                        <p class="text-white text-xs font-semibold">
-                            💃 Cours, ateliers et activités animés ensemble
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section : Formulaire de candidature -->
-        <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
+    <!-- Section : Galerie Ambiance Bénévole (Photos réelles) -->
+    <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div
-                class="bg-white p-8 md:p-12 rounded-3xl border border-obt-muted/20 shadow-md"
+                class="relative group rounded-3xl overflow-hidden shadow-sm border border-obt-muted/15 h-64 sm:h-72"
             >
-                <div class="text-center mb-8 space-y-2">
-                    <h2 class="text-2xl font-bold text-obt-dark font-serif">
-                        Formulaire de bénévolat
-                    </h2>
-                    <p class="text-xs text-obt-muted">
-                        Remplissez ce petit questionnaire, nous vous
-                        recontacterons très vite !
+                <Image
+                    src={barPhoto}
+                    alt="Moment de convivialité au bar"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div
+                    class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent flex items-end p-6"
+                >
+                    <p class="text-white text-xs font-semibold">
+                        ☕ L'accueil et le service au comptoir
                     </p>
                 </div>
-
-                <form class="space-y-6">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                            <label
-                                for="firstname"
-                                class="block text-xs font-bold uppercase tracking-wider text-obt-dark mb-2"
-                                >Prénom *</label
-                            >
-                            <input
-                                type="text"
-                                id="firstname"
-                                name="firstname"
-                                required
-                                placeholder="Votre prénom"
-                                class="w-full px-4 py-3 rounded-xl bg-obt-light border border-obt-muted/20 text-sm text-obt-dark focus:outline-none focus:ring-2 focus:ring-obt-primary"
-                            />
-                        </div>
-                        <div>
-                            <label
-                                for="lastname"
-                                class="block text-xs font-bold uppercase tracking-wider text-obt-dark mb-2"
-                                >Nom *</label
-                            >
-                            <input
-                                type="text"
-                                id="lastname"
-                                name="lastname"
-                                required
-                                placeholder="Votre nom"
-                                class="w-full px-4 py-3 rounded-xl bg-obt-light border border-obt-muted/20 text-sm text-obt-dark focus:outline-none focus:ring-2 focus:ring-obt-primary"
-                            />
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                            <label
-                                for="email"
-                                class="block text-xs font-bold uppercase tracking-wider text-obt-dark mb-2"
-                                >Email *</label
-                            >
-                            <input
-                                type="email"
-                                id="email"
-                                name="email"
-                                required
-                                placeholder="votre.email@exemple.fr"
-                                class="w-full px-4 py-3 rounded-xl bg-obt-light border border-obt-muted/20 text-sm text-obt-dark focus:outline-none focus:ring-2 focus:ring-obt-primary"
-                            />
-                        </div>
-                        <div>
-                            <label
-                                for="phone"
-                                class="block text-xs font-bold uppercase tracking-wider text-obt-dark mb-2"
-                                >Téléphone</label
-                            >
-                            <input
-                                type="tel"
-                                id="phone"
-                                name="phone"
-                                placeholder="06 00 00 00 00"
-                                class="w-full px-4 py-3 rounded-xl bg-obt-light border border-obt-muted/20 text-sm text-obt-dark focus:outline-none focus:ring-2 focus:ring-obt-primary"
-                            />
-                        </div>
-                    </div>
-
-                    <div>
-                        <label
-                            class="block text-xs font-bold uppercase tracking-wider text-obt-dark mb-2"
-                        >
-                            Ce qui vous intéresse :
-                        </label>
-                        <div
-                            class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-obt-dark"
-                        >
-                            <label
-                                class="flex items-center gap-2 p-3 rounded-xl border border-obt-muted/20 hover:bg-obt-light cursor-pointer"
-                            >
-                                <input
-                                    type="checkbox"
-                                    name="interest"
-                                    value="bar"
-                                    class="rounded text-obt-primary focus:ring-obt-primary"
-                                />
-                                <span>Accueil & Tenue du bar</span>
-                            </label>
-                            <label
-                                class="flex items-center gap-2 p-3 rounded-xl border border-obt-muted/20 hover:bg-obt-light cursor-pointer"
-                            >
-                                <input
-                                    type="checkbox"
-                                    name="interest"
-                                    value="animation"
-                                    class="rounded text-obt-primary focus:ring-obt-primary"
-                                />
-                                <span>Animation d'ateliers / Événements</span>
-                            </label>
-                            <label
-                                class="flex items-center gap-2 p-3 rounded-xl border border-obt-muted/20 hover:bg-obt-light cursor-pointer"
-                            >
-                                <input
-                                    type="checkbox"
-                                    name="interest"
-                                    value="communication"
-                                    class="rounded text-obt-primary focus:ring-obt-primary"
-                                />
-                                <span>Communication / Réseaux sociaux</span>
-                            </label>
-                            <label
-                                class="flex items-center gap-2 p-3 rounded-xl border border-obt-muted/20 hover:bg-obt-light cursor-pointer"
-                            >
-                                <input
-                                    type="checkbox"
-                                    name="interest"
-                                    value="logistique"
-                                    class="rounded text-obt-primary focus:ring-obt-primary"
-                                />
-                                <span>Bricolage / Logistique / Projets</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <div>
-                        <label
-                            for="message"
-                            class="block text-xs font-bold uppercase tracking-wider text-obt-dark mb-2"
-                            >Quelques mots sur vous / vos motivations</label
-                        >
-                        <textarea
-                            id="message"
-                            name="message"
-                            rows="4"
-                            placeholder="Dites-nous ce qui vous amène au café, vos disponibilités ou vos idées..."
-                            class="w-full px-4 py-3 rounded-xl bg-obt-light border border-obt-muted/20 text-sm text-obt-dark focus:outline-none focus:ring-2 focus:ring-obt-primary"
-                        ></textarea>
-                    </div>
-
-                    <button
-                        type="submit"
-                        class="w-full py-4 rounded-full bg-obt-primary text-white font-bold text-sm hover:bg-obt-primary/90 shadow-md transition-all"
-                    >
-                        Envoyer ma candidature 🚀
-                    </button>
-                </form>
-            </div>
-        </section>
-
-        <!-- Section : FAQ -->
-        <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
-            <div class="text-center mb-10">
-                <h2 class="text-2xl font-bold text-obt-dark font-serif">
-                    Foire aux questions
-                </h2>
             </div>
 
-            <div class="space-y-4">
-                {
-                    faq.map((item) => (
-                        <div class="bg-white p-6 rounded-2xl border border-obt-muted/15 space-y-2">
-                            <h3 class="font-bold text-sm text-obt-dark">
-                                ❓ {item.q}
-                            </h3>
-                            <p class="text-xs text-obt-muted leading-relaxed">
-                                {item.a}
-                            </p>
-                        </div>
-                    ))
-                }
-            </div>
-        </section>
-
-        <!-- Section : Maillage Interne / Call To Action Final -->
-        <section
-            class="py-12 bg-white border-t border-obt-muted/10 text-center"
-        >
-            <div class="max-w-3xl mx-auto px-4 space-y-6">
-                <h2
-                    class="text-2xl sm:text-3xl font-bold text-obt-dark font-serif"
-                >
-                    Envie de découvrir le lieu avant de vous engager ?
-                </h2>
-                <p class="text-obt-muted text-sm sm:text-base">
-                    Passez nous rendre visite au 236 cours Lafayette ou venez
-                    participer à nos prochains événements.
-                </p>
+            <div
+                class="relative group rounded-3xl overflow-hidden shadow-sm border border-obt-muted/15 h-64 sm:h-72"
+            >
+                <Image
+                    src={coursDansePhoto}
+                    alt="Atelier et animation de danse au café"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
                 <div
-                    class="flex flex-wrap justify-center items-center gap-4 pt-2"
+                    class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent flex items-end p-6"
                 >
-                    <a
-                        href="/le-cafe"
-                        class="px-6 py-3 rounded-full bg-obt-primary text-white font-semibold text-xs hover:bg-obt-primary/90 transition-all shadow-sm"
-                    >
-                        Découvrir le Café
-                    </a>
-                    <a
-                        href="/association"
-                        class="px-6 py-3 rounded-full border border-obt-dark/30 text-obt-dark font-semibold text-xs hover:bg-obt-dark hover:text-white transition-all"
-                    >
-                        En savoir plus sur l'Association
-                    </a>
-                    <a
-                        href="/events"
-                        class="px-6 py-3 rounded-full border border-obt-dark/30 text-obt-dark font-semibold text-xs hover:bg-obt-dark hover:text-white transition-all"
-                    >
-                        Voir la programmation
-                    </a>
+                    <p class="text-white text-xs font-semibold">
+                        💃 Cours, ateliers et activités animés ensemble
+                    </p>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
+
+    <!-- Section : Formulaire de candidature -->
+    <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
+        <div
+            class="bg-white p-8 md:p-12 rounded-3xl border border-obt-muted/20 shadow-md"
+        >
+            <div class="text-center mb-8 space-y-2">
+                <h2 class="text-2xl font-bold text-obt-dark font-serif">
+                    Formulaire de bénévolat
+                </h2>
+                <p class="text-xs text-obt-muted">
+                    Remplissez ce petit questionnaire, nous vous recontacterons
+                    très vite !
+                </p>
+            </div>
+
+            <form class="space-y-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label
+                            for="firstname"
+                            class="block text-xs font-bold uppercase tracking-wider text-obt-dark mb-2"
+                            >Prénom *</label
+                        >
+                        <input
+                            type="text"
+                            id="firstname"
+                            name="firstname"
+                            required
+                            placeholder="Votre prénom"
+                            class="w-full px-4 py-3 rounded-xl bg-obt-light border border-obt-muted/20 text-sm text-obt-dark focus:outline-none focus:ring-2 focus:ring-obt-primary"
+                        />
+                    </div>
+                    <div>
+                        <label
+                            for="lastname"
+                            class="block text-xs font-bold uppercase tracking-wider text-obt-dark mb-2"
+                            >Nom *</label
+                        >
+                        <input
+                            type="text"
+                            id="lastname"
+                            name="lastname"
+                            required
+                            placeholder="Votre nom"
+                            class="w-full px-4 py-3 rounded-xl bg-obt-light border border-obt-muted/20 text-sm text-obt-dark focus:outline-none focus:ring-2 focus:ring-obt-primary"
+                        />
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label
+                            for="email"
+                            class="block text-xs font-bold uppercase tracking-wider text-obt-dark mb-2"
+                            >Email *</label
+                        >
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            required
+                            placeholder="votre.email@exemple.fr"
+                            class="w-full px-4 py-3 rounded-xl bg-obt-light border border-obt-muted/20 text-sm text-obt-dark focus:outline-none focus:ring-2 focus:ring-obt-primary"
+                        />
+                    </div>
+                    <div>
+                        <label
+                            for="phone"
+                            class="block text-xs font-bold uppercase tracking-wider text-obt-dark mb-2"
+                            >Téléphone</label
+                        >
+                        <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            placeholder="06 00 00 00 00"
+                            class="w-full px-4 py-3 rounded-xl bg-obt-light border border-obt-muted/20 text-sm text-obt-dark focus:outline-none focus:ring-2 focus:ring-obt-primary"
+                        />
+                    </div>
+                </div>
+
+                <div>
+                    <label
+                        class="block text-xs font-bold uppercase tracking-wider text-obt-dark mb-2"
+                    >
+                        Ce qui vous intéresse :
+                    </label>
+                    <div
+                        class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-obt-dark"
+                    >
+                        <label
+                            class="flex items-center gap-2 p-3 rounded-xl border border-obt-muted/20 hover:bg-obt-light cursor-pointer"
+                        >
+                            <input
+                                type="checkbox"
+                                name="interest"
+                                value="bar"
+                                class="rounded text-obt-primary focus:ring-obt-primary"
+                            />
+                            <span>Accueil & Tenue du bar</span>
+                        </label>
+                        <label
+                            class="flex items-center gap-2 p-3 rounded-xl border border-obt-muted/20 hover:bg-obt-light cursor-pointer"
+                        >
+                            <input
+                                type="checkbox"
+                                name="interest"
+                                value="animation"
+                                class="rounded text-obt-primary focus:ring-obt-primary"
+                            />
+                            <span>Animation d'ateliers / Événements</span>
+                        </label>
+                        <label
+                            class="flex items-center gap-2 p-3 rounded-xl border border-obt-muted/20 hover:bg-obt-light cursor-pointer"
+                        >
+                            <input
+                                type="checkbox"
+                                name="interest"
+                                value="communication"
+                                class="rounded text-obt-primary focus:ring-obt-primary"
+                            />
+                            <span>Communication / Réseaux sociaux</span>
+                        </label>
+                        <label
+                            class="flex items-center gap-2 p-3 rounded-xl border border-obt-muted/20 hover:bg-obt-light cursor-pointer"
+                        >
+                            <input
+                                type="checkbox"
+                                name="interest"
+                                value="logistique"
+                                class="rounded text-obt-primary focus:ring-obt-primary"
+                            />
+                            <span>Bricolage / Logistique / Projets</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div>
+                    <label
+                        for="message"
+                        class="block text-xs font-bold uppercase tracking-wider text-obt-dark mb-2"
+                        >Quelques mots sur vous / vos motivations</label
+                    >
+                    <textarea
+                        id="message"
+                        name="message"
+                        rows="4"
+                        placeholder="Dites-nous ce qui vous amène au café, vos disponibilités ou vos idées..."
+                        class="w-full px-4 py-3 rounded-xl bg-obt-light border border-obt-muted/20 text-sm text-obt-dark focus:outline-none focus:ring-2 focus:ring-obt-primary"
+                    ></textarea>
+                </div>
+
+                <button
+                    type="submit"
+                    class="w-full py-4 rounded-full bg-obt-primary text-white font-bold text-sm hover:bg-obt-primary/90 shadow-md transition-all"
+                >
+                    Envoyer ma candidature 🚀
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Section : FAQ -->
+    <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
+        <div class="text-center mb-10">
+            <h2 class="text-2xl font-bold text-obt-dark font-serif">
+                Foire aux questions
+            </h2>
+        </div>
+
+        <div class="space-y-4">
+            {
+                faq.map((item) => (
+                    <div class="bg-white p-6 rounded-2xl border border-obt-muted/15 space-y-2">
+                        <h3 class="font-bold text-sm text-obt-dark">
+                            ❓ {item.q}
+                        </h3>
+                        <p class="text-xs text-obt-muted leading-relaxed">
+                            {item.a}
+                        </p>
+                    </div>
+                ))
+            }
+        </div>
+    </section>
+
+    <!-- Section : Maillage Interne / Call To Action Final -->
+    <section class="py-12 bg-white border-t border-obt-muted/10 text-center">
+        <div class="max-w-3xl mx-auto px-4 space-y-6">
+            <h2 class="text-2xl sm:text-3xl font-bold text-obt-dark font-serif">
+                Envie de découvrir le lieu avant de vous engager ?
+            </h2>
+            <p class="text-obt-muted text-sm sm:text-base">
+                Passez nous rendre visite au 236 cours Lafayette ou venez
+                participer à nos prochains événements.
+            </p>
+            <div class="flex flex-wrap justify-center items-center gap-4 pt-2">
+                <a
+                    href="/le-cafe"
+                    class="px-6 py-3 rounded-full bg-obt-primary text-white font-semibold text-xs hover:bg-obt-primary/90 transition-all shadow-sm"
+                >
+                    Découvrir le Café
+                </a>
+                <a
+                    href="/association"
+                    class="px-6 py-3 rounded-full border border-obt-dark/30 text-obt-dark font-semibold text-xs hover:bg-obt-dark hover:text-white transition-all"
+                >
+                    En savoir plus sur l'Association
+                </a>
+                <a
+                    href="/events"
+                    class="px-6 py-3 rounded-full border border-obt-dark/30 text-obt-dark font-semibold text-xs hover:bg-obt-dark hover:text-white transition-all"
+                >
+                    Voir la programmation
+                </a>
+            </div>
+        </div>
+    </section>
 </Layout>
