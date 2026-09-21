@@ -1,0 +1,75 @@
+---
+import { getCollection } from "astro:content";
+import EventCard from "./EventCard.astro";
+
+interface Props {
+    limit?: number;
+    title?: string;
+    subtitle?: string;
+    showViewAll?: boolean;
+}
+
+const {
+    limit,
+    title = "Prochains Événements",
+    subtitle = "Rejoignez-nous lors de nos prochains rendez-vous culturels et conviviaux.",
+    showViewAll = true,
+} = Astro.props;
+
+const allEvents = await getCollection("events");
+const now = new Date();
+
+let upcomingEvents = allEvents
+    .filter((e) => new Date(e.data.date) >= now)
+    .sort(
+        (a, b) =>
+            new Date(a.data.date).getTime() - new Date(b.data.date).getTime(),
+    );
+
+if (limit) {
+    upcomingEvents = upcomingEvents.slice(0, limit);
+}
+---
+
+<section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        <div
+            class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-obt-muted/10 pb-6"
+        >
+            <div class="space-y-2">
+                <span
+                    class="text-obt-primary font-bold text-xs tracking-wider uppercase"
+                    >À ne pas manquer</span
+                >
+                <h2 class="text-3xl font-extrabold text-obt-dark">{title}</h2>
+                {subtitle && <p class="text-obt-muted text-sm">{subtitle}</p>}
+            </div>
+            {
+                showViewAll && (
+                    <div>
+                        <a
+                            href="/events"
+                            class="inline-flex items-center text-sm font-semibold text-obt-primary hover:text-obt-primary/80 transition-colors"
+                        >
+                            Voir tout l'agenda →
+                        </a>
+                    </div>
+                )
+            }
+        </div>
+
+        {
+            upcomingEvents.length === 0 ? (
+                <p class="text-obt-muted italic text-center py-8">
+                    Aucun événement à venir pour le moment.
+                </p>
+            ) : (
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {upcomingEvents.map((event) => (
+                        <EventCard event={event} />
+                    ))}
+                </div>
+            )
+        }
+    </div>
+</section>

@@ -1,0 +1,283 @@
+---
+import { Image } from "astro:assets";
+import logoImage from "../assets/images/logo.svg";
+
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath =
+    pathname.endsWith("/") && pathname.length > 1
+        ? pathname.slice(0, -1)
+        : pathname;
+---
+
+<header
+    class="sticky top-0 z-50 bg-obt-light/95 backdrop-blur-md border-b border-obt-muted/20"
+>
+    <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between"
+    >
+        <!-- Logo & Marque (Accueil) -->
+        <a
+            href="/"
+            class="flex items-center gap-3 group"
+            aria-label="OBT Café - Retour à l'accueil"
+        >
+            <div
+                class="w-12 h-12 overflow-hidden flex items-center justify-center p-0.5 rounded-2xl transition-transform group-hover:scale-105"
+                style="filter: drop-shadow(2px 4px 4px #11101015);"
+            >
+                <Image
+                    src={logoImage}
+                    alt="Logo OBT Café"
+                    width={40}
+                    height={40}
+                    class="w-full h-full object-contain"
+                />
+            </div>
+            <span
+                class="text-xl font-bold tracking-tight text-obt-dark group-hover:text-obt-primary transition-colors"
+            >
+                OBT Café
+            </span>
+        </a>
+
+        <!-- Navigation Desktop -->
+        <nav
+            class="hidden md:flex items-center gap-7 font-medium text-sm text-obt-dark/80"
+        >
+            <!-- Menu déroulant : Le Café -->
+            <div class="relative group py-2">
+                <button
+                    type="button"
+                    class={`flex items-center gap-1 hover:text-obt-primary transition-colors focus:outline-none ${
+                        currentPath.startsWith("/le-cafe") ||
+                        currentPath === "/location-salle"
+                            ? "text-obt-primary font-bold"
+                            : ""
+                    }`}
+                >
+                    <span>Le Café</span>
+                    <svg
+                        class="w-4 h-4 transition-transform group-hover:rotate-180"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+
+                <div
+                    class="absolute top-full left-0 w-48 bg-white rounded-2xl shadow-xl border border-obt-muted/15 p-2 hidden group-hover:block transition-all space-y-1"
+                >
+                    <a
+                        href="/le-cafe"
+                        class="block px-4 py-2.5 rounded-xl text-xs font-semibold text-obt-dark hover:bg-obt-light hover:text-obt-primary transition-colors"
+                    >
+                        Présentation du Café
+                    </a>
+                    <a
+                        href="/location-salle"
+                        class="block px-4 py-2.5 rounded-xl text-xs font-semibold text-obt-dark hover:bg-obt-light hover:text-obt-primary transition-colors"
+                    >
+                        Location de salle
+                    </a>
+                </div>
+            </div>
+
+            <!-- Menu déroulant : L'Association -->
+            <div class="relative group py-2">
+                <button
+                    type="button"
+                    class={`flex items-center gap-1 hover:text-obt-primary transition-colors focus:outline-none ${
+                        currentPath === "/association" ||
+                        currentPath === "/rejoindre"
+                            ? "text-obt-primary font-bold"
+                            : ""
+                    }`}
+                >
+                    <span>L'Association</span>
+                    <svg
+                        class="w-4 h-4 transition-transform group-hover:rotate-180"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+
+                <div
+                    class="absolute top-full left-0 w-52 bg-white rounded-2xl shadow-xl border border-obt-muted/15 p-2 hidden group-hover:block transition-all space-y-1"
+                >
+                    <a
+                        href="/association"
+                        class="block px-4 py-2.5 rounded-xl text-xs font-semibold text-obt-dark hover:bg-obt-light hover:text-obt-primary transition-colors"
+                    >
+                        L'Association OBT
+                    </a>
+                    <a
+                        href="/rejoindre"
+                        class="block px-4 py-2.5 rounded-xl text-xs font-semibold text-obt-dark hover:bg-obt-light hover:text-obt-primary transition-colors"
+                    >
+                        Nous rejoindre / Participer
+                    </a>
+                </div>
+            </div>
+
+            <!-- Lien : Événements -->
+            <a
+                href="/events"
+                class={`hover:text-obt-primary transition-colors ${currentPath === "/events" ? "text-obt-primary font-bold" : ""}`}
+            >
+                Événements
+            </a>
+
+            <!-- Lien : Blog -->
+            <a
+                href="/blog"
+                class={`hover:text-obt-primary transition-colors ${currentPath.startsWith("/blog") ? "text-obt-primary font-bold" : ""}`}
+            >
+                Blog
+            </a>
+        </nav>
+
+        <!-- Call To Action (Desktop uniquement) -->
+        <div class="hidden md:flex items-center">
+            <a
+                href="/contact"
+                class="px-6 py-2.5 rounded-full bg-obt-primary text-white font-semibold text-sm hover:bg-obt-primary/90 shadow-sm transition-all hover:shadow"
+            >
+                Contact
+            </a>
+        </div>
+
+        <!-- Bouton Burger Mobile (Aligné à droite) -->
+        <button
+            id="menu-btn"
+            class="md:hidden p-2 text-obt-dark focus:outline-none rounded-xl hover:bg-obt-muted/10 transition-colors ml-auto"
+            aria-label="Ouvrir le menu"
+        >
+            <svg
+                id="burger-icon-open"
+                class="w-7 h-7"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+            >
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+            <svg
+                id="burger-icon-close"
+                class="w-7 h-7 hidden"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+            >
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Tiroir Mobile (Masqué sur Desktop) -->
+    <div
+        id="mobile-menu"
+        class="hidden md:hidden bg-white border-b border-obt-muted/20 px-6 py-6 space-y-6 shadow-xl"
+    >
+        <nav class="space-y-4">
+            <!-- Groupe Le Café -->
+            <div class="space-y-2">
+                <span
+                    class="text-xs font-bold uppercase tracking-wider text-obt-muted"
+                    >Le Café</span
+                >
+                <div class="pl-3 space-y-2 border-l-2 border-obt-primary/20">
+                    <a
+                        href="/le-cafe"
+                        class="block text-base font-medium text-obt-dark hover:text-obt-primary"
+                        >Présentation du Café</a
+                    >
+                    <a
+                        href="/location-salle"
+                        class="block text-base font-medium text-obt-dark hover:text-obt-primary"
+                        >Location de salle</a
+                    >
+                </div>
+            </div>
+
+            <!-- Groupe L'Association -->
+            <div class="space-y-2">
+                <span
+                    class="text-xs font-bold uppercase tracking-wider text-obt-muted"
+                    >L'Association</span
+                >
+                <div class="pl-3 space-y-2 border-l-2 border-obt-primary/20">
+                    <a
+                        href="/association"
+                        class="block text-base font-medium text-obt-dark hover:text-obt-primary"
+                        >L'Association OBT</a
+                    >
+                    <a
+                        href="/rejoindre"
+                        class="block text-base font-medium text-obt-dark hover:text-obt-primary"
+                        >Nous rejoindre / Participer</a
+                    >
+                </div>
+            </div>
+
+            <!-- Liens directs -->
+            <div class="pt-2 space-y-3">
+                <a
+                    href="/events"
+                    class="block text-base font-semibold text-obt-dark hover:text-obt-primary"
+                    >Événements</a
+                >
+                <a
+                    href="/blog"
+                    class="block text-base font-semibold text-obt-dark hover:text-obt-primary"
+                    >Blog</a
+                >
+            </div>
+        </nav>
+
+        <!-- CTA Contact intégré dans le menu mobile -->
+        <div class="pt-4 border-t border-obt-muted/15">
+            <a
+                href="/contact"
+                class="block text-center w-full py-3.5 rounded-full bg-obt-primary text-white font-bold text-sm shadow-md"
+            >
+                Nous contacter ➔
+            </a>
+        </div>
+    </div>
+</header>
+
+<script>
+    const menuBtn = document.getElementById("menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const iconOpen = document.getElementById("burger-icon-open");
+    const iconClose = document.getElementById("burger-icon-close");
+
+    if (menuBtn && mobileMenu && iconOpen && iconClose) {
+        menuBtn.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+            iconOpen.classList.toggle("hidden");
+            iconClose.classList.toggle("hidden");
+        });
+    }
+</script>

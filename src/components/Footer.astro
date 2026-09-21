@@ -1,0 +1,194 @@
+---
+import { Image } from "astro:assets";
+import logoImage from "../assets/images/logo.svg";
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-obt-dark text-white pt-16 pb-8 border-t border-obt-muted/20">
+    <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12"
+    >
+        <!-- Colonne 1 : Logo & À propos -->
+        <div class="space-y-4">
+            <a href="/" class="flex items-center gap-3 group inline-block">
+                <div
+                    class="w-12 h-12 overflow-hidden flex items-center justify-center p-0.5 bg-white/10 rounded-2xl border border-white/10 group-hover:bg-white/20 transition-all"
+                >
+                    <Image
+                        src={logoImage}
+                        alt="Logo OBT Café"
+                        width={36}
+                        height={36}
+                        class="w-full h-full object-contain"
+                    />
+                </div>
+                <div>
+                    <span
+                        class="font-extrabold text-xl text-white block leading-tight group-hover:text-obt-secondary transition-colors"
+                    >
+                        OBT Café
+                    </span>
+                    <span
+                        class="text-[10px] uppercase font-bold text-zinc-400 tracking-wider"
+                    >
+                        Off The Beaten Tracks
+                    </span>
+                </div>
+            </a>
+            <p class="text-sm text-zinc-300 leading-relaxed">
+                Un café associatif, culturel et interculturel au cœur de Lyon,
+                ouvert à toutes et tous.
+            </p>
+        </div>
+
+        <!-- Colonne 2 : Adresse & Accès -->
+        <div>
+            <h3
+                class="text-sm font-bold uppercase tracking-wider mb-4 text-white flex items-center gap-2"
+            >
+                <span>📍</span> Adresse
+            </h3>
+            <address
+                class="not-italic text-sm text-zinc-300 leading-relaxed space-y-1"
+            >
+                <p class="font-semibold text-white">Maison de l'Hospitalité</p>
+                <p>236 Cours Lafayette</p>
+                <p>69003 Lyon</p>
+                <p class="text-xs text-zinc-400 pt-1">
+                    Bus C3 / C13 — Arrêt Part-Dieu Jules Favre
+                </p>
+            </address>
+        </div>
+
+        <!-- Colonne 3 : Horaires -->
+        <div>
+            <h3
+                class="text-sm font-bold uppercase tracking-wider mb-4 text-white flex items-center gap-2"
+            >
+                <span>🕒</span> Horaires
+            </h3>
+            <ul class="text-sm text-zinc-300 leading-relaxed space-y-1">
+                <li>
+                    <strong class="text-white font-medium"
+                        >Mardi & Mercredi :</strong
+                    > 13h – 18h
+                </li>
+                <li>
+                    <strong class="text-white font-medium"
+                        >Jeudi & Vendredi :</strong
+                    > 13h – 20h
+                </li>
+                <li>
+                    <strong class="text-white font-medium">Samedi :</strong> 14h –
+                    20h
+                </li>
+            </ul>
+        </div>
+
+        <!-- Colonne 4 : Réseaux sociaux & Navigation -->
+        <div class="space-y-4">
+            <div>
+                <h3
+                    class="text-sm font-bold uppercase tracking-wider mb-3 text-white"
+                >
+                    📱 Suivez-nous
+                </h3>
+                <div class="flex gap-4 text-sm font-medium">
+                    <a
+                        href="https://www.instagram.com/offthebeatentracks69"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-zinc-300 hover:text-white underline underline-offset-4 focus:outline-none focus:ring-2 focus:ring-white rounded transition-colors"
+                        aria-label="Consulter notre page Instagram (s'ouvre dans une nouvelle fenêtre)"
+                    >
+                        Instagram ↗
+                    </a>
+                    <a
+                        href="https://www.facebook.com/share/1AvtdFzeJW/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-zinc-300 hover:text-white underline underline-offset-4 focus:outline-none focus:ring-2 focus:ring-white rounded transition-colors"
+                        aria-label="Consulter notre page Facebook (s'ouvre dans une nouvelle fenêtre)"
+                    >
+                        Facebook ↗
+                    </a>
+                </div>
+            </div>
+
+            <div class="pt-3 border-t border-white/10">
+                <ul
+                    class="flex flex-wrap gap-x-3 gap-y-1 text-xs text-zinc-300"
+                >
+                    <li>
+                        <a
+                            href="/events"
+                            class="hover:text-white underline focus:outline-none focus:ring-1 focus:ring-white rounded"
+                            >Agenda</a>
+                    </li>
+                    <li aria-hidden="true">•</li>
+                    <li>
+                        <a
+                            href="/location-salle"
+                            class="hover:text-white underline focus:outline-none focus:ring-1 focus:ring-white rounded"
+                            >Location</a>
+                    </li>
+                    <li aria-hidden="true">•</li>
+                    <li>
+                        <a
+                            href="/blog"
+                            class="hover:text-white underline focus:outline-none focus:ring-1 focus:ring-white rounded"
+                            >Blog</a>
+                    </li>
+                    <li aria-hidden="true">•</li>
+                    <li>
+                        <a
+                            href="/contact"
+                            class="hover:text-white underline focus:outline-none focus:ring-1 focus:ring-white rounded"
+                            >Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bas de page : Copyright, Mentions Légales & Crédits -->
+    <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between text-xs text-zinc-300 gap-4 text-center md:text-left"
+    >
+        <div
+            class="flex flex-wrap items-center justify-center md:justify-start gap-x-3 gap-y-1"
+        >
+            <span
+                >© {currentYear} OBT Café • Association Off The Beaten Tracks</span
+            >
+            <span aria-hidden="true">•</span>
+            <a
+                href="/mentions-legales"
+                class="hover:text-white underline focus:outline-none focus:ring-1 focus:ring-white rounded"
+            >
+                Mentions Légales
+            </a>
+            <span aria-hidden="true">•</span>
+            <a
+                href="/politique-de-confidentialite"
+                class="hover:text-white underline focus:outline-none focus:ring-1 focus:ring-white rounded"
+            >
+                Politique de Confidentialité
+            </a>
+        </div>
+
+        <p class="flex items-center justify-center gap-1">
+            Fait avec <span class="text-red-400" aria-label="amour">❤️</span> par
+            Khaoula et
+            <a
+                href="https://www.loicpoosing.fr/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-white font-semibold hover:underline underline-offset-2 focus:outline-none focus:ring-1 focus:ring-white rounded"
+            >
+                Loïc Poo-Sing
+            </a>
+        </p>
+    </div>
+</footer>

@@ -1,0 +1,423 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { Image } from "astro:assets";
+import salleObt from "../assets/images/salle-obt.webp";
+
+// Données structurées JSON-LD
+const serviceJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    serviceType: "Location de salle et privatisation",
+    provider: {
+        "@type": "Organization",
+        name: "Off The Beaten Tracks - OBT Café",
+        address: {
+            "@type": "PostalAddress",
+            streetAddress: "236 Cours Lafayette",
+            addressLocality: "Lyon",
+            postalCode: "69003",
+            addressCountry: "FR",
+        },
+    },
+    description:
+        "Privatisation de l'OBT Café à Lyon pour réunions, formations ou événements (80m², 40 personnes assises).",
+};
+---
+
+<Layout
+    title="Location de salle & Privatisation - OBT Café Lyon"
+    description="Organisez votre réunion, formation ou événement à l'OBT Café (Lyon 3e). Découvrez nos espaces de 80m² et nos tarifs adaptés pour associations et entreprises."
+>
+    <script
+        type="application/ld+json"
+        set:html={JSON.stringify(serviceJsonLd)}
+        slot="head"
+    />
+
+    <Header slot="header" />
+
+    <!-- Fil d'Ariane -->
+    <nav
+        aria-label="Fil d'ariane"
+        class="bg-obt-secondary/5 py-3 border-b border-obt-secondary/10"
+    >
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-sm text-obt-muted"
+        >
+            <ol class="flex items-center space-x-2">
+                <li>
+                    <a href="/" class="hover:text-obt-primary transition-colors"
+                        >Accueil</a
+                    >
+                </li>
+                <li class="flex items-center space-x-2">
+                    <span class="text-obt-muted/40">/</span>
+                    <span class="text-obt-dark font-medium" aria-current="page"
+                        >Location de salle</span
+                    >
+                </li>
+            </ol>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="py-16 md:py-24 bg-obt-light">
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+        >
+            <div class="space-y-6">
+                <span
+                    class="inline-block px-3.5 py-1.5 rounded-full bg-obt-primary/10 text-obt-primary font-semibold text-xs tracking-wide uppercase"
+                >
+                    Privatisation de l'OBT Café
+                </span>
+                <h1
+                    class="text-4xl sm:text-5xl font-extrabold tracking-tight text-obt-dark leading-tight"
+                >
+                    Louez notre espace pour vos <span class="text-obt-primary"
+                        >événements</span
+                    >
+                </h1>
+                <p class="text-lg text-obt-muted leading-relaxed">
+                    Vous souhaitez organiser une réunion, une formation ou un
+                    événement à l’OBT Café ? Notre tiers-lieu de 80m² au cœur de
+                    Lyon s'adapte à vos besoins.
+                </p>
+                <div>
+                    <a
+                        href="#tarifs"
+                        class="px-6 py-3 rounded-full bg-obt-primary text-white font-medium hover:bg-obt-primary/90 transition-all shadow-md"
+                    >
+                        Découvrir nos tarifs
+                    </a>
+                </div>
+            </div>
+            <div
+                class="rounded-3xl overflow-hidden shadow-xl border border-obt-muted/20"
+            >
+                <Image
+                    src={salleObt}
+                    alt="Vue de la salle de l'OBT Café"
+                    width={800}
+                    height={533}
+                    class="w-full h-auto object-cover"
+                    loading="eager"
+                />
+            </div>
+        </div>
+    </section>
+
+    <!-- Caractéristiques de la salle -->
+    <section class="py-16 bg-white border-b border-obt-muted/10">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div
+                class="bg-obt-light p-8 sm:p-10 rounded-3xl border border-obt-muted/10 space-y-6"
+            >
+                <h2 class="text-2xl font-bold text-obt-dark text-center">
+                    Ce que comprend la privatisation :
+                </h2>
+                <div
+                    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 text-sm text-obt-muted"
+                >
+                    <div
+                        class="flex items-center gap-3 bg-white p-4 rounded-xl shadow-sm"
+                    >
+                        <span class="text-xl">📐</span>
+                        <span>Un espace de <strong>80 m²</strong>[cite: 2]</span
+                        >
+                    </div>
+                    <div
+                        class="flex items-center gap-3 bg-white p-4 rounded-xl shadow-sm"
+                    >
+                        <span class="text-xl">🪑</span>
+                        <span
+                            >Capacité : <strong>40 personnes assises</strong
+                            >[cite: 2]</span
+                        >
+                    </div>
+                    <div
+                        class="flex items-center gap-3 bg-white p-4 rounded-xl shadow-sm"
+                    >
+                        <span class="text-xl">📚</span>
+                        <span
+                            >Accès à la <strong>bibliothèque</strong>[cite: 2]</span
+                        >
+                    </div>
+                    <div
+                        class="flex items-center gap-3 bg-white p-4 rounded-xl shadow-sm"
+                    >
+                        <span class="text-xl">🎤</span>
+                        <span>Une petite <strong>scène</strong>[cite: 2]</span>
+                    </div>
+                    <div
+                        class="flex items-center gap-3 bg-white p-4 rounded-xl shadow-sm"
+                    >
+                        <span class="text-xl">💧</span>
+                        <span>Un <strong>point d'eau</strong>[cite: 2]</span>
+                    </div>
+                    <div
+                        class="flex items-center gap-3 bg-white p-4 rounded-xl shadow-sm"
+                    >
+                        <span class="text-xl">🪑</span>
+                        <span>Tables et chaises fournies[cite: 2]</span>
+                    </div>
+                    <div
+                        class="flex items-center gap-3 bg-white p-4 rounded-xl shadow-sm"
+                    >
+                        <span class="text-xl">📶</span>
+                        <span>Connexion <strong>WiFi</strong>[cite: 2]</span>
+                    </div>
+                    <div
+                        class="flex items-center gap-3 bg-white p-4 rounded-xl shadow-sm sm:col-span-2"
+                    >
+                        <span class="text-xl">📽️</span>
+                        <span
+                            >Un <strong>écran de projection</strong>[cite: 2]</span
+                        >
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Grilles Tarifaires -->
+    <section id="tarifs" class="py-20 bg-obt-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16">
+            <span
+                class="text-obt-primary font-bold text-sm tracking-wider uppercase"
+                >TARIFICATION</span
+            >
+            <h2
+                class="text-3xl sm:text-4xl font-extrabold text-obt-dark tracking-tight mt-2"
+            >
+                Nos formules de location
+            </h2>
+        </div>
+
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-3 gap-8"
+        >
+            <!-- Association Résidente -->
+            <div
+                class="bg-white p-8 rounded-3xl shadow-sm border border-obt-muted/10 flex flex-col justify-between space-y-6"
+            >
+                <div>
+                    <span
+                        class="text-xs font-bold uppercase tracking-wider text-obt-secondary bg-obt-secondary/10 px-3 py-1 rounded-full"
+                        >Tarif préférentiel</span
+                    >
+                    <h3 class="text-2xl font-bold text-obt-dark mt-4">
+                        Association résidente
+                    </h3>
+
+                    <ul class="mt-6 space-y-3 text-sm text-obt-muted">
+                        <li
+                            class="flex justify-between border-b border-obt-muted/10 pb-2"
+                        >
+                            <span>Demi-journée (&le; 4h) :</span>
+                            <span class="font-bold text-obt-dark"
+                                >40 €[cite: 2]</span
+                            >
+                        </li>
+                        <li
+                            class="flex justify-between border-b border-obt-muted/10 pb-2"
+                        >
+                            <span>Journée complète (&le; 8h) :</span>
+                            <span class="font-bold text-obt-dark"
+                                >80 €[cite: 2]</span
+                            >
+                        </li>
+                        <li class="flex justify-between pb-2">
+                            <span>Soirée (dès 18h) :</span>
+                            <span class="font-bold text-obt-dark"
+                                >80 €[cite: 2]</span
+                            >
+                        </li>
+                    </ul>
+
+                    <div
+                        class="mt-6 pt-4 border-t border-obt-muted/10 space-y-2 text-xs text-obt-muted"
+                    >
+                        <p class="font-semibold text-obt-dark">Suppléments :</p>
+                        <p>• Vidéoprojecteur : 10 €[cite: 2]</p>
+                        <p>• Sono : 20 €[cite: 2]</p>
+                        <p>• Service bar / Présence OBT : 25 €/h[cite: 2]</p>
+                    </div>
+                </div>
+                <div>
+                    <a
+                        href="/contact"
+                        class="block text-center w-full py-3 rounded-full bg-obt-secondary text-white font-medium hover:bg-obt-secondary/90 transition-all text-sm"
+                    >
+                        Réserver (Résident)
+                    </a>
+                </div>
+            </div>
+
+            <!-- Association Extérieure -->
+            <div
+                class="bg-white p-8 rounded-3xl shadow-md border-2 border-obt-primary flex flex-col justify-between space-y-6 relative"
+            >
+                <div
+                    class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-obt-primary text-white text-xs font-bold px-4 py-1 rounded-full uppercase tracking-wide"
+                >
+                    Populaire
+                </div>
+                <div>
+                    <span
+                        class="text-xs font-bold uppercase tracking-wider text-obt-primary bg-obt-primary/10 px-3 py-1 rounded-full"
+                        >Partenaires & Tiers</span
+                    >
+                    <h3 class="text-2xl font-bold text-obt-dark mt-4">
+                        Association extérieure
+                    </h3>
+
+                    <ul class="mt-6 space-y-3 text-sm text-obt-muted">
+                        <li
+                            class="flex justify-between border-b border-obt-muted/10 pb-2"
+                        >
+                            <span>Demi-journée (&le; 4h) :</span>
+                            <span class="font-bold text-obt-dark"
+                                >80 €[cite: 2]</span
+                            >
+                        </li>
+                        <li
+                            class="flex justify-between border-b border-obt-muted/10 pb-2"
+                        >
+                            <span>Journée complète (&le; 8h) :</span>
+                            <span class="font-bold text-obt-dark"
+                                >150 €[cite: 2]</span
+                            >
+                        </li>
+                        <li class="flex justify-between pb-2">
+                            <span>Soirée (dès 18h) :</span>
+                            <span class="font-bold text-obt-dark"
+                                >150 €[cite: 2]</span
+                            >
+                        </li>
+                    </ul>
+
+                    <div
+                        class="mt-6 pt-4 border-t border-obt-muted/10 space-y-2 text-xs text-obt-muted"
+                    >
+                        <p class="font-semibold text-obt-dark">Suppléments :</p>
+                        <p>• Vidéoprojecteur : 20 €[cite: 2]</p>
+                        <p>• Sono : 30 €[cite: 2]</p>
+                        <p>• Service bar / Présence OBT : 40 €/h*[cite: 2]</p>
+                        <p class="text-[10px] italic text-obt-primary">
+                            * obligatoire après 20h[cite: 2]
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <a
+                        href="/contact"
+                        class="block text-center w-full py-3 rounded-full bg-obt-primary text-white font-medium hover:bg-obt-primary/90 transition-all text-sm"
+                    >
+                        Réserver (Asso ext.)
+                    </a>
+                </div>
+            </div>
+
+            <!-- Entreprise -->
+            <div
+                class="bg-white p-8 rounded-3xl shadow-sm border border-obt-muted/10 flex flex-col justify-between space-y-6"
+            >
+                <div>
+                    <span
+                        class="text-xs font-bold uppercase tracking-wider text-obt-dark bg-obt-dark/10 px-3 py-1 rounded-full"
+                        >Professionnel</span
+                    >
+                    <h3 class="text-2xl font-bold text-obt-dark mt-4">
+                        Entreprise
+                    </h3>
+
+                    <ul class="mt-6 space-y-3 text-sm text-obt-muted">
+                        <li
+                            class="flex justify-between border-b border-obt-muted/10 pb-2"
+                        >
+                            <span>Demi-journée (&le; 4h) :</span>
+                            <span class="font-bold text-obt-dark"
+                                >100 €[cite: 2]</span
+                            >
+                        </li>
+                        <li
+                            class="flex justify-between border-b border-obt-muted/10 pb-2"
+                        >
+                            <span>Journée complète (&le; 8h) :</span>
+                            <span class="font-bold text-obt-dark"
+                                >200 €[cite: 2]</span
+                            >
+                        </li>
+                        <li class="flex justify-between pb-2">
+                            <span>Soirée (dès 18h) :</span>
+                            <span class="font-bold text-obt-dark"
+                                >200 €[cite: 2]</span
+                            >
+                        </li>
+                    </ul>
+
+                    <div
+                        class="mt-6 pt-4 border-t border-obt-muted/10 space-y-2 text-xs text-obt-muted"
+                    >
+                        <p class="font-semibold text-obt-dark">Suppléments :</p>
+                        <p>• Vidéoprojecteur : 50 €[cite: 2]</p>
+                        <p>• Sono : 60 €[cite: 2]</p>
+                        <p>• Service bar / Présence OBT : 70 €/h*[cite: 2]</p>
+                        <p class="text-[10px] italic text-obt-dark">
+                            * obligatoire après 20h[cite: 2]
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <a
+                        href="/contact"
+                        class="block text-center w-full py-3 rounded-full bg-obt-dark text-white font-medium hover:bg-obt-dark/90 transition-all text-sm"
+                    >
+                        Réserver (Entreprise)
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="py-16 bg-white text-center">
+        <div class="max-w-3xl mx-auto px-4 space-y-6">
+            <h2 class="text-2xl sm:text-3xl font-bold text-obt-dark">
+                Une demande spécifique de privatisation ?
+            </h2>
+            <p class="text-obt-muted text-sm sm:text-base">
+                Contactez directement l'équipe pour valider les disponibilités
+                et configurer la salle selon vos besoins.
+            </p>
+            <div>
+                <a
+                    href="/contact"
+                    class="inline-block px-8 py-3 rounded-full bg-obt-secondary text-white font-medium hover:bg-obt-secondary/90 transition-all shadow"
+                >
+                    Contactez-nous pour réserver ➔
+                </a>
+            </div>
+            <div
+                class="mt-8 text-center bg-obt-light p-6 rounded-2xl border border-obt-muted/10"
+            >
+                <p class="text-obt-muted text-sm mb-4">
+                    Tu préfères conserver le document officiel sur ton appareil
+                    ?
+                </p>
+                <a
+                    href="/docs/tarifs-location-obt.pdf"
+                    download
+                    class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-obt-primary text-white font-medium hover:bg-obt-primary/90 transition-all shadow-sm text-sm"
+                >
+                    <span>📥 Télécharger la plaquette des tarifs (PDF)</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <Footer slot="footer" />
+</Layout>

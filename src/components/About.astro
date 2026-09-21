@@ -1,0 +1,52 @@
+---
+import { Image } from "astro:assets";
+import salleObt from "../assets/images/salle-obt.webp";
+---
+
+<section class="py-20 bg-white border-y border-obt-muted/10">
+    <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+    >
+        <div
+            class="rounded-3xl overflow-hidden shadow-xl border border-obt-muted/20"
+        >
+            <Image
+                src={salleObt}
+                alt="Intérieur chaleureux de l'OBT Café au 236 Cours Lafayette à Lyon"
+                width={800}
+                height={533}
+                class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500"
+            />
+        </div>
+        <div class="space-y-6">
+            <span
+                class="text-obt-primary font-bold text-sm tracking-wider uppercase"
+                >À PROPOS</span
+            >
+            <h2
+                class="text-3xl sm:text-4xl font-extrabold text-obt-dark tracking-tight"
+            >
+                Un autre regard sur l'Humani'Terre
+            </h2>
+            <p class="text-obt-muted leading-relaxed">
+                Fondée en 2022 à Lyon, l'association Off The Beaten Tracks
+                propose un voyage aux confins de la culture pour casser les
+                stéréotypes et valoriser la résilience des publics marginalisés.
+            </p>
+            <p class="text-obt-muted leading-relaxed">
+                Installé depuis avril 2025 au sein de la Maison de l'Hospitalité
+                (236 cours Lafayette), l'<strong>OBT Café</strong> est un espace culturel,
+                interculturel et citoyen ouvert à toutes et tous pour favoriser le
+                vivre-ensemble et la cohésion sociale.
+            </p>
+            <div>
+                <a
+                    href="/association"
+                    class="inline-flex items-center gap-2 font-semibold text-obt-primary hover:text-obt-primary/80 transition-colors"
+                >
+                    Notre histoire et l'équipe <span aria-hidden="true">→</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>

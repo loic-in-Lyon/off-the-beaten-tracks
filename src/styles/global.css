@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+
+@theme {
+  --color-obt-dark: #1A1A1A;
+  --color-obt-light: #FDFBF7;
+  --color-obt-primary: #C85A32;
+  --color-obt-secondary: #3B5249;
+  --color-obt-accent: #E9B44C;
+  --color-obt-muted: #8C857B;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: var(--color-obt-light);
+    color: var(--color-obt-dark);
+  }
+}
+

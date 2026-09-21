@@ -1,0 +1,42 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import About from "../components/About.astro";
+import UpcomingEvents from "../components/UpcomingEvents.astro";
+import LocationCta from "../components/LocationCta.astro";
+import Values from "../components/Values.astro";
+import Activities from "../components/Activities.astro";
+import LatestPosts from "../components/LatestPosts.astro";
+import PracticalInfo from "../components/PracticalInfo.astro";
+---
+
+<Layout
+	title="OBT Café - Tiers-lieu culturel, convivial & solidaire | Lyon 3e"
+	description="Découvrez l'OBT Café par l'association Off The Beaten Tracks : bar café-culturel, programmation d'événements, ateliers interculturels et location de salle à Lyon."
+>
+	<main id="main-content">
+		<!-- Section Hero principal -->
+		<Hero />
+
+		<!-- Présentation de l'association et du tiers-lieu -->
+		<About />
+
+		<!-- Partial : 3 prochains événements dynamiques (Collection Events) -->
+		<UpcomingEvents limit={3} showViewAll={true} />
+
+		<!-- Section d'appel à l'action pour la Location & Privatisation de salle -->
+		<LocationCta />
+
+		<!-- Valeurs de l'association -->
+		<Values />
+
+		<!-- Activités & services proposés -->
+		<Activities />
+
+		<!-- Partial : 3 derniers articles du blog (Collection Blog) -->
+		<LatestPosts limit={3} />
+
+		<!-- Infos pratiques, accès, horaires et carte -->
+		<PracticalInfo />
+	</main>
+</Layout>

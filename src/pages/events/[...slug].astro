@@ -1,0 +1,155 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { Image } from "astro:assets";
+
+export async function getStaticPaths() {
+    const events = await getCollection("events");
+    return events.map((event) => ({
+        params: { slug: event.id },
+        props: { event },
+    }));
+}
+
+const { event } = Astro.props;
+const { Content } = await render(event);
+
+const formattedDate = new Date(event.data.date).toLocaleDateString("fr-FR", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+});
+---
+
+<Layout
+    title={`${event.data.title} - OBT Café`}
+    description={event.data.description}
+>
+    <Header slot="header" />
+
+    <!-- Fil d'Ariane -->
+    <nav
+        aria-label="Fil d'ariane"
+        class="bg-obt-secondary/5 py-3 border-b border-obt-secondary/10"
+    >
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-sm text-obt-muted"
+        >
+            <ol class="flex items-center space-x-2">
+                <li>
+                    <a href="/" class="hover:text-obt-primary transition-colors"
+                        >Accueil</a>
+                </li>
+                <li>
+                    <span class="text-obt-muted/40 px-2">/</span><a
+                        href="/events"
+                        class="hover:text-obt-primary transition-colors"
+                        >Événements</a>
+                </li>
+                <li>
+                    <span class="text-obt-muted/40 px-2">/</span><span
+                        class="text-obt-dark font-medium"
+                        aria-current="page">{event.data.title}</span>
+                </li>
+            </ol>
+        </div>
+    </nav>
+
+    <main class="py-16 bg-white">
+        <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+            <!-- En-tête de l'événement -->
+            <div class="space-y-4 text-center">
+                <span
+                    class="inline-block px-3.5 py-1.5 rounded-full bg-obt-primary/10 text-obt-primary font-semibold text-xs tracking-wide uppercase"
+                >
+                    {event.data.category}
+                </span>
+                <h1
+                    class="text-3xl sm:text-5xl font-extrabold text-obt-dark tracking-tight leading-tight"
+                >
+                    {event.data.title}
+                </h1>
+                <div class="text-obt-secondary font-medium text-base">
+                    📅 {formattedDate}
+                </div>
+            </div>
+
+            <!-- Image principale -->
+            <div
+                class="rounded-3xl overflow-hidden shadow-lg border border-obt-muted/15"
+            >
+                <Image
+                    src={event.data.image}
+                    alt={event.data.title}
+                    width={1000}
+                    height={600}
+                    class="w-full h-auto object-cover max-h-[500px]"
+                />
+            </div>
+
+            <!-- Grille des informations pratiques (Invité, Organisateur, Lieu, Tarif) -->
+            <div
+                class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-obt-light p-6 sm:p-8 rounded-3xl border border-obt-muted/10"
+            >
+                <div class="space-y-3 text-sm text-obt-muted">
+                    <p>📍 <strong>Lieu :</strong> {event.data.location}</p>
+                    <p>
+                        🤝 <strong>Organisateur :</strong>
+                        {event.data.organizer}
+                    </p>
+                    {
+                        event.data.guest && (
+                            <p>
+                                🎤 <strong>Invité / Artiste :</strong>{" "}
+                                <span class="text-obt-dark font-semibold">
+                                    {event.data.guest}
+                                </span>
+                            </p>
+                        )
+                    }
+                </div>
+                <div
+                    class="space-y-3 text-sm text-obt-muted flex flex-col justify-between"
+                >
+                    <p>💳 <strong>Tarif :</strong> {event.data.price}</p>
+                    {
+                        event.data.registrationLink && (
+                            <a
+                                href={event.data.registrationLink}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="inline-block text-center py-2.5 px-6 rounded-full bg-obt-primary text-white font-medium hover:bg-obt-primary/90 transition-all text-xs"
+                            >
+                                Réserver / S'inscrire →
+                            </a>
+                        )
+                    }
+                </div>
+            </div>
+
+            <!-- Contenu rédigé en Markdown -->
+            <div
+                class="prose prose-lg max-w-none text-obt-muted space-y-4 leading-relaxed pt-6"
+            >
+                <Content />
+            </div>
+
+            <!-- Retour à l'agenda -->
+            <div class="pt-12 border-t border-obt-muted/10 text-center">
+                <a
+                    href="/events"
+                    class="inline-block px-8 py-3 rounded-full border-2 border-obt-secondary text-obt-secondary font-medium hover:bg-obt-secondary hover:text-white transition-all"
+                >
+                    ← Retour à tous les événements
+                </a>
+            </div>
+        </article>
+    </main>
+
+    <Footer slot="footer" />
+</Layout>

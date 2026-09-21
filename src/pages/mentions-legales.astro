@@ -1,0 +1,127 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout
+    title="Mentions Légales - OBT Café Lyon"
+    description="Mentions légales, crédits et informations juridiques du site web de l'OBT Café (Off The Beaten Tracks)."
+>
+    <Header slot="header" />
+
+    <main class="py-16 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+            <h1
+                class="text-3xl sm:text-4xl font-extrabold text-obt-dark border-b border-obt-muted/10 pb-4"
+            >
+                Mentions Légales
+            </h1>
+
+            <!-- Éditeur du site -->
+            <section class="space-y-3">
+                <h2 class="text-xl font-bold text-obt-primary">
+                    1. Éditeur du site
+                </h2>
+                <p class="text-obt-muted text-sm leading-relaxed">
+                    Le site web <strong>Off The Beaten Tracks (OBT Café)</strong
+                    > est édité par l'association Off The Beaten Tracks.<br />
+                    <strong>Siège social :</strong> 236 Cours Lafayette, 69003 Lyon,
+                    France<br />
+                    <strong>Email :</strong> contact@offthebeatentracks.fr<br />
+                    <strong>Statut :</strong> Association loi 1901
+                </p>
+            </section>
+
+            <!-- Conception & Développement -->
+            <section class="space-y-3">
+                <h2 class="text-xl font-bold text-obt-primary">
+                    2. Conception & Développement
+                </h2>
+                <p class="text-obt-muted text-sm leading-relaxed">
+                    Ce site web a été conçu et développé par <strong
+                        >Loïc Poo-Sing</strong
+                    > et <strong>Khaoula</strong>.
+                </p>
+                <div
+                    class="bg-obt-light p-4 rounded-2xl border border-obt-muted/15 text-sm space-y-2"
+                >
+                    <p class="font-bold text-obt-dark">
+                        Crédits de réalisation :
+                    </p>
+                    <ul class="list-disc pl-5 space-y-1 text-obt-muted">
+                        <li>
+                            <strong>Loïc Poo-Sing :</strong> Développeur Web —
+                            <a
+                                href="https://www.loicpoosing.fr/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="text-obt-primary hover:underline"
+                                >www.loicpoosing.fr</a
+                            > —
+                            <a
+                                href="mailto:poosingloic@gmail.com"
+                                class="text-obt-primary hover:underline"
+                                >poosingloic@gmail.com</a
+                            > — 06 99 32 63 13
+                        </li>
+                        <li>
+                            <strong>Khaoula :</strong> Conception & Développement
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Hébergement -->
+            <section class="space-y-3">
+                <h2 class="text-xl font-bold text-obt-primary">
+                    3. Hébergement
+                </h2>
+                <p class="text-obt-muted text-sm leading-relaxed">
+                    Le site est hébergé par la société <strong
+                        >Vercel Inc.</strong
+                    ><br />
+                    Adresse : 440 N Barranca Ave #4133, Covina, CA 91723, USA<br
+                    />
+                    Site web : <a
+                        href="https://vercel.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-obt-primary hover:underline">vercel.com</a
+                    >
+                </p>
+            </section>
+
+            <!-- Propriété intellectuelle -->
+            <section class="space-y-3">
+                <h2 class="text-xl font-bold text-obt-primary">
+                    4. Propriété intellectuelle
+                </h2>
+                <p class="text-obt-muted text-sm leading-relaxed">
+                    L'ensemble des contenus (textes, visuels, photographies,
+                    éléments graphiques) présents sur ce site est protégé par
+                    les lois régissant le droit d'auteur et la propriété
+                    intellectuelle. Toute reproduction ou distribution non
+                    autorisée est strictement interdite.
+                </p>
+            </section>
+
+            <!-- Protection des données personnelles -->
+            <section class="space-y-3">
+                <h2 class="text-xl font-bold text-obt-primary">
+                    5. Protection des données personnelles (RGPD)
+                </h2>
+                <p class="text-obt-muted text-sm leading-relaxed">
+                    Ce site respecte la vie privée des utilisateurs et ne
+                    collecte aucune donnée personnelle à leur insu. Conformément
+                    au Règlement Général sur la Protection des Données (RGPD),
+                    vous disposez d'un droit d'accès, de rectification et de
+                    suppression des données vous concernant sur simple demande
+                    par email.
+                </p>
+            </section>
+        </div>
+    </main>
+
+    <Footer slot="footer" />
+</Layout>

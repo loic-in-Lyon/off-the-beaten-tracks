@@ -1,0 +1,60 @@
+---
+import { Image } from "astro:assets";
+import illustrationCafe from "../assets/images/illustration-cafe.png";
+---
+
+<section class="py-16 md:py-24 overflow-hidden bg-obt-light">
+    <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+    >
+        <!-- Texte d'accroche -->
+        <div class="space-y-6">
+            <span
+                class="inline-block px-3.5 py-1.5 rounded-full bg-obt-primary/10 text-obt-primary font-semibold text-xs tracking-wide uppercase"
+            >
+                Tiers-lieu interculturel à Lyon 3e
+            </span>
+            <h1
+                class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-obt-dark leading-tight"
+            >
+                Un café pour se rencontrer, <span
+                    class="text-obt-primary underline decoration-obt-accent decoration-wavy decoration-2"
+                    >apprendre et construire</span
+                > ensemble.
+            </h1>
+            <p class="text-lg text-obt-muted leading-relaxed">
+                OBT Café est un espace culturel et associatif ouvert à toutes et
+                tous, porté par l'association Off The Beaten Tracks au 236 Cours
+                Lafayette à Lyon.
+            </p>
+            <div class="flex flex-wrap gap-4 pt-2">
+                <a
+                    href="/le-cafe"
+                    class="px-6 py-3 rounded-full bg-obt-primary text-white font-medium hover:bg-obt-primary/90 transition-all shadow-md hover:shadow-lg"
+                >
+                    Découvrir le café
+                </a>
+                <a
+                    href="/rejoindre"
+                    class="px-6 py-3 rounded-full border-2 border-obt-secondary text-obt-secondary font-medium hover:bg-obt-secondary hover:text-white transition-all"
+                >
+                    Devenir bénévole
+                </a>
+            </div>
+        </div>
+
+        <!-- Visuel / Illustration optimisée -->
+        <div class="relative flex justify-center">
+            <div class="w-full max-w-lg p-4 flex items-center justify-center">
+                <Image
+                    src={illustrationCafe}
+                    alt="Illustration OBT Café - Moments de partage"
+                    width={600}
+                    height={500}
+                    class="w-full h-auto object-contain drop-shadow-lg"
+                    loading="eager"
+                />
+            </div>
+        </div>
+    </div>
+</section>

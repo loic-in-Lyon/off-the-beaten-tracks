@@ -1,0 +1,128 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { Image } from "astro:assets";
+
+export async function getStaticPaths() {
+    const posts = await getCollection("blog", ({ data }) => !data.draft);
+    return posts.map((post) => ({
+        params: { slug: post.id },
+        props: { post },
+    }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const formattedDate = new Date(post.data.publishDate).toLocaleDateString(
+    "fr-FR",
+    {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+    },
+);
+---
+
+<Layout
+    title={`${post.data.title} - Blog OBT Café`}
+    description={post.data.description}
+>
+    <Header slot="header" />
+
+    <!-- Fil d'Ariane -->
+    <nav
+        aria-label="Fil d'ariane"
+        class="bg-obt-secondary/5 py-3 border-b border-obt-secondary/10"
+    >
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-sm text-obt-muted"
+        >
+            <ol class="flex items-center space-x-2">
+                <li>
+                    <a href="/" class="hover:text-obt-primary transition-colors"
+                        >Accueil</a>
+                </li>
+                <li>
+                    <span class="text-obt-muted/40 px-2">/</span><a
+                        href="/blog"
+                        class="hover:text-obt-primary transition-colors"
+                        >Blog</a>
+                </li>
+                <li>
+                    <span class="text-obt-muted/40 px-2">/</span><span
+                        class="text-obt-dark font-medium"
+                        aria-current="page">{post.data.title}</span>
+                </li>
+            </ol>
+        </div>
+    </nav>
+
+    <main class="py-16 bg-white">
+        <article class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+            <!-- En-tête -->
+            <div class="space-y-4 text-center">
+                <span
+                    class="inline-block px-3.5 py-1.5 rounded-full bg-obt-primary/10 text-obt-primary font-semibold text-xs tracking-wide uppercase"
+                >
+                    {post.data.category}
+                </span>
+                <h1
+                    class="text-3xl sm:text-5xl font-extrabold text-obt-dark tracking-tight leading-tight"
+                >
+                    {post.data.title}
+                </h1>
+                <div
+                    class="text-sm text-obt-muted flex items-center justify-center gap-4"
+                >
+                    <span>✍️ {post.data.author}</span>
+                    <span>•</span>
+                    <span>📅 {formattedDate}</span>
+                </div>
+            </div>
+
+            <!-- Image à la une (si présente) -->
+            {
+                post.data.image && (
+                    <div class="rounded-3xl overflow-hidden shadow-lg border border-obt-muted/15">
+                        <Image
+                            src={post.data.image}
+                            alt={post.data.title}
+                            width={1000}
+                            height={500}
+                            class="w-full h-auto object-cover max-h-[450px]"
+                        />
+                    </div>
+                )
+            }
+
+            <!-- Chapeau / Description -->
+            <p
+                class="text-lg text-obt-dark font-medium leading-relaxed italic border-l-4 border-obt-primary pl-4 py-1"
+            >
+                {post.data.description}
+            </p>
+
+            <!-- Contenu Markdown -->
+            <div
+                class="prose prose-lg max-w-none text-obt-muted space-y-4 leading-relaxed pt-4 border-t border-obt-muted/10"
+            >
+                <Content />
+            </div>
+
+            <!-- Retour au blog -->
+            <div class="pt-12 border-t border-obt-muted/10 text-center">
+                <a
+                    href="/blog"
+                    class="inline-block px-8 py-3 rounded-full border-2 border-obt-secondary text-obt-secondary font-medium hover:bg-obt-secondary hover:text-white transition-all"
+                >
+                    ← Retour à tous les articles
+                </a>
+            </div>
+        </article>
+    </main>
+
+    <Footer slot="footer" />
+</Layout>

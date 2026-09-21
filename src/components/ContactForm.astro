@@ -1,0 +1,224 @@
+---
+const web3formsKey = "3c63b09b-10a9-4d99-90be-ae2a1526a863";
+---
+
+<div class="bg-white p-8 rounded-3xl border border-obt-muted/15 shadow-sm">
+    <!-- Formulaire -->
+    <form id="contact-form" class="space-y-6">
+        <!-- Clé & Paramètres cachés Web3Forms -->
+        <input type="hidden" name="access_key" value={web3formsKey} />
+        <input
+            type="checkbox"
+            name="botcheck"
+            class="hidden"
+            style="display: none;"
+        />
+        <input
+            type="hidden"
+            name="subject"
+            value="Nouveau message depuis le site OBT Café"
+        />
+
+        <!-- Nom -->
+        <div>
+            <label for="name" class="block text-sm font-bold text-obt-dark mb-2"
+                >Nom complet</label
+            >
+            <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                placeholder="Votre nom et prénom"
+                class="w-full px-4 py-3 rounded-xl bg-obt-light border border-obt-muted/20 focus:outline-none focus:border-obt-primary text-sm"
+            />
+        </div>
+
+        <!-- Email -->
+        <div>
+            <label
+                for="email"
+                class="block text-sm font-bold text-obt-dark mb-2"
+                >Adresse e-mail</label
+            >
+            <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                placeholder="votre@email.com"
+                class="w-full px-4 py-3 rounded-xl bg-obt-light border border-obt-muted/20 focus:outline-none focus:border-obt-primary text-sm"
+            />
+        </div>
+
+        <!-- Objet -->
+        <div>
+            <label
+                for="category"
+                class="block text-sm font-bold text-obt-dark mb-2"
+                >Objet de votre demande</label
+            >
+            <select
+                id="category"
+                name="category"
+                class="w-full px-4 py-3 rounded-xl bg-obt-light border border-obt-muted/20 focus:outline-none focus:border-obt-primary text-sm text-obt-dark"
+            >
+                <option value="Renseignement général"
+                    >Renseignement général</option
+                >
+                <option value="Privatisation de salle"
+                    >Privatisation & Location de salle</option
+                >
+                <option value="Proposition de projet / Concert / Atelier"
+                    >Proposer un projet, atelier ou concert</option
+                >
+                <option value="Bénévolat">Devenir bénévole</option>
+            </select>
+        </div>
+
+        <!-- Message -->
+        <div>
+            <label
+                for="message"
+                class="block text-sm font-bold text-obt-dark mb-2"
+                >Votre message</label
+            >
+            <textarea
+                id="message"
+                name="message"
+                rows="5"
+                required
+                placeholder="Expliquez-nous votre demande..."
+                class="w-full px-4 py-3 rounded-xl bg-obt-light border border-obt-muted/20 focus:outline-none focus:border-obt-primary text-sm"
+            ></textarea>
+        </div>
+
+        <!-- Case à cocher Politique de confidentialité -->
+        <div class="flex items-start gap-3 pt-2">
+            <input
+                type="checkbox"
+                id="privacy"
+                name="privacy"
+                required
+                class="mt-1 h-4 w-4 rounded border-obt-muted/30 text-obt-primary focus:ring-obt-primary cursor-pointer"
+            />
+            <label for="privacy" class="text-xs text-obt-muted leading-relaxed">
+                J'accepte que mes données soient traitées conformément à la
+                <a
+                    href="/politique-de-confidentialite"
+                    target="_blank"
+                    class="text-obt-primary underline font-medium hover:text-obt-primary/80"
+                >
+                    politique de confidentialité
+                </a>.
+            </label>
+        </div>
+
+        <!-- Message d'erreur (si problème lors de l'envoi) -->
+        <div
+            id="error-message"
+            class="hidden p-4 rounded-2xl text-center text-sm font-medium bg-red-50 text-red-800 border border-red-200"
+        >
+        </div>
+
+        <!-- Bouton d'envoi -->
+        <button
+            type="submit"
+            id="submit-btn"
+            class="w-full py-4 rounded-full bg-obt-primary text-white font-bold hover:bg-obt-primary/90 transition-all text-sm shadow-md disabled:opacity-50 cursor-pointer"
+        >
+            Envoyer le message ➔
+        </button>
+    </form>
+
+    <!-- État de confirmation (Masqué par défaut) -->
+    <div id="success-feedback" class="hidden text-center py-12 px-4 space-y-6">
+        <div
+            class="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto text-4xl shadow-inner"
+        >
+            ✓
+        </div>
+        <div class="space-y-2">
+            <h3 class="text-2xl sm:text-3xl font-extrabold text-obt-dark">
+                Message bien envoyé !
+            </h3>
+            <p class="text-obt-muted text-sm max-w-md mx-auto leading-relaxed">
+                Merci de nous avoir contactés. L'équipe de l'OBT Café vous
+                répondra par email dans les plus brefs délais.
+            </p>
+        </div>
+        <button
+            type="button"
+            id="reset-form-btn"
+            class="inline-block px-6 py-2.5 rounded-full border border-obt-muted/30 text-obt-dark text-xs font-bold hover:bg-obt-light transition-all cursor-pointer"
+        >
+            Envoyer un autre message
+        </button>
+    </div>
+</div>
+
+<script>
+    const form = document.getElementById("contact-form") as HTMLFormElement;
+    const successFeedback = document.getElementById("success-feedback");
+    const errorMessage = document.getElementById("error-message");
+    const submitBtn = document.getElementById(
+        "submit-btn",
+    ) as HTMLButtonElement;
+    const resetBtn = document.getElementById("reset-form-btn");
+
+    if (form && successFeedback && errorMessage && submitBtn) {
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            // Réinitialise le message d'erreur et désactive le bouton
+            errorMessage.classList.add("hidden");
+            submitBtn.disabled = true;
+            submitBtn.innerText = "Envoi en cours...";
+
+            const formData = new FormData(form);
+            const json = JSON.stringify(Object.fromEntries(formData));
+
+            try {
+                const response = await fetch(
+                    "https://api.web3forms.com/submit",
+                    {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            Accept: "application/json",
+                        },
+                        body: json,
+                    },
+                );
+
+                const result = await response.json();
+
+                if (response.status === 200 && result.success) {
+                    // Masque le formulaire et affiche le feedback élégant
+                    form.classList.add("hidden");
+                    successFeedback.classList.remove("hidden");
+                    form.reset();
+                } else {
+                    errorMessage.innerText =
+                        "Un problème est survenu lors de l'envoi. Veuillez réessayer ou envoyer un email directement.";
+                    errorMessage.classList.remove("hidden");
+                }
+            } catch (error) {
+                errorMessage.innerText =
+                    "Erreur de connexion. Veuillez vérifier votre réseau puis réessayez.";
+                errorMessage.classList.remove("hidden");
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerText = "Envoyer le message ➔";
+            }
+        });
+
+        // Permet de réafficher le formulaire si l'utilisateur veut renvoyer un message
+        if (resetBtn) {
+            resetBtn.addEventListener("click", () => {
+                successFeedback.classList.add("hidden");
+                form.classList.remove("hidden");
+            });
+        }
+    }
+</script>

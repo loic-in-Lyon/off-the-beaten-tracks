@@ -1,0 +1,128 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { Image } from "astro:assets";
+
+const posts = await getCollection("blog", ({ data }) => !data.draft);
+const sortedPosts = posts.sort(
+    (a, b) =>
+        new Date(b.data.publishDate).getTime() -
+        new Date(a.data.publishDate).getTime(),
+);
+---
+
+<Layout
+    title="Blog & Actualités - OBT Café Lyon"
+    description="Découvrez les actualités, coulisses et récits d'ateliers de l'association Off The Beaten Tracks à Lyon 3e."
+>
+    <Header slot="header" />
+
+    <!-- Fil d'Ariane -->
+    <nav
+        aria-label="Fil d'ariane"
+        class="bg-obt-secondary/5 py-3 border-b border-obt-secondary/10"
+    >
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-sm text-obt-muted"
+        >
+            <ol class="flex items-center space-x-2">
+                <li>
+                    <a href="/" class="hover:text-obt-primary transition-colors"
+                        >Accueil</a>
+                </li>
+                <li>
+                    <span class="text-obt-muted/40 px-2">/</span><span
+                        class="text-obt-dark font-medium"
+                        aria-current="page">Blog</span>
+                </li>
+            </ol>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="py-16 bg-obt-light text-center">
+        <div class="max-w-4xl mx-auto px-4 space-y-4">
+            <span
+                class="inline-block px-3.5 py-1.5 rounded-full bg-obt-secondary/15 text-obt-dark font-semibold text-xs tracking-wide uppercase"
+            >
+                Vie de l'association
+            </span>
+            <h1 class="text-4xl sm:text-5xl font-extrabold text-obt-dark">
+                Le Blog OBT
+            </h1>
+            <p class="text-lg text-obt-muted max-w-2xl mx-auto">
+                Actualités du tiers-lieu, retours sur nos événements, portraits
+                de bénévoles et réflexions autour de l'interculturalité.
+            </p>
+        </div>
+    </section>
+
+    <!-- Grille d'articles -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {
+                sortedPosts.length === 0 ? (
+                    <p class="text-center text-obt-muted italic py-12">
+                        Aucun article publié pour le moment. Revenez bientôt !
+                    </p>
+                ) : (
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {sortedPosts.map((post) => {
+                            const dateStr = new Date(
+                                post.data.publishDate,
+                            ).toLocaleDateString("fr-FR", {
+                                day: "numeric",
+                                month: "long",
+                                year: "numeric",
+                            });
+
+                            return (
+                                <article class="bg-obt-light rounded-3xl overflow-hidden border border-obt-muted/15 flex flex-col justify-between shadow-sm hover:shadow-md transition-all">
+                                    <div>
+                                        {post.data.image && (
+                                            <div class="relative h-48 overflow-hidden">
+                                                <Image
+                                                    src={post.data.image}
+                                                    alt={post.data.title}
+                                                    width={600}
+                                                    height={400}
+                                                    class="w-full h-full object-cover"
+                                                />
+                                            </div>
+                                        )}
+                                        <div class="p-6 space-y-3">
+                                            <span class="text-xs font-bold text-obt-primary uppercase tracking-wide">
+                                                {post.data.category}
+                                            </span>
+                                            <h2 class="text-xl font-bold text-obt-dark hover:text-obt-primary transition-colors">
+                                                <a href={`/blog/${post.id}`}>
+                                                    {post.data.title}
+                                                </a>
+                                            </h2>
+                                            <p class="text-obt-muted text-sm line-clamp-3">
+                                                {post.data.description}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="p-6 pt-0 border-t border-obt-muted/10 mt-4 flex items-center justify-between text-xs text-obt-muted">
+                                        <span>📅 {dateStr}</span>
+                                        <a
+                                            href={`/blog/${post.id}`}
+                                            class="font-bold text-obt-primary hover:underline"
+                                        >
+                                            Lire la suite →
+                                        </a>
+                                    </div>
+                                </article>
+                            );
+                        })}
+                    </div>
+                )
+            }
+        </div>
+    </section>
+
+    <Footer slot="footer" />
+</Layout>
