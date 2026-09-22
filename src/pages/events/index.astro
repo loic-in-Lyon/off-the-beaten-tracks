@@ -10,17 +10,20 @@ import talkshowImg from "../../assets/images/talkshow.webp";
 const allEvents = await getCollection("events");
 const now = new Date();
 
-// Prochains événements (tri chronologique)
+// 1. Événements récurrents / Rendez-vous réguliers
+const recurringEvents = allEvents.filter((e) => e.data.isRecurring);
+
+// 2. Événements ponctuels à venir (tri chronologique)
 const upcomingEvents = allEvents
-    .filter((e) => new Date(e.data.date) >= now)
+    .filter((e) => !e.data.isRecurring && new Date(e.data.date) >= now)
     .sort(
         (a, b) =>
             new Date(a.data.date).getTime() - new Date(b.data.date).getTime(),
     );
 
-// Événements passés (tri antéchronologique)
+// 3. Événements ponctuels passés (tri antéchronologique)
 const pastEvents = allEvents
-    .filter((e) => new Date(e.data.date) < now)
+    .filter((e) => !e.data.isRecurring && new Date(e.data.date) < now)
     .sort(
         (a, b) =>
             new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
@@ -58,12 +61,11 @@ const pastEvents = allEvents
         </div>
     </nav>
 
-    <!-- Hero Section avec la couleur du thème Événements -->
+    <!-- Hero Section -->
     <section class="py-12 md:py-16 bg-[var(--color-event-light)]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 <div class="lg:col-span-7 space-y-4 text-center lg:text-left">
-                    <!-- Badge dans la déclinaison Ocre / Texte contrasté -->
                     <span
                         class="inline-block px-3.5 py-1.5 rounded-full bg-[var(--color-event)]/25 text-[var(--color-event-text)] font-bold text-xs tracking-wider uppercase border border-[var(--color-event)]/30"
                     >
@@ -98,18 +100,18 @@ const pastEvents = allEvents
         </div>
     </section>
 
-    <!-- Prochains Événements -->
+    <!-- Événements Ponctuels à Venir -->
     <section class="py-16 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-            <!-- Bordure d'accentuation en Ocre -->
             <div class="border-l-4 border-[var(--color-event)] pl-4">
                 <h2
                     class="text-2xl sm:text-3xl font-bold text-obt-dark font-serif"
                 >
-                    Événements & ateliers à venir
+                    Événements à venir
                 </h2>
                 <p class="text-sm text-obt-muted mt-1">
-                    Consultez les prochaines dates et réservez vos places.
+                    Les prochains rendez-vous ponctuels et dates uniques à ne
+                    pas manquer.
                 </p>
             </div>
 
@@ -117,11 +119,12 @@ const pastEvents = allEvents
                 upcomingEvents.length === 0 ? (
                     <div class="bg-[var(--color-event-light)] rounded-2xl p-8 text-center border border-[var(--color-event)]/20 space-y-2">
                         <p class="text-[var(--color-event-text)] font-semibold">
-                            Aucun événement n'est actuellement programmé.
+                            Aucun événement ponctuel n'est actuellement
+                            programmé.
                         </p>
                         <p class="text-sm text-obt-muted">
-                            Suivez-nous sur les réseaux sociaux pour ne rien
-                            manquer des prochaines annonces !
+                            Retrouvez nos ateliers réguliers ci-dessous ou
+                            suivez-nous sur nos réseaux !
                         </p>
                     </div>
                 ) : (
@@ -134,6 +137,31 @@ const pastEvents = allEvents
             }
         </div>
     </section>
+
+    <!-- Rendez-vous & Ateliers Récurrents -->
+    {
+        recurringEvents.length > 0 && (
+            <section class="py-16 bg-[var(--color-event-light)]/40 border-t border-[var(--color-event)]/20">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+                    <div class="border-l-4 border-[var(--color-event)] pl-4">
+                        <h2 class="text-2xl sm:text-3xl font-bold text-obt-dark font-serif">
+                            Rendez-vous réguliers & Ateliers
+                        </h2>
+                        <p class="text-sm text-obt-muted mt-1">
+                            Nos activités de groupe hebdomadaires et mensuelles
+                            tout au long de l'année.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {recurringEvents.map((event) => (
+                            <EventCard event={event} />
+                        ))}
+                    </div>
+                </div>
+            </section>
+        )
+    }
 
     <!-- Événements Passés -->
     {
@@ -153,7 +181,7 @@ const pastEvents = allEvents
         )
     }
 
-    <!-- Call To Action avec bouton Ocre / Texte foncé -->
+    <!-- Call To Action -->
     <section class="py-14 bg-white border-t border-obt-muted/10 text-center">
         <div class="max-w-3xl mx-auto px-4 space-y-4">
             <h3 class="text-xl sm:text-2xl font-bold text-obt-dark font-serif">
