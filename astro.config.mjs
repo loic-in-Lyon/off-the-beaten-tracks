@@ -6,11 +6,15 @@ import keystatic from '@keystatic/astro';
 import markdoc from '@astrojs/markdoc';
 import vercel from '@astrojs/vercel';
 
+import sitemap from '@astrojs/sitemap';
+
 export default defineConfig({
   output: 'static',
   adapter: vercel(),
-  integrations: [react(), keystatic(), markdoc()],
+  integrations: [react(), keystatic(), markdoc(), sitemap()],
   vite: {
     plugins: [tailwindcss()]
   }
 });
+
+
