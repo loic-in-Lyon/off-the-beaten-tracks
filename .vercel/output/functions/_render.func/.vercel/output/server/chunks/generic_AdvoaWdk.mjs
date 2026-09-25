@@ -316,7 +316,7 @@ var cssFitValues = [
 ];
 async function getConfiguredImageService() {
 	if (!globalThis?.astroAsset?.imageService) {
-		const { default: service } = await import("./sharp_GWOESHFV.mjs").catch((e) => {
+		const { default: service } = await import("./sharp_B5i2suNm.mjs").catch((e) => {
 			const error = new AstroError(InvalidImageService);
 			error.cause = e;
 			throw error;
@@ -473,7 +473,7 @@ async function peekRemoteFormatForStaticEmit(options, imageConfig, service, logg
 Function.prototype.toString.call(Object);
 //#endregion
 //#region node_modules/astro/components/Image.astro
-createAstro("https://astro.build");
+createAstro("https://offthebeatentracks.fr");
 var $$Image = createComponent(async ($$result, $$props, $$slots) => {
 	const Astro2 = $$result.createAstro($$props, $$slots);
 	Astro2.self = $$Image;
@@ -500,7 +500,7 @@ var $$Image = createComponent(async ($$result, $$props, $$slots) => {
 }, "/Users/mac/code/loic-in-Lyon/off-the-beaten-tracks/node_modules/astro/components/Image.astro", void 0);
 //#endregion
 //#region node_modules/astro/components/Picture.astro
-createAstro("https://astro.build");
+createAstro("https://offthebeatentracks.fr");
 var $$Picture = createComponent(async ($$result, $$props, $$slots) => {
 	const Astro2 = $$result.createAstro($$props, $$slots);
 	Astro2.self = $$Picture;
@@ -592,7 +592,7 @@ function checkWeight(input, target) {
 }
 //#endregion
 //#region node_modules/astro/components/Font.astro
-createAstro("https://astro.build");
+createAstro("https://offthebeatentracks.fr");
 var $$Font = createComponent(($$result, $$props, $$slots) => {
 	const Astro = $$result.createAstro($$props, $$slots);
 	Astro.self = $$Font;

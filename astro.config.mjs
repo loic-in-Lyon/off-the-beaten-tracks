@@ -8,7 +8,10 @@ import vercel from '@astrojs/vercel';
 
 import sitemap from '@astrojs/sitemap';
 
-export default defineConfig({
+export default defineConfig({ 
+  
+  // <-- Ton domaine final ici
+  site: 'https://offthebeatentracks.fr',
   output: 'static',
   adapter: vercel(),
   integrations: [react(), keystatic(), markdoc(), sitemap()],
