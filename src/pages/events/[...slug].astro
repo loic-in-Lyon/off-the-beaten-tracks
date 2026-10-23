@@ -3,196 +3,199 @@ import { getCollection, render } from "astro:content";
 import { Image } from "astro:assets";
 import Layout from "../../layouts/Layout.astro";
 
+// Import de l'image par défaut depuis tes assets
+import defaultImage from "../../assets/images/default-event.png";
+
 export async function getStaticPaths() {
-    const events = await getCollection("events");
-    return events.map((event) => ({
-        params: { slug: event.id },
-        props: { event },
-    }));
+  const events = await getCollection("events");
+  return events.map((event) => ({
+    params: { slug: event.id },
+    props: { event },
+  }));
 }
 
 const { event } = Astro.props;
 const { Content } = await render(event);
 
 const formattedDate = new Date(event.data.date).toLocaleDateString("fr-FR", {
-    weekday: "long",
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
+  weekday: "long",
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+  hour: "2-digit",
+  minute: "2-digit",
 });
 
-// Sécurité pour l'image (Objet importé vs Texte de Keystatic)
-const isAstroImage = typeof event.data.image !== "string";
+// Image de secours si aucune n'est renseignée dans Keystatic
+const eventImage = event.data.image || defaultImage;
+
+// Sécurité pour l'image (Objet importé ESM/Assets vs Texte de Keystatic)
+const isAstroImage = typeof eventImage === "object";
 ---
 
 <Layout
-    title={`${event.data.title} - OBT Café`}
-    description={event.data.description}
+  title={`${event.data.title} | OBT Café`}
+  description={event.data.description ||
+    "Découvrez cet événement à l'OBT Café."}
 >
-    <!-- Fil d'Ariane -->
-    <nav
-        aria-label="Fil d'ariane"
-        class="bg-obt-light/80 py-3 border-b border-obt-muted/10"
-    >
-        <div
-            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-sm text-obt-muted"
+  <!-- Fil d'Ariane -->
+  <nav
+    aria-label="Fil d'ariane"
+    class="bg-obt-light/80 py-3 border-b border-obt-muted/10"
+  >
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-sm text-obt-muted">
+      <ol class="flex items-center space-x-2">
+        <li>
+          <a
+            href="/"
+            class="hover:text-[var(--color-event-text)] font-medium transition-colors"
+            >Accueil</a
+          >
+        </li>
+        <li>
+          <span class="text-obt-muted/40 px-2">/</span>
+          <a
+            href="/events"
+            class="hover:text-[var(--color-event-text)] font-medium transition-colors"
+            >Événements</a
+          >
+        </li>
+        <li>
+          <span class="text-obt-muted/40 px-2">/</span>
+          <span
+            class="text-obt-dark font-semibold truncate max-w-[200px] sm:max-w-none inline-block align-bottom"
+            aria-current="page"
+          >
+            {event.data.title}
+          </span>
+        </li>
+      </ol>
+    </div>
+  </nav>
+
+  <main class="py-12 sm:py-16 bg-white">
+    <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      <!-- En-tête de l'événement -->
+      <div class="space-y-4 text-center">
+        <span
+          class="inline-block px-3.5 py-1.5 rounded-full bg-[var(--color-event)] text-[var(--color-event-text)] font-extrabold text-xs tracking-wider uppercase shadow-sm"
         >
-            <ol class="flex items-center space-x-2">
-                <li>
-                    <a
-                        href="/"
-                        class="hover:text-[var(--color-event-text)] font-medium transition-colors"
-                        >Accueil</a
-                    >
-                </li>
-                <li>
-                    <span class="text-obt-muted/40 px-2">/</span>
-                    <a
-                        href="/events"
-                        class="hover:text-[var(--color-event-text)] font-medium transition-colors"
-                        >Événements</a
-                    >
-                </li>
-                <li>
-                    <span class="text-obt-muted/40 px-2">/</span>
-                    <span
-                        class="text-obt-dark font-semibold truncate max-w-[200px] sm:max-w-none inline-block align-bottom"
-                        aria-current="page"
-                    >
-                        {event.data.title}
-                    </span>
-                </li>
-            </ol>
+          {event.data.category || "Événement"}
+        </span>
+
+        <h1
+          class="text-3xl sm:text-5xl font-extrabold text-obt-dark font-serif tracking-tight leading-tight"
+        >
+          {event.data.title}
+        </h1>
+
+        <div
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--color-event-light)] text-[var(--color-event-text)] font-bold text-sm sm:text-base border border-[var(--color-event)]/30"
+        >
+          <span>📅</span>
+          <span class="capitalize">
+            {
+              event.data.isRecurring && event.data.frequency
+                ? `${event.data.frequency} à ${new Date(event.data.date).toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" })}`
+                : formattedDate
+            }
+          </span>
         </div>
-    </nav>
+      </div>
 
-    <main class="py-12 sm:py-16 bg-white">
-        <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-            <!-- En-tête de l'événement -->
-            <div class="space-y-4 text-center">
-                <span
-                    class="inline-block px-3.5 py-1.5 rounded-full bg-[var(--color-event)] text-[var(--color-event-text)] font-extrabold text-xs tracking-wider uppercase shadow-sm"
-                >
-                    {event.data.category}
+      <!-- Image principale avec détection du type -->
+      <div
+        class="rounded-3xl overflow-hidden shadow-sm border border-obt-muted/15 bg-slate-50"
+      >
+        {
+          isAstroImage ? (
+            <Image
+              src={eventImage}
+              alt={event.data.title}
+              width={1000}
+              height={600}
+              class="w-full h-auto object-cover max-h-[500px]"
+            />
+          ) : (
+            <img
+              src={eventImage as string}
+              alt={event.data.title}
+              class="w-full h-auto object-cover max-h-[500px]"
+            />
+          )
+        }
+      </div>
+
+      <!-- Grille des informations pratiques -->
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-[var(--color-event-light)] p-6 sm:p-8 rounded-3xl border border-[var(--color-event)]/20 shadow-sm"
+      >
+        <div class="space-y-3 text-sm text-obt-dark">
+          <p class="flex items-start gap-2">
+            <span class="shrink-0">📍</span>
+            <span><strong>Lieu :</strong> {event.data.location}</span>
+          </p>
+          <p class="flex items-start gap-2">
+            <span class="shrink-0">🤝</span>
+            <span
+              ><strong>Organisateur :</strong>
+              {event.data.organizer}</span
+            >
+          </p>
+          {
+            event.data.guest && (
+              <p class="flex items-start gap-2">
+                <span class="shrink-0">🎤</span>
+                <span>
+                  <strong>Invité / Artiste :</strong>{" "}
+                  <span class="text-[var(--color-event-text)] font-bold">
+                    {event.data.guest}
+                  </span>
                 </span>
+              </p>
+            )
+          }
+        </div>
 
-                <h1
-                    class="text-3xl sm:text-5xl font-extrabold text-obt-dark font-serif tracking-tight leading-tight"
-                >
-                    {event.data.title}
-                </h1>
+        <div
+          class="space-y-4 text-sm text-obt-dark flex flex-col justify-between border-t md:border-t-0 md:border-l border-[var(--color-event)]/20 pt-4 md:pt-0 md:pl-6"
+        >
+          <p class="flex items-start gap-2">
+            <span class="shrink-0">💳</span>
+            <span><strong>Tarif :</strong> {event.data.price}</span>
+          </p>
 
-                <div
-                    class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--color-event-light)] text-[var(--color-event-text)] font-bold text-sm sm:text-base border border-[var(--color-event)]/30"
-                >
-                    <span>📅</span>
-                    <span class="capitalize">
-                        {
-                            event.data.isRecurring && event.data.frequency
-                                ? `${event.data.frequency} à ${new Date(event.data.date).toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" })}`
-                                : formattedDate
-                        }
-                    </span>
-                </div>
-            </div>
+          {
+            event.data.registrationLink && (
+              <a
+                href={event.data.registrationLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-block text-center py-3 px-6 rounded-full bg-[var(--color-event)] text-[var(--color-event-text)] font-extrabold hover:brightness-95 transition-all text-xs uppercase tracking-wider shadow-sm"
+              >
+                Réserver / S'inscrire →
+              </a>
+            )
+          }
+        </div>
+      </div>
 
-            <!-- Image principale avec détection du type -->
-            <div
-                class="rounded-3xl overflow-hidden shadow-sm border border-obt-muted/15 bg-slate-50"
-            >
-                {
-                    isAstroImage ? (
-                        <Image
-                            src={event.data.image}
-                            alt={event.data.title}
-                            width={1000}
-                            height={600}
-                            class="w-full h-auto object-cover max-h-[500px]"
-                        />
-                    ) : (
-                        <img
-                            src={event.data.image}
-                            alt={event.data.title}
-                            class="w-full h-auto object-cover max-h-[500px]"
-                        />
-                    )
-                }
-            </div>
+      <!-- Contenu rédigé en Markdown / Markdoc -->
+      <div
+        class="prose prose-lg max-w-none text-obt-muted space-y-4 leading-relaxed pt-4"
+      >
+        <Content />
+      </div>
 
-            <!-- Grille des informations pratiques -->
-            <div
-                class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-[var(--color-event-light)] p-6 sm:p-8 rounded-3xl border border-[var(--color-event)]/20 shadow-sm"
-            >
-                <div class="space-y-3 text-sm text-obt-dark">
-                    <p class="flex items-start gap-2">
-                        <span class="shrink-0">📍</span>
-                        <span
-                            ><strong>Lieu :</strong> {event.data.location}</span
-                        >
-                    </p>
-                    <p class="flex items-start gap-2">
-                        <span class="shrink-0">🤝</span>
-                        <span
-                            ><strong>Organisateur :</strong>
-                            {event.data.organizer}</span
-                        >
-                    </p>
-                    {
-                        event.data.guest && (
-                            <p class="flex items-start gap-2">
-                                <span class="shrink-0">🎤</span>
-                                <span>
-                                    <strong>Invité / Artiste :</strong>{" "}
-                                    <span class="text-[var(--color-event-text)] font-bold">
-                                        {event.data.guest}
-                                    </span>
-                                </span>
-                            </p>
-                        )
-                    }
-                </div>
-
-                <div
-                    class="space-y-4 text-sm text-obt-dark flex flex-col justify-between border-t md:border-t-0 md:border-l border-[var(--color-event)]/20 pt-4 md:pt-0 md:pl-6"
-                >
-                    <p class="flex items-start gap-2">
-                        <span class="shrink-0">💳</span>
-                        <span><strong>Tarif :</strong> {event.data.price}</span>
-                    </p>
-
-                    {
-                        event.data.registrationLink && (
-                            <a
-                                href={event.data.registrationLink}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                class="inline-block text-center py-3 px-6 rounded-full bg-[var(--color-event)] text-[var(--color-event-text)] font-extrabold hover:brightness-95 transition-all text-xs uppercase tracking-wider shadow-sm"
-                            >
-                                Réserver / S'inscrire →
-                            </a>
-                        )
-                    }
-                </div>
-            </div>
-
-            <!-- Contenu rédigé en Markdown / Markdoc -->
-            <div
-                class="prose prose-lg max-w-none text-obt-muted space-y-4 leading-relaxed pt-4"
-            >
-                <Content />
-            </div>
-
-            <!-- Retour à l'agenda -->
-            <div class="pt-12 border-t border-obt-muted/10 text-center">
-                <a
-                    href="/events"
-                    class="inline-block px-8 py-3 rounded-full border border-obt-muted/30 text-obt-dark font-bold hover:bg-[var(--color-event-light)] hover:border-[var(--color-event)] transition-all text-sm"
-                >
-                    ← Retour à tous les événements
-                </a>
-            </div>
-        </article>
-    </main>
+      <!-- Retour à l'agenda -->
+      <div class="pt-12 border-t border-obt-muted/10 text-center">
+        <a
+          href="/events"
+          class="inline-block px-8 py-3 rounded-full border border-obt-muted/30 text-obt-dark font-bold hover:bg-[var(--color-event-light)] hover:border-[var(--color-event)] transition-all text-sm"
+        >
+          ← Retour à tous les événements
+        </a>
+      </div>
+    </article>
+  </main>
 </Layout>
