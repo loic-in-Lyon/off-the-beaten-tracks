@@ -10,25 +10,25 @@ const eventsCollection = defineCollection({
     title: z.string(),
     date: z.coerce.date(),               // Date et heure de début
     endDate: z.coerce.date().optional(),   // Date de fin optionnelle
-    category: z.string(),                // Ex: Concert, Atelier, Danse
-    
+    category: z.string().optional(),     // <-- Rendu optionnel pour éviter les crashs si vide dans Keystatic
+
     // Distinguo Récurrent vs Ponctuel
-    isRecurring: z.boolean().default(false), 
-    frequency: z.string().optional(),     
-    
-    description: z.string(),             
-    
+    isRecurring: z.boolean().default(false),
+    frequency: z.string().optional(),
+
+    description: z.string().optional(),  // <-- Rendu optionnel aussi
+
     // Astro gère nativement le chemin relatif `./` généré par Keystatic
     image: image().optional(),
-    
+
     // Détails & Pratique
     location: z.string().default("OBT Café - 236 Cours Lafayette, Lyon 3e"),
-    organizer: z.string().default("Off The Beaten Tracks"), 
-    guest: z.string().optional(),          
-    price: z.string().default("Participation libre"), 
-    registrationLink: z.string().optional(), 
-    
-    featured: z.boolean().default(false),  
+    organizer: z.string().default("Off The Beaten Tracks"),
+    guest: z.string().optional(),
+    price: z.string().default("Participation libre"),
+    registrationLink: z.string().optional(),
+
+    featured: z.boolean().default(false),
   }),
 });
 
@@ -41,13 +41,13 @@ const blogCollection = defineCollection({
     title: z.string(),
     publishDate: z.coerce.date(),
     author: z.string().default("L'équipe OBT"),
-    description: z.string(),
-    
+    description: z.string().optional(), // Tu peux aussi le mettre en optionnel ici par sécurité
+
     // Rendu optionnel et géré par le helper image() d'Astro
     image: image().optional(),
-    
-    category: z.string(),
-    draft: z.boolean().default(false),  
+
+    category: z.string().optional(),    // Optionnel également si besoin
+    draft: z.boolean().default(false),
   }),
 });
 
