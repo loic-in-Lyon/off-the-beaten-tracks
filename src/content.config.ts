@@ -10,15 +10,15 @@ const eventsCollection = defineCollection({
     title: z.string(),
     date: z.coerce.date(),               // Date et heure de début
     endDate: z.coerce.date().optional(),   // Date de fin optionnelle
-    category: z.string().optional(),     // <-- Rendu optionnel pour éviter les crashs si vide dans Keystatic
+    category: z.string().optional(),     // Optionnel pour éviter les crashs si vide
 
     // Distinguo Récurrent vs Ponctuel
     isRecurring: z.boolean().default(false),
     frequency: z.string().optional(),
 
-    description: z.string().optional(),  // <-- Rendu optionnel aussi
+    description: z.string().optional(),  // Optionnel
 
-    // Astro gère nativement le chemin relatif `./` généré par Keystatic
+    // Image rendue optionnelle
     image: image().optional(),
 
     // Détails & Pratique
@@ -41,12 +41,12 @@ const blogCollection = defineCollection({
     title: z.string(),
     publishDate: z.coerce.date(),
     author: z.string().default("L'équipe OBT"),
-    description: z.string().optional(), // Tu peux aussi le mettre en optionnel ici par sécurité
+    description: z.string().optional(),
 
-    // Rendu optionnel et géré par le helper image() d'Astro
+    // Image rendue optionnelle
     image: image().optional(),
 
-    category: z.string().optional(),    // Optionnel également si besoin
+    category: z.string().optional(),
     draft: z.boolean().default(false),
   }),
 });
